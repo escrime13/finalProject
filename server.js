@@ -2,7 +2,7 @@ let express = require("express");
 let app = express();
 let reloadMagic = require("./reload-magic.js");
 let MongoClient = require("mongodb").MongoClient;
-let ObjectId = require("mongodb").ObjectID;
+let ObjectID = require("mongodb").ObjectID;
 let multer = require("multer");
 let upload = multer({ dest: __dirname + "/uploads/" });
 let cookieParser = require("cookie-parser");
@@ -13,7 +13,7 @@ reloadMagic(app);
 app.use("/", express.static("build")); // Needed for the HTML and JS files
 app.use("uploads", express.static("uploads"));
 app.use("/", express.static("public")); // Needed for local assets
-app.use("/img", express.static("public/images"));
+app.use("/img", express.static("public/img"));
 let dbo = undefined;
 let url =
   "mongodb+srv://bob:bobsue@asmc-4xkvt.mongodb.net/test?retryWrites=true&w=majority";
@@ -33,7 +33,7 @@ let generateSessionId = () => {
 
 //function to retrieve information from Mongodb:
 
-let mongoFindOne = async (collectionName, criteria) => {
+let dbFindOne = async (collectionName, criteria) => {
   return new Promise((res, rej) => {
     dbo.collection(collectionName).findOne(criteria, (err, user) => {
       if (err) {
@@ -44,7 +44,7 @@ let mongoFindOne = async (collectionName, criteria) => {
     });
   });
 };
-let mongoInsertOne = async (collectionName, document) => {
+let dbInsertOne = async (collectionName, document) => {
   return new Promise((res, rej) => {
     dbo.collection(collectionName).insertOne(document, (err, user_id) => {
       if (err) {
@@ -55,11 +55,11 @@ let mongoInsertOne = async (collectionName, document) => {
     });
   });
 };
-let mongoUpdate = async (collectionName, criteria, projection) => {
+let dbUpdate = async (collectionName, criteria, projection) => {
   return new Promise((res, rej) => {
     dbo
       .collection(collectionName)
-      .findOne(criteria, projection, (err, result) => {
+      .updateOne(criteria, projection, (err, result) => {
         if (err) {
           rej(err);
           return;
@@ -72,9 +72,9 @@ let mongoUpdate = async (collectionName, criteria, projection) => {
 // Your endpoints go after this line
 
 app.post("/signup", upload.none(""), async (req, res) => {
-  console.log(req.body);
+  console.log("request to sign up", req.body);
   let {
-    username,
+    userName,
     humanFirstName,
     humanLastName,
     neighborhoods,
@@ -82,7 +82,7 @@ app.post("/signup", upload.none(""), async (req, res) => {
   } = req.body;
   let password = hash({ passwordHashed: req.body.password });
 
-  let user = await mongoFindOne("humanProfile", { username: username });
+  let user = await dbFindOne("humanProfile", { userName: userName });
   if (user !== null) {
     console.log("username already taken");
     res.json({ success: false, message: "Username already taken" });
@@ -92,13 +92,16 @@ app.post("/signup", upload.none(""), async (req, res) => {
     console.log("username available");
     let sessionId = generateSessionId();
     res.cookie("sid", sessionId);
-    let user_id = await mongoInsertOne("humanProfile", {
-      username,
+    let dogProfilesId = [];
+    let user_id = await dbInsertOne("humanProfile", {
+      sessionId,
+      userName,
       password,
       humanFirstName,
       humanLastName,
       humanAvailabilities,
-      neighborhoods
+      neighborhoods,
+      dogProfilesId
     });
     if (user_id !== null) {
       console.log("New User Created, userID: ", user_id);
@@ -111,7 +114,40 @@ app.post("/signup", upload.none(""), async (req, res) => {
     }
   }
 });
-app.post("/dogProfiles", upload.array("img"), (req, res) => {
+app.post("/login", upload.none(), async (req, res) => {
+  console.log("request to login", req.body);
+  let lUserName = req.body.userName;
+  let lPassword = hash({ passwordHashed: req.body.password });
+  let human = await dbFindOne("humanProfile", { userName: lUserName });
+  if (human.password === lPassword) {
+    let sessionId = generateSessionId();
+    res.cookie("sid", sessionId);
+    let update = await dbUpdate(
+      "humanProfile",
+      { userName: lUserName },
+      { $set: { sessionId: sessionId } }
+    );
+    if (update === null) {
+      res.json({ success: false });
+    }
+    if (update !== null) {
+      res.json({ success: true });
+    }
+  }
+});
+app.post("/logout", upload.none(), (req, res) => {
+  console.log("request to logout");
+  let lgSessionId = req.cookies.sid;
+  dbFindOne(
+    "humanProfile",
+    { sessionId: lgSessionId },
+    { $set: { sessionId: " " } }
+  );
+  res.cookie("sid", { expires: Date.now() });
+  res.json({ success: true });
+});
+app.post("/createDogProfiles", upload.array("img"), async (req, res) => {
+  console.log("request to createDogProfiles");
   console.log(req.body);
   let {
     dogName,
@@ -128,27 +164,72 @@ app.post("/dogProfiles", upload.array("img"), (req, res) => {
     pictures
   } = req.body;
 
-  let user = mongoFindOne("dogProfile", { dogName: dogName });
-  if (user) {
+  let dog = await dbFindOne("dogProfile", { dogName: dogName });
+  if (dog !== null) {
     console.log("username already taken");
     res.json({ success: false, message: "Name already taken" });
   }
-  console.log("dogName available");
-  mongoInsertOne("dogProfile", {
-    dogName,
-    dogAge,
-    dogSex,
-    dogBreed,
-    lookingFor,
-    dogHeight,
-    dogWeight,
-    likes,
-    dislikes,
-    lookingFor,
-    interests,
-    energyLevel,
-    pictures
-  });
+  if (dog === null) {
+    console.log("dogName available");
+    let result = await dbInsertOne("dogProfile", {
+      dogName,
+      dogAge,
+      dogSex,
+      dogBreed,
+      lookingFor,
+      dogHeight,
+      dogWeight,
+      likes,
+      dislikes,
+      lookingFor,
+      interests,
+      energyLevel,
+      pictures
+    });
+    if (result !== null) {
+      console.log("dog_id: ", result.insertedId);
+      let dogId = result.insertedId;
+      let updateUserDogProfiles = await dbUpdate(
+        "humanProfile",
+        { sessionId: req.cookies.sid },
+        { $push: { dogProfilesId: ObjectID(dogId) } }
+      );
+      if (updateUserDogProfiles === null) {
+        console.log("there was an issue with the update");
+        res.json({ success: false, message: " " });
+      }
+      if (updateUserDogProfiles !== null) {
+        console.log(
+          "the profile was successfully updated:",
+          updateUserDogProfiles
+        );
+        res.json({ success: true });
+      }
+    }
+  }
+});
+app.get("/dogProfiles", async (req, res) => {
+  console.log("request to get the dog Profiles");
+  let sessionId = req.cookies.sid;
+  let human = await dbFindOne("humanProfile", { sessionId: sessionId });
+  if (human !== null) {
+    let dogProfiles = Promise.all(
+      human.dogProfilesId.map(async profile => {
+        let oneDog = await dbFindOne("dogProfile", { _id: ObjectID(profile) });
+        return oneDog;
+      })
+    );
+    console.log("dogProfiles", dogProfiles);
+    if ((await dogProfiles) === null) {
+      res.send({
+        success: false,
+        message: "There are no dog profiles associated to this human"
+      });
+    }
+    if ((await dogProfiles) !== null) {
+      res.send({ success: true, dogProfiles: await dogProfiles });
+    }
+  }
 });
 // Your endpoints go before this line
 

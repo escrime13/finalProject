@@ -1,11 +1,13 @@
 import { createStore } from "redux";
 let reducer = (state, action) => {
-  if (action.type === " x") {
-    return { ...state };
+  if (action.type === "login-success") {
+    return { ...state, loggedIn: true };
   }
   return state;
 };
-let initialState = {};
+let initialState = {
+  loggedIn: false
+};
 const store = createStore(
   reducer,
   initialState,
