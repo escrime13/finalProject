@@ -135,6 +135,10 @@ app.post("/login", upload.none(), async (req, res) => {
     }
   }
 });
+app.get("/isUserLoggedIn", function(req, res){
+    let sessionId = req.cookies.sid
+    let userName = 
+});
 app.post("/logout", upload.none(), (req, res) => {
   console.log("request to logout");
   let lgSessionId = req.cookies.sid;

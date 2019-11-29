@@ -50,6 +50,7 @@ class UnconnectedSignup extends Component {
         Last Name:
         <input type="text" onChange={this.handleLastNamedChange} />
         In which neighborhoods could you bring your dog(s) for play dates?
+        <input type="checkbox" onChange={this.handleLastNamedChange} />
       </form>
     );
   };
