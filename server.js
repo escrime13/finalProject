@@ -73,14 +73,10 @@ let dbUpdate = async (collectionName, criteria, projection) => {
 
 app.post("/signup", upload.none(""), async (req, res) => {
   console.log("request to sign up", req.body);
-  let {
-    userName,
-    humanFirstName,
-    humanLastName,
-    neighborhoods,
-    humanAvailabilities
-  } = req.body;
+  let { userName, humanFirstName, humanLastName } = req.body;
   let password = hash({ passwordHashed: req.body.password });
+  let neighborhoodsClicked = JSON.parse(req.body.neighborhoodsClicked);
+  let humanAvailabilities = JSON.parse(req.body.humanAvailabilities);
 
   let user = await dbFindOne("humanProfile", { userName: userName });
   if (user !== null) {
@@ -100,7 +96,7 @@ app.post("/signup", upload.none(""), async (req, res) => {
       humanFirstName,
       humanLastName,
       humanAvailabilities,
-      neighborhoods,
+      neighborhoodsClicked,
       dogProfilesId
     });
     if (user_id !== null) {
@@ -129,15 +125,23 @@ app.post("/login", upload.none(), async (req, res) => {
     );
     if (update === null) {
       res.json({ success: false });
+      return;
     }
     if (update !== null) {
       res.json({ success: true });
     }
   }
 });
-app.get("/isUserLoggedIn", function(req, res){
-    let sessionId = req.cookies.sid
-    let userName = 
+app.get("/isUserLoggedIn", async function(req, res) {
+  let sessionId = req.cookies.sid;
+  let human = await dbFindOne("humanProfile", { sessionId: sessionId });
+  if (human === null) {
+    console.log("no profile found");
+    res.json({ success: false });
+    return;
+  }
+  if (human !== null) console.log("profile found");
+  res.json({ success: true });
 });
 app.post("/logout", upload.none(), (req, res) => {
   console.log("request to logout");
@@ -151,8 +155,16 @@ app.post("/logout", upload.none(), (req, res) => {
   res.json({ success: true });
 });
 app.post("/createDogProfiles", upload.array("img"), async (req, res) => {
-  console.log("request to createDogProfiles");
-  console.log(req.body);
+  console.log("request to createDogProfiles:", req.body);
+  let files = req.files;
+  let frontendPath = [];
+  if (req.files.length > 0) {
+    frontendPath = [];
+    files.forEach(image => {
+      frontendPath.push("/uploads/" + image.filename);
+    });
+  }
+  let creationDate = new Date();
   let {
     dogName,
     dogAge,
@@ -164,8 +176,7 @@ app.post("/createDogProfiles", upload.array("img"), async (req, res) => {
     dislikes,
     interests,
     lookingFor,
-    energyLevel,
-    pictures
+    energyLevel
   } = req.body;
 
   let dog = await dbFindOne("dogProfile", { dogName: dogName });
@@ -188,7 +199,8 @@ app.post("/createDogProfiles", upload.array("img"), async (req, res) => {
       lookingFor,
       interests,
       energyLevel,
-      pictures
+      frontendPath,
+      creationDate
     });
     if (result !== null) {
       console.log("dog_id: ", result.insertedId);
