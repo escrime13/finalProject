@@ -29,10 +29,47 @@ class UnconnectedApp extends Component {
       type: "sign-up"
     });
   };
+  handleCreateDog = () => {
+    console.log("SingUp button clicked");
+    this.props.dispatch({
+      type: "create-dog"
+    });
+  };
+  handleSearchForBuddies = () => {
+    console.log("SingUp button clicked");
+    this.props.dispatch({
+      type: "search"
+    });
+  };
+  handleMyDogsProfiles = () => {
+    console.log("SingUp button clicked");
+    this.props.dispatch({
+      type: "view-profiles"
+    });
+  };
 
   render = () => {
+    if (this.props.loggedIn && this.props.createDog) {
+      return (
+        <div>
+          <h1>Create a profile for your dog!</h1>
+          <CreateDog />
+        </div>
+      );
+    }
     if (this.props.loggedIn) {
-      return <div></div>;
+      return (
+        <div>
+          <div>View My Dog(s) Profiles(s)</div>
+          <button onClick={this.handleMyDogsProfiles}>My Dogs</button>
+          <div>Search for Buddies</div>
+          <button onClick={this.handleSearchForBuddies}>
+            Let's find some buddies!
+          </button>
+          <div>Create a New Dog Profile</div>
+          <button onClick={this.handleCreateDog}>New Dog Profile</button>
+        </div>
+      );
     }
     if (this.props.createDog) {
       return (

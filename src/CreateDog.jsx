@@ -8,6 +8,7 @@ class UnconnectedCreateDog extends Component {
       dogAge: "",
       dogSex: "",
       dogBreed: "",
+      pureBred: true,
       dogHeight: "",
       dogWeight: "",
       likes: "",
@@ -30,7 +31,44 @@ class UnconnectedCreateDog extends Component {
     console.log("dog sex", event.target.value);
     this.setState({ dogSex: event.target.value });
   };
-
+  handleDogBreedChange = event => {
+    console.log("dog breed", event.target.value);
+    this.setState({ dogBreed: event.target.value });
+  };
+  handlePureBred = event => {
+    console.log("change in purBred radio button");
+    let newClick = { ...this.state.pureBred };
+    newClick = !pureBred;
+    this.setState({ pureBred: newClick });
+  };
+  handleDogHeightChange = event => {
+    console.log("dog height change", event.target.value);
+    this.setState({ dogHeight: event.target.value });
+  };
+  handleDogWeightChange = event => {
+    console.log("dog weight change", event.target.value);
+    this.setState({ dogWeight: event.target.value });
+  };
+  handleEnergyLevelChange = event => {
+    console.log("dog energy level", event.target.value);
+    this.setState({ energyLevel: event.target.value });
+  };
+  handleLikesChange = event => {
+    console.log("Dog Likes", event.target.value);
+    this.setState({ likes: event.target.value });
+  };
+  handleDislikesChange = event => {
+    console.log("Dog Likes", event.target.value);
+    this.setState({ dislikes: event.target.value });
+  };
+  handleInterestsChange = event => {
+    console.log("Dog Likes", event.target.value);
+    this.setState({ interests: event.target.value });
+  };
+  handleLookingForChange = event => {
+    console.log("Dog Likes", event.target.value);
+    this.setState({ lookingFor: event.target.value });
+  };
   handleSubmit = async event => {
     event.preventDefault();
     console.log("createDog form submitted");
@@ -39,7 +77,9 @@ class UnconnectedCreateDog extends Component {
     data.append("dogAge", this.state.dogAge);
     data.append("dogSex", this.state.dogSex);
     data.append("dogBreed", this.state.dogBreed);
+    data.append("pureBred", this.state.pureBred);
     data.append("dogHeight", this.state.dogHeight);
+    data.append("dogWeight", this.state.dogWeight);
     data.append("likes", this.state.likes);
     data.append("dislikes", this.state.dislikes);
     data.append("interests", this.state.interests);
@@ -54,7 +94,8 @@ class UnconnectedCreateDog extends Component {
     let parse = JSON.parse(responseBody);
     if (parse.success) {
       this.props.dispatch({
-        type: "login-success"
+        type: "login-success",
+        type: "create-dog"
       });
       return;
     }
@@ -75,19 +116,19 @@ class UnconnectedCreateDog extends Component {
             <option value="5 to 8 Months">5 to 8 Months</option>
             <option value="9 to 12 Months">9 to 12 Months</option>
             <option value="1 Year old">1 Year old</option>
-            <option value="2 Year old">2 Year old</option>
-            <option value="3 Year old">3 Year old</option>
-            <option value="4 Year old">4 Year old</option>
-            <option value="5 Year old">5 Year old</option>
-            <option value="6 Year old">6 Year old</option>
-            <option value="7 Year old">7 Year old</option>
-            <option value="8 Year old">8 Year old</option>
-            <option value="9 Year old">9 Year old</option>
-            <option value="10 Year old">10 Year old</option>
-            <option value="11 Year old">11 Year old</option>
-            <option value="12 Year old">12 Year old</option>
-            <option value="13 Year old">13 Year old</option>
-            <option value="14 Year old">+14 Year old</option>
+            <option value="2 Years old">2 Years old</option>
+            <option value="3 Years old">3 Years old</option>
+            <option value="4 Years old">4 Years old</option>
+            <option value="5 Years old">5 Years old</option>
+            <option value="6 Years old">6 Years old</option>
+            <option value="7 Years old">7 Years old</option>
+            <option value="8 Years old">8 Years old</option>
+            <option value="9 Years old">9 Years old</option>
+            <option value="10 Years old">10 Years old</option>
+            <option value="11 Years old">11 Years old</option>
+            <option value="12 Years old">12 Years old</option>
+            <option value="13 Years old">13 Years old</option>
+            <option value="14 Years old">+14 Years old</option>
           </select>
         </div>
         <div>Dog Sex</div>
@@ -101,7 +142,29 @@ class UnconnectedCreateDog extends Component {
           </select>
         </div>
         <div>Dog Breed</div>
-        <select>
+        <div>Is your dog a: </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="this.state.value"
+              checked={this.handlePureBred}
+            />
+            Purebred
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="this.state.value"
+              checked={this.handlePureBred}
+            />
+            Mix-Breed
+          </label>
+        </div>
+        <div>Please select below the breed or dominant breed of your dog.</div>
+        <select value={this.state.value} onChange={this.handleDogBreedChange}>
           <option value="empty"> Pick one...</option>
           <option value="Affenpinscher">Affenpinscher</option>
           <option value="Afghan hound">Afghan hound</option>
@@ -212,6 +275,7 @@ class UnconnectedCreateDog extends Component {
           <option value="Scottish terrier">Scottish terrier</option>
           <option value="Sealyham terrier">Sealyham terrier</option>
           <option value="Shetland sheepdog">Shetland sheepdog</option>
+          <option value="Shiba Inu">Shiba Inu</option>
           <option value="Shih tzu">Shih tzu</option>
           <option value="Shikoku">Shikoku</option>
           <option value="Siberian husky">Siberian husky</option>
@@ -235,7 +299,77 @@ class UnconnectedCreateDog extends Component {
           <option value="Whippet">Whippet</option>
           <option value="Yorkshire terrier"></option>
         </select>
-        <div></div>
+        <div>
+          Can't find your breed, please let us know so we can add it to our
+          list!
+        </div>
+        <div>
+          <input type="text" onChange={this.handleDogBreedChange} />
+        </div>
+        <div>Dog Height at Shoulder </div>
+        <select value={this.state.value} onChange={this.handleDogHeightChange}>
+          <option value="empty"> Pick a range...</option>
+          <option value="0 < 15 cm"> 0 - 15cm</option>
+          <option value="15 - 25 cm"> 15 - 25cm</option>
+          <option value="25 - 35 cm"> 25 - 35cm</option>
+          <option value="35 - 45 cm"> 35 - 45cm</option>
+          <option value="45 - 55 cm"> 45 - 55cm</option>
+          <option value="55 - 65 cm"> 55 - 65cm</option>
+          <option value="65 - 75 cm"> 65 - 75cm</option>
+          <option value="75 - 85 cm"> 75 - 85cm</option>
+          <option value="85 - 95 cm"> 85 - 95cm</option>
+          <option value="95 - 105 cm"> 95 - 105cm</option>
+          <option value=" +105cm "> >105cm and up</option>
+        </select>
+        <div>Dog Weight </div>
+        <select value={this.state.value} onChange={this.handleDogWeightChange}>
+          <option value="empty"> Pick a range...</option>
+          <option value="0 < 5 lbs"> 0 - 5 lbs</option>
+          <option value="5 - 10 lbs"> 5 - 10 lbs</option>
+          <option value="10 - 15 lbs"> 10 - 15 lbs</option>
+          <option value="15 - 20 lbs"> 15 - 20 lbs</option>
+          <option value="20 - 25 lbs"> 20 - 25 lbs</option>
+          <option value="25 - 30 lbs"> 25 - 30 lbs</option>
+          <option value="30 - 35 lbs"> 30 - 35 lbs</option>
+          <option value="35 - 40 lbs"> 35 - 40 lbs</option>
+          <option value="40 - 45 lbs"> 40 - 45 lbs</option>
+          <option value="45 - 50 lbs"> 45 - 50 lbs</option>
+          <option value="50 - 60 lbs"> 50 - 60 lbs</option>
+          <option value="60 - 70 lbs"> 60 - 70 lbs</option>
+          <option value="70 - 80 lbs"> 70 - 80 lbs</option>
+          <option value="80 - 90 lbs"> 80 - 90 lbs</option>
+          <option value="90 - 100 lbs"> 90 - 100 lbs</option>
+          <option value=" +100 "> +100 lbs</option>
+        </select>
+        <div>Dog Energy Level</div>
+        <select
+          value={this.state.value}
+          onChange={this.handleEnergyLevelChange}
+        >
+          <option value="empty"> Pick one...</option>
+          <option value="Puppy"> I'm a crazy puppy!</option>
+          <option value="Very High"> Very High</option>
+          <option value="High"> High</option>
+          <option value="Medium"> Medium</option>
+          <option value="Low"> Low</option>
+          <option value="Very Low"> Very Low</option>
+        </select>
+        <div>What does your dog likes</div>
+        <div>
+          <input type="text" onChange={this.handleLikesChange} />
+        </div>
+        <div>What does your dog dislikes</div>
+        <div>
+          <input type="text" onChange={this.handleDislikesChange} />
+        </div>
+        <div>Any special interests?</div>
+        <div>
+          <input type="text" onChange={this.handleInterestsChange} />
+        </div>
+        <div>What are you looking for?</div>
+        <div>
+          <input type="text" onChange={this.handleLookingForChange} />
+        </div>
         <div>
           <input type="submit" />
         </div>

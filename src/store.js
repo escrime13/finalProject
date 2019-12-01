@@ -7,7 +7,10 @@ let reducer = (state, action) => {
     return { ...state, signUp: true };
   }
   if (action.type === "create-dog") {
-    return { ...state, createDog: true };
+    let newClick = createDog;
+    console.log("createDog: ", createDog);
+    newClick = !state.createDog;
+    return { ...state, createDog: newClick };
   }
   return state;
 };
