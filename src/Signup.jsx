@@ -91,9 +91,6 @@ class UnconnectedSignup extends Component {
     let parse = JSON.parse(responseBody);
     if (parse.success) {
       window.alert("Signup was successful");
-      this.props.dispatch({
-        type: "create-dog"
-      });
       return;
     }
     window.alert("This username is already taken. Please try something else.");
@@ -164,5 +161,11 @@ class UnconnectedSignup extends Component {
     );
   };
 }
-let Signup = connect()(UnconnectedSignup);
+let mapStateToProps = state => {
+  console.log("state", state);
+  return {
+    createDog: state.createDog
+  };
+};
+let Signup = connect(mapStateToProps)(UnconnectedSignup);
 export default Signup;

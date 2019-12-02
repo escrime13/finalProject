@@ -7,7 +7,7 @@ class UnconnectedCreateDog extends Component {
       dogName: "",
       dogAge: "",
       dogSex: "",
-      dogBreed: "",
+      dogBreed: false,
       pureBred: true,
       dogHeight: "",
       dogWeight: "",
@@ -35,11 +35,17 @@ class UnconnectedCreateDog extends Component {
     console.log("dog breed", event.target.value);
     this.setState({ dogBreed: event.target.value });
   };
-  handlePureBred = event => {
+  handlePurebred = () => {
     console.log("change in purBred radio button");
     let newClick = { ...this.state.pureBred };
     newClick = !pureBred;
     this.setState({ pureBred: newClick });
+  };
+  handleMixBreed = () => {
+    console.log("change in purBred radio button");
+    let newClick = { ...this.state.mixBreed };
+    newClick = !mixBreed;
+    this.setState({ mixBreed: newClick });
   };
   handleDogHeightChange = event => {
     console.log("dog height change", event.target.value);
@@ -78,6 +84,7 @@ class UnconnectedCreateDog extends Component {
     data.append("dogSex", this.state.dogSex);
     data.append("dogBreed", this.state.dogBreed);
     data.append("pureBred", this.state.pureBred);
+    data.append("mixBreed", this.state.mixBreed);
     data.append("dogHeight", this.state.dogHeight);
     data.append("dogWeight", this.state.dogWeight);
     data.append("likes", this.state.likes);
@@ -94,8 +101,11 @@ class UnconnectedCreateDog extends Component {
     let parse = JSON.parse(responseBody);
     if (parse.success) {
       this.props.dispatch({
-        type: "login-success",
-        type: "create-dog"
+        type: "login-success"
+      });
+      this.props.dispatch({
+        type: "create-dog",
+        click: !this.createDog
       });
       return;
     }
@@ -147,8 +157,8 @@ class UnconnectedCreateDog extends Component {
           <label>
             <input
               type="radio"
-              value="this.state.value"
-              checked={this.handlePureBred}
+              value="Purebred"
+              checked={this.handlePurebred}
             />
             Purebred
           </label>
@@ -157,8 +167,8 @@ class UnconnectedCreateDog extends Component {
           <label>
             <input
               type="radio"
-              value="this.state.value"
-              checked={this.handlePureBred}
+              value="Mix-Breed"
+              checked={this.handleMixBreed}
             />
             Mix-Breed
           </label>
@@ -377,5 +387,11 @@ class UnconnectedCreateDog extends Component {
     );
   };
 }
-let CreateDog = connect()(UnconnectedCreateDog);
+let mapStateToProps = state => {
+  console.log("state", state);
+  return {
+    createDog: state.createDog
+  };
+};
+let CreateDog = connect(mapStateToProps)(UnconnectedCreateDog);
 export default CreateDog;
