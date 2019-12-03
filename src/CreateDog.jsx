@@ -100,12 +100,9 @@ class UnconnectedCreateDog extends Component {
     let responseBody = await response.text();
     let parse = JSON.parse(responseBody);
     if (parse.success) {
+      window.alert("Dog profile created successfully");
       this.props.dispatch({
         type: "login-success"
-      });
-      this.props.dispatch({
-        type: "create-dog",
-        click: !this.createDog
       });
       return;
     }

@@ -48,7 +48,7 @@ let renderLanding = () => {
         <Link to="/createdog">Create Another Dog Profile</Link>
       </div>
       <div>
-        <Link to="/mydogs/:human_id"> My Dog(s) Profile(s)</Link>
+        <Link to="/mydogs"> My Dog(s) Profile(s)</Link>
       </div>
       <div>
         <Link to="/allProfiles">Browse Dogs</Link>
@@ -120,7 +120,7 @@ class UnconnectedApp extends Component {
           <Route exact={true} path="/signup" render={renderSignUp} />
           <Route exact={true} path="/createdog" render={renderCreateDog} />
           <Route exact={true} path="/landing" render={renderLanding} />
-          <Route exact={true} path="/mydogs/:human_id" render={renderMyDogs} />
+          <Route exact={true} path="/mydogs" render={renderMyDogs} />
           <Route exact={true} path="/allProfiles" render={renderAllProfiles} />
           <Route
             exact={true}
