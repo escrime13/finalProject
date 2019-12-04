@@ -16,7 +16,7 @@ class UnconnectedCreateDog extends Component {
       interests: "",
       lookingFor: "",
       energyLevel: "",
-      img: []
+      img: ""
     };
   }
   handleDogNameChange = event => {
@@ -75,6 +75,10 @@ class UnconnectedCreateDog extends Component {
     console.log("Dog Likes", event.target.value);
     this.setState({ lookingFor: event.target.value });
   };
+  handleProfilePicture = event => {
+    let profilePicture = event.target.files[0];
+    this.setState({ img: profilePicture });
+  };
   handleSubmit = async event => {
     event.preventDefault();
     console.log("createDog form submitted");
@@ -98,7 +102,7 @@ class UnconnectedCreateDog extends Component {
       body: data
     });
     let responseBody = await response.text();
-    let parse = JSON.parse(responseBody);
+    let parse = await JSON.parse(responseBody);
     if (parse.success) {
       window.alert("Dog profile created successfully");
       this.props.dispatch({
@@ -376,6 +380,9 @@ class UnconnectedCreateDog extends Component {
         <div>What are you looking for?</div>
         <div>
           <input type="text" onChange={this.handleLookingForChange} />
+        </div>
+        <div>
+          <input type="file" onChange={this.handleProfilePicture}></input>
         </div>
         <div>
           <input type="submit" />

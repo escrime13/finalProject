@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./main.css";
+import { Redirect } from "react-router-dom";
+
 class UnconnectedLogin extends Component {
   constructor(props) {
     super(props);
@@ -29,27 +32,38 @@ class UnconnectedLogin extends Component {
       this.props.dispatch({
         type: "login-success"
       });
+      window.alert("Successful Login");
       return;
     }
     window.alert("Invalid username or password.");
   };
   render = () => {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div>Account Username</div>
-        <div>
-          <input type="text" onChange={this.handleUserNameChange} />
-        </div>
-        <div> Account Password</div>
-        <div>
-          <input type="text" onChange={this.handlePasswordChange} />
-        </div>
-        <div>
-          <input type="submit" />
-        </div>
-      </form>
-    );
+    if (this.props.loggedIn === false)
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <div>Account Username</div>
+          <div>
+            <input type="text" onChange={this.handleUserNameChange} />
+          </div>
+          <div> Account Password</div>
+          <div>
+            <input type="text" onChange={this.handlePasswordChange} />
+          </div>
+          <div>
+            <input type="submit" />
+          </div>
+        </form>
+      );
+    if (this.props.loggedIn === true) {
+      return <Redirect to="/menu" />;
+    }
   };
 }
-let Login = connect()(UnconnectedLogin);
+let mapStateToProps = state => {
+  console.log("state", state);
+  return {
+    loggedIn: state.loggedIn
+  };
+};
+let Login = connect(mapStateToProps)(UnconnectedLogin);
 export default Login;

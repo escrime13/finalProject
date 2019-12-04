@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 let neighborhoodsArray = [
   { id: "Ahuntsic-Cartierville" },
   { id: "Côte-des-Neiges-Notre-Dame-de-Grâce" },
@@ -90,81 +91,90 @@ class UnconnectedSignup extends Component {
     let responseBody = await response.text();
     let parse = JSON.parse(responseBody);
     if (parse.success) {
+      this.props.dispatch({
+        type: "login-success"
+      });
       window.alert("Signup was successful");
       return;
     }
     window.alert("This username is already taken. Please try something else.");
   };
   render = () => {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div>Account Username</div>
-        <div>
-          <input type="text" onChange={this.handleUserNameChange} />
-        </div>
-        <div>Account Password</div>
-        <div>
-          <input type="text" onChange={this.handlePasswordChange} />
-        </div>
-        <div>
-          Dear human, before we fill the profile(s) for your dog(s) please tell
-          us a bit about you:
-        </div>
-        <div>First Name:</div>
-        <div>
-          <input type="text" onChange={this.handleFirstNameChange} />
-        </div>
-        <div>Last Name: </div>
-        <div>
-          <input type="text" onChange={this.handleLastNameChange} />
-        </div>
-        <div>
-          In which neighborhoods would you bring your dog(s) for play dates?{" "}
-        </div>
-        <div>
-          {neighborhoodsArray.map(area => {
-            return (
-              <div>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    this.handleChangeNeighborhoods(area.id);
-                  }}
-                />
-                {area.id}
-              </div>
-            );
-          })}{" "}
-        </div>
-        <div>
-          When are you usually available to accompany you dog(s) on play dates?
-        </div>
-        <div>
-          {humanAvailabilitiesArray.map(time => {
-            return (
-              <div>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    this.handleChangeAvailabilities(time.time);
-                  }}
-                />
-                {time.time}
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <input type="submit" />
-        </div>
-      </form>
-    );
+    if (this.props.loggedIn === false) {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <div>Account Username</div>
+          <div>
+            <input type="text" onChange={this.handleUserNameChange} />
+          </div>
+          <div>Account Password</div>
+          <div>
+            <input type="text" onChange={this.handlePasswordChange} />
+          </div>
+          <div>
+            Dear human, before we fill the profile(s) for your dog(s) please
+            tell us a bit about you:
+          </div>
+          <div>First Name:</div>
+          <div>
+            <input type="text" onChange={this.handleFirstNameChange} />
+          </div>
+          <div>Last Name: </div>
+          <div>
+            <input type="text" onChange={this.handleLastNameChange} />
+          </div>
+          <div>
+            In which neighborhoods would you bring your dog(s) for play dates?{" "}
+          </div>
+          <div>
+            {neighborhoodsArray.map(area => {
+              return (
+                <div>
+                  <input
+                    type="checkbox"
+                    onChange={() => {
+                      this.handleChangeNeighborhoods(area.id);
+                    }}
+                  />
+                  {area.id}
+                </div>
+              );
+            })}{" "}
+          </div>
+          <div>
+            When are you usually available to accompany you dog(s) on play
+            dates?
+          </div>
+          <div>
+            {humanAvailabilitiesArray.map(time => {
+              return (
+                <div>
+                  <input
+                    type="checkbox"
+                    onChange={() => {
+                      this.handleChangeAvailabilities(time.time);
+                    }}
+                  />
+                  {time.time}
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            <input type="submit" />
+          </div>
+        </form>
+      );
+    }
+    if (this.props.loggedIn === true) {
+      return <Redirect to="/menu" />;
+    }
   };
 }
 let mapStateToProps = state => {
   console.log("state", state);
   return {
-    createDog: state.createDog
+    loggedIn: state.loggedIn
   };
 };
 let Signup = connect(mapStateToProps)(UnconnectedSignup);

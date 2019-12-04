@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./main.css";
 class UnconnectedMyDogs extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,7 @@ class UnconnectedMyDogs extends Component {
     };
   }
 
-  fetchMyDogs = async () => {
+  componentDidMount = async () => {
     let response = await fetch("/dogProfiles");
     let responseBody = await response.text();
     let parse = JSON.parse(responseBody);
@@ -28,13 +29,8 @@ class UnconnectedMyDogs extends Component {
       return (
         <div>
           <div>
-            <button onClick={this.fetchMyDogs}>
-              Display my Dog(s) Profile(s)
-            </button>
-          </div>
-          <div>
             {this.state.dogProfiles.map(profile => {
-              let profileImage = profile.frontendPath[0];
+              let profileImage = profile.frontendPath;
               let name = profile.dogName;
               let age = profile.dogAge;
               let breed = profile.dogBreed;
@@ -47,7 +43,9 @@ class UnconnectedMyDogs extends Component {
               let lookingFor = profile.lookingFor;
               return (
                 <div>
-                  <div>{profileImage}</div>
+                  <div>
+                    <img src={profileImage} />
+                  </div>
                   <div>Name:{name}</div>
                   <div> Age:{age}</div>
                   <div>Breed:{breed}</div>

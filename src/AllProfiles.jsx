@@ -1,25 +1,75 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./main.css";
 class UnconnectedAllProfiles extends Component {
-  componentDidMount = () => {
-    let getAllProfiles = async () => {
-      let response = await fetch("");
-      let responseBody = await response.text();
-      console.log("response from isUserLoggedIn", responseBody);
-      let parsed = JSON.parse(responseBody);
-      console.log("parsed", parsed);
-      if (parsed.loggedIn) {
-        console.log("user loggedIn");
-        this.props.dispatch({
-          type: "login-success"
-        });
-        return;
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      dogProfiles: []
     };
-    getAllProfiles();
+  }
+
+  componentDidMount = async () => {
+    let response = await fetch("/allDogsProfiles");
+    let responseBody = await response.text();
+    let parse = JSON.parse(responseBody);
+    if (parse.success) {
+      console.log("dogProfiles:", parse.dogProfiles);
+      this.setState({ dogProfiles: parse.dogProfiles });
+      console.log("this.state.dogProfiles:", this.state.dogProfiles);
+      console.log("dogProfilesArrayLength:", this.state.dogProfiles.length);
+    }
   };
-  //Display all Dog Profiles
-  //Ability to "swipe thru"
+
+  render = () => {
+    if (this.props.loggedIn === false) {
+      return <div>Please login</div>;
+    }
+    if (this.props.loggedIn === true)
+      return (
+        <div>
+          <div>
+            {this.state.dogProfiles.map(profile => {
+              let profileImage = profile.frontendPath;
+              let name = profile.dogName;
+              let age = profile.dogAge;
+              let breed = profile.dogBreed;
+              let sex = profile.dogSex;
+              let weight = profile.dogWeight;
+              let height = profile.dogHeight;
+              let energyLevel = profile.energyLevel;
+              let interests = profile.interests;
+              let likes = profile.likes;
+              let lookingFor = profile.lookingFor;
+              return (
+                <div>
+                  <div>
+                    <img src={profileImage} />
+                  </div>
+                  <div>Name: {name}</div>
+                  <div> Age: {age}</div>
+                  <div>Breed: {breed}</div>
+                  <div>Sex: {sex}</div>
+                  <div>Weight: {weight}</div>
+                  <div>Height: {height}</div>
+                  <div>Energy Level: {energyLevel} </div>
+                  <div>Interests: {interests}</div>
+                  <div>Likes: {likes}</div>
+                  <div>Looking for: {lookingFor}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+  };
 }
-let AllProfiles = connect()(UnconnectedAllProfiles);
+let mapStateToProps = state => {
+  console.log("state", state);
+  return {
+    loggedIn: state.loggedIn
+  };
+};
+
+let AllProfiles = connect(mapStateToProps)(UnconnectedAllProfiles);
 export default AllProfiles;

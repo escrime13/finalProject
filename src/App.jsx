@@ -19,29 +19,7 @@ let renderLogin = () => {
     </div>
   );
 };
-let renderSignUp = () => {
-  return (
-    <div>
-      <Signup />
-      <div>
-        <Link to="/createdog">Create a Dog Profile</Link>
-      </div>
-    </div>
-  );
-};
-
-let renderCreateDog = () => {
-  return (
-    <div>
-      <CreateDog />
-      <div>
-        <Link to="/landing">Done</Link>
-      </div>
-    </div>
-  );
-};
-
-let renderLanding = () => {
+let renderMenu = () => {
   return (
     <div>
       <div>
@@ -59,12 +37,31 @@ let renderLanding = () => {
     </div>
   );
 };
+let renderSignUp = () => {
+  return (
+    <div>
+      <Signup />
+    </div>
+  );
+};
+
+let renderCreateDog = () => {
+  return (
+    <div>
+      <CreateDog />
+      <div>
+        <Link to="/menu">Back to Menu</Link>
+      </div>
+    </div>
+  );
+};
+
 let renderMyDogs = () => {
   return (
     <div>
       <MyDogs />
       <div>
-        <Link to="/landing">Back</Link>
+        <Link to="/menu">Back to Menu</Link>
       </div>
     </div>
   );
@@ -77,6 +74,9 @@ let renderAllProfiles = () => {
       <div>
         <Link to="/searchCriteria">Search</Link>
       </div>
+      <div>
+        <Link to="/menu">Back to Menu</Link>
+      </div>
     </div>
   );
 };
@@ -86,7 +86,7 @@ let renderSearchCriteria = () => {
     <div>
       <SearchCriteria />
       <div>
-        <Link to="/landing">Back</Link>
+        <Link to="/menu">Back to Menu</Link>
       </div>
     </div>
   );
@@ -119,7 +119,7 @@ class UnconnectedApp extends Component {
           <Route exact={true} path="/" render={renderLogin} />
           <Route exact={true} path="/signup" render={renderSignUp} />
           <Route exact={true} path="/createdog" render={renderCreateDog} />
-          <Route exact={true} path="/landing" render={renderLanding} />
+          <Route exact={true} path="/menu" render={renderMenu} />
           <Route exact={true} path="/mydogs" render={renderMyDogs} />
           <Route exact={true} path="/allProfiles" render={renderAllProfiles} />
           <Route

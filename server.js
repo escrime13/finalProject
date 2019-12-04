@@ -11,9 +11,9 @@ let hash = require("object-hash");
 reloadMagic(app);
 
 app.use("/", express.static("build")); // Needed for the HTML and JS files
-app.use("uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 app.use("/", express.static("public")); // Needed for local assets
-app.use("/img", express.static("public/img"));
+app.use("/img", express.static("public/images"));
 let dbo = undefined;
 let url =
   "mongodb+srv://bob:bobsue@asmc-4xkvt.mongodb.net/test?retryWrites=true&w=majority";
@@ -32,6 +32,20 @@ let generateSessionId = () => {
 };
 
 //function to retrieve information from Mongodb:
+let dbFind = async (collectionName, criteria) => {
+  return new Promise((res, rej) => {
+    dbo
+      .collection(collectionName)
+      .find(criteria)
+      .toArray((err, result) => {
+        if (err) {
+          rej(err);
+          return;
+        }
+        res(result);
+      });
+  });
+};
 
 let dbFindOne = async (collectionName, criteria) => {
   return new Promise((res, rej) => {
@@ -115,6 +129,10 @@ app.post("/login", upload.none(), async (req, res) => {
   let lUserName = req.body.userName;
   let lPassword = hash({ passwordHashed: req.body.password });
   let human = await dbFindOne("humanProfile", { userName: lUserName });
+  if (human === null || human.password !== lPassword) {
+    res.json("Invalid username or password");
+    return;
+  }
   if (human.password === lPassword) {
     let sessionId = generateSessionId();
     res.cookie("sid", sessionId);
@@ -154,16 +172,11 @@ app.post("/logout", upload.none(), (req, res) => {
   res.cookie("sid", { expires: Date.now() });
   res.json({ success: true });
 });
-app.post("/createDogProfiles", upload.array("img"), async (req, res) => {
-  console.log("request to createDogProfiles:", req.body);
-  let files = req.files;
-  let frontendPath = [];
-  if (req.files.length > 0) {
-    frontendPath = [];
-    files.forEach(image => {
-      frontendPath.push("/uploads/" + image.filename);
-    });
-  }
+app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
+  //console.log("request to createDogProfiles:", req.body);
+  let file = req.file;
+  let frontendPath = "/uploads/" + file.filename;
+  console.log("After map frontEndPath", frontendPath);
   let creationDate = new Date();
   let {
     dogName,
@@ -186,6 +199,7 @@ app.post("/createDogProfiles", upload.array("img"), async (req, res) => {
   }
   if (dog === null) {
     console.log("dogName available");
+    console.log("frontendPath:", frontendPath);
     let result = await dbInsertOne("dogProfile", {
       dogName,
       dogAge,
@@ -229,7 +243,7 @@ app.get("/dogProfiles", async (req, res) => {
   let sessionId = req.cookies.sid;
   let human = await dbFindOne("humanProfile", { sessionId: sessionId });
   if (human !== null) {
-    let dogProfiles = Promise.all(
+    let dogProfiles = await Promise.all(
       human.dogProfilesId.map(async profile => {
         let oneDog = await dbFindOne("dogProfile", { _id: ObjectID(profile) });
         return oneDog;
@@ -247,7 +261,21 @@ app.get("/dogProfiles", async (req, res) => {
     }
   }
 });
+app.get("/allDogsProfiles", async (req, res) => {
+  console.log("request to get all dogs Profiles");
+  let dogProfiles = await dbFind("dogProfile", {});
+  console.log("dogProfiles", dogProfiles);
+  if ((await dogProfiles) === null) {
+    res.send({
+      success: false
+    });
+  }
+  if ((await dogProfiles) !== null) {
+    res.send({ success: true, dogProfiles: await dogProfiles });
+  }
+});
 // Your endpoints go before this line
+app.get("/public/images");
 
 app.all("/*", (req, res, next) => {
   // needed for react router
