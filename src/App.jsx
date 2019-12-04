@@ -10,6 +10,8 @@ import SearchCriteria from "./SearchCriteria.jsx";
 import SearchResults from "./SearchResults.jsx";
 import ProfileDetails from "./ProfileDetails.jsx";
 import HumanEdit from "./HumanEdit.jsx";
+import SelectDogToBeEdited from "./SelectDogToBeEdited.jsx";
+import DogEdit from "./DogEdit.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -34,10 +36,23 @@ let renderMenu = () => {
         <Link to="/allProfiles">Browse Dogs</Link>
       </div>
       <div>
-        <Link to="/dogEdit">Edit Dogs Profiles</Link>
+        <Link to="/selectDog">Edit Dogs Profiles</Link>
       </div>
       <div>
         <Link to="/humanEdit">Edit Human Profile</Link>
+      </div>
+    </div>
+  );
+};
+let renderSelectDogToBeEdited = () => {
+  return (
+    <div>
+      <SelectDogToBeEdited />
+      <div>
+        <Link to="/dogEdit">Edit Dog Profile</Link>
+      </div>
+      <div>
+        <Link to="/menu">Back to Menu</Link>
       </div>
     </div>
   );
@@ -152,6 +167,11 @@ class UnconnectedApp extends Component {
           <Route exact={true} path="/allProfiles" render={renderAllProfiles} />
           <Route exact={true} path="/dogEdit" render={renderDogEdit} />
           <Route exact={true} path="/humanEdit" render={renderHumanEdit} />
+          <Route
+            exact={true}
+            path="/selectDog"
+            render={renderSelectDogToBeEdited}
+          />
           <Route
             exact={true}
             path="/profileDetails/:dog_id"

@@ -84,6 +84,54 @@ let dbUpdate = async (collectionName, criteria, projection) => {
 };
 
 // Your endpoints go after this line
+
+app.post("/updateDogProfile", upload.single("img"), async (req, res) => {
+  console.log("information to update human profile", req.body);
+  let file = req.file;
+  let frontendPath = "/uploads/" + file.filename;
+  console.log("After map frontEndPath", frontendPath);
+  let {
+    dogName,
+    dogAge,
+    dogSex,
+    dogBreed,
+    dogHeight,
+    dogWeight,
+    likes,
+    dislikes,
+    interests,
+    lookingFor,
+    energyLevel
+  } = req.body;
+
+  let update = await dbUpdate(
+    "dogProfile",
+    {
+      dogName: dogName
+    },
+    {
+      $set: {
+        dogName,
+        dogAge,
+        dogSex,
+        dogBreed,
+        dogHeight,
+        dogWeight,
+        likes,
+        dislikes,
+        interests,
+        lookingFor,
+        energyLevel
+      }
+    }
+  );
+  if (update === null) {
+    res.send({ success: false });
+  }
+  if (update !== null) {
+    res.send({ success: true });
+  }
+});
 app.post("/humanUpdate", upload.none(""), async (req, res) => {
   console.log("information to update human profile", req.body);
   let { userName, humanFirstName, humanLastName } = req.body;
@@ -202,6 +250,18 @@ app.post("/logout", upload.none(), (req, res) => {
   res.cookie("sid", { expires: Date.now() });
   res.json({ success: true });
 });
+app.post("/getADogProfile", upload.none(), async (req, res) => {
+  console.log("request to '/getADogProfile'", req.body);
+  let dogName = req.body.dogToBeEdited;
+  let dog = await dbFindOne("dogProfile", { dogName: dogName });
+  if (dog !== null) {
+    console.log("username already taken");
+    res.json({ success: true, dog: dog });
+  }
+  if (dog === null) {
+    res.json({ success: false });
+  }
+});
 app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
   //console.log("request to createDogProfiles:", req.body);
   let file = req.file;
@@ -291,14 +351,13 @@ app.get("/dogProfiles", async (req, res) => {
       })
     );
     console.log("dogProfiles", dogProfiles);
-    if ((await dogProfiles) === null) {
+    if (dogProfiles === null) {
       res.send({
-        success: false,
-        message: "There are no dog profiles associated to this human"
+        success: false
       });
     }
-    if ((await dogProfiles) !== null) {
-      res.send({ success: true, dogProfiles: await dogProfiles });
+    if (dogProfiles !== null) {
+      res.send({ success: true, dogProfiles: dogProfiles });
     }
   }
 });

@@ -6,15 +6,15 @@ let reducer = (state, action) => {
   if (action.type === "sign-up") {
     return { ...state, signUp: true };
   }
-  if (action.type === "create-dog") {
-    return { ...state, createDog: action.click };
+  if (action.type === "edit-dog") {
+    return { ...state, dogToEdit: action.eDog };
   }
   return state;
 };
 let initialState = {
   loggedIn: false,
   signUp: false,
-  createDog: false
+  dogToEdit: ""
 };
 const store = createStore(
   reducer,

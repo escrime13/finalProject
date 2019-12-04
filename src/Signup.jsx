@@ -62,12 +62,12 @@ class UnconnectedSignup extends Component {
   };
   handleChangeNeighborhoods = id => {
     let newClicked = { ...this.state.neighborhoodsClicked };
-    newClicked[id] = !neighborhoodsArray[id];
+    newClicked[id] = !this.state.neighborhoodsClicked[id];
     this.setState({ neighborhoodsClicked: newClicked });
   };
   handleChangeAvailabilities = time => {
     let newClicked = { ...this.state.humanAvailabilities };
-    newClicked[time] = !humanAvailabilitiesArray[time];
+    newClicked[time] = !this.state.humanAvailabilities[time];
     this.setState({ humanAvailabilities: newClicked });
   };
 

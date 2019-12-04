@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 let neighborhoodsArray = [
   { id: "Ahuntsic-Cartierville" },
   { id: "Côte-des-Neiges-Notre-Dame-de-Grâce" },
@@ -113,7 +112,7 @@ class UnconnectedHumanEdit extends Component {
     if (this.props.loggedIn === false) {
       return <div>Please Loggin</div>;
     }
-    if (this.props.loggedIn == true) {
+    if (this.props.loggedIn === true) {
       return (
         <form onSubmit={this.handleSubmit}>
           <div>Account Username</div>
