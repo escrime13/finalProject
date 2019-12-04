@@ -84,6 +84,36 @@ let dbUpdate = async (collectionName, criteria, projection) => {
 };
 
 // Your endpoints go after this line
+app.post("/humanUpdate", upload.none(""), async (req, res) => {
+  console.log("information to update human profile", req.body);
+  let { userName, humanFirstName, humanLastName } = req.body;
+  let password = hash({ passwordHashed: req.body.password });
+  let neighborhoodsClicked = JSON.parse(req.body.neighborhoodsClicked);
+  let humanAvailabilities = JSON.parse(req.body.humanAvailabilities);
+  let sessionId = req.cookies.sid;
+  let update = await dbUpdate(
+    "humanProfile",
+    {
+      sessionId: sessionId
+    },
+    {
+      $set: {
+        userName,
+        password,
+        humanFirstName,
+        humanLastName,
+        humanAvailabilities,
+        neighborhoodsClicked
+      }
+    }
+  );
+  if (update === null) {
+    res.send({ success: false });
+  }
+  if (update !== null) {
+    res.send({ success: true });
+  }
+});
 
 app.post("/signup", upload.none(""), async (req, res) => {
   console.log("request to sign up", req.body);
@@ -236,6 +266,17 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
         res.json({ success: true });
       }
     }
+  }
+});
+app.get("/humanProfile", async (req, res) => {
+  console.log("request to get the humanProfile");
+  let sessionId = req.cookies.sid;
+  let human = await dbFindOne("humanProfile", { sessionId: sessionId });
+  if (human === null) {
+    res.send({ success: false });
+  }
+  if (human !== null) {
+    res.send({ success: true, humanProfile: await human });
   }
 });
 app.get("/dogProfiles", async (req, res) => {

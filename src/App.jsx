@@ -9,6 +9,7 @@ import AllProfiles from "./AllProfiles.jsx";
 import SearchCriteria from "./SearchCriteria.jsx";
 import SearchResults from "./SearchResults.jsx";
 import ProfileDetails from "./ProfileDetails.jsx";
+import HumanEdit from "./HumanEdit.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -22,8 +23,9 @@ let renderLogin = () => {
 let renderMenu = () => {
   return (
     <div>
+      <div>Menu</div>
       <div>
-        <Link to="/createdog">Create Another Dog Profile</Link>
+        <Link to="/createdog">Create New Dog Profile</Link>
       </div>
       <div>
         <Link to="/mydogs"> My Dog(s) Profile(s)</Link>
@@ -32,7 +34,30 @@ let renderMenu = () => {
         <Link to="/allProfiles">Browse Dogs</Link>
       </div>
       <div>
-        <Link to="/searchCriteria">Search for Buddies</Link>
+        <Link to="/dogEdit">Edit Dogs Profiles</Link>
+      </div>
+      <div>
+        <Link to="/humanEdit">Edit Human Profile</Link>
+      </div>
+    </div>
+  );
+};
+let renderDogEdit = () => {
+  return (
+    <div>
+      <DogEdit />
+      <div>
+        <Link to="/menu">Back to Menu</Link>
+      </div>
+    </div>
+  );
+};
+let renderHumanEdit = () => {
+  return (
+    <div>
+      <HumanEdit />
+      <div>
+        <Link to="/menu">Back to Menu</Link>
       </div>
     </div>
   );
@@ -41,6 +66,9 @@ let renderSignUp = () => {
   return (
     <div>
       <Signup />
+      <div>
+        <Link to="/menu">Back to Menu</Link>
+      </div>
     </div>
   );
 };
@@ -122,16 +150,8 @@ class UnconnectedApp extends Component {
           <Route exact={true} path="/menu" render={renderMenu} />
           <Route exact={true} path="/mydogs" render={renderMyDogs} />
           <Route exact={true} path="/allProfiles" render={renderAllProfiles} />
-          <Route
-            exact={true}
-            path="/searchCriteria"
-            render={renderSearchCriteria}
-          />
-          <Route
-            exact={true}
-            path="/searchResults"
-            render={renderSearchResults}
-          />
+          <Route exact={true} path="/dogEdit" render={renderDogEdit} />
+          <Route exact={true} path="/humanEdit" render={renderHumanEdit} />
           <Route
             exact={true}
             path="/profileDetails/:dog_id"
