@@ -12,7 +12,8 @@ import ProfileDetails from "./ProfileDetails.jsx";
 import HumanEdit from "./HumanEdit.jsx";
 import SelectDogToBeEdited from "./SelectDogToBeEdited.jsx";
 import DogEdit from "./DogEdit.jsx";
-import messageMyHuman from "/MessageMyHuman.jsx";
+import MessageMyHuman from "./MessageMyHuman.jsx";
+import MyMessages from "./MyMessages.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -27,6 +28,9 @@ let renderMenu = () => {
   return (
     <div>
       <div>Menu</div>
+      <div>
+        <Link to="/myMessages">See My Messages</Link>
+      </div>
       <div>
         <Link to="/createdog">Create New Dog Profile</Link>
       </div>
@@ -157,12 +161,22 @@ let renderProfileDetails = routerData => {
   );
 };
 let renderMessageMyHuman = routerData => {
-  let dogId = routerData.match.params.rid;
+  let dogID = routerData.match.params.rid;
   return (
     <div>
-      <MessageMyHuman dogId={dogId} />
+      <MessageMyHuman dogID={dogID} />
       <div>
         <Link to="/allProfiles">Back to Browse Dogs</Link>
+      </div>
+    </div>
+  );
+};
+let renderMyMessages = () => {
+  return (
+    <div>
+      <MyMessages />
+      <div>
+        <Link to="/menu">Back to Menu</Link>
       </div>
     </div>
   );
@@ -173,6 +187,7 @@ class UnconnectedApp extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" render={renderLogin} />
+          <Route exact={true} path="/myMessages" render={renderMyMessages} />
           <Route exact={true} path="/signup" render={renderSignUp} />
           <Route exact={true} path="/createdog" render={renderCreateDog} />
           <Route exact={true} path="/menu" render={renderMenu} />

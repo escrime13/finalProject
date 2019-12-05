@@ -37,7 +37,6 @@ class UnconnectedProfileDetails extends Component {
     let parseHuman = JSON.parse(responseHumanBody);
     if (parseHuman.success) {
       this.setState({ humanProfile: parseHuman.humanProfile });
-      console.log("humanProfile:", humanProfile);
     }
     if (!parseHuman.success) {
       window.alert("The human wasn't found");
@@ -45,7 +44,6 @@ class UnconnectedProfileDetails extends Component {
   };
 
   render = () => {
-    console.log("before return");
     return (
       <div>
         <div>
@@ -79,7 +77,11 @@ class UnconnectedProfileDetails extends Component {
             )}
           </div>
         </div>
-        <Link to={"/messageMyHuman" + dogId}>Message my Human</Link>
+        <div>
+          <Link to={"/messageMyHuman/" + this.state.dogProfile._id}>
+            Message my Human
+          </Link>
+        </div>
       </div>
     );
   };

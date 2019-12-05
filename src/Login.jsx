@@ -40,19 +40,24 @@ class UnconnectedLogin extends Component {
   render = () => {
     if (this.props.loggedIn === false)
       return (
-        <form onSubmit={this.handleSubmit}>
-          <div>Account Username</div>
-          <div>
-            <input type="text" onChange={this.handleUserNameChange} />
-          </div>
-          <div> Account Password</div>
-          <div>
-            <input type="text" onChange={this.handlePasswordChange} />
-          </div>
-          <div>
-            <input type="submit" />
-          </div>
-        </form>
+        <div>
+          <h1>Fluffy Buddies</h1>
+          <h3>Where Dogs Fiend Friends in the Greater Montreal Area</h3>
+
+          <form onSubmit={this.handleSubmit}>
+            <div>Account Username</div>
+            <div>
+              <input type="text" onChange={this.handleUserNameChange} />
+            </div>
+            <div> Account Password</div>
+            <div>
+              <input type="text" onChange={this.handlePasswordChange} />
+            </div>
+            <div>
+              <input type="submit" />
+            </div>
+          </form>
+        </div>
       );
     if (this.props.loggedIn === true) {
       return <Redirect to="/menu" />;
