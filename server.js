@@ -46,6 +46,11 @@ let dbFind = async (collectionName, criteria) => {
       });
   });
 };
+let dbCreateIndex = async (collectionName, index) => {
+  return new Promise(() => {
+    dbo.collection(collectionName).createIndex(index);
+  });
+};
 
 let dbFindOne = async (collectionName, criteria) => {
   return new Promise((res, rej) => {
@@ -333,26 +338,27 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
 app.post("/humanProfileByDogId", upload.none(), async (req, res) => {
   console.log("request to get the humanProfile by dog id", req.body);
   let dog_id = req.body.dog_id;
-  let human = await dbFindOne("humanProfile", {
-    dogProfilesId: { _id: ObjectID(dog_id) }
-  });
-  console.log("human:", human);
-  if (human === null) {
-    res.json({ success: false });
-  }
-  if (human !== null) {
-    res.json({ success: true, humanProfile: await human });
-  }
+  dbo
+    .collection("humanProfile")
+    .findOne({ dogProfilesId: ObjectID(dog_id) }, (err, result) => {
+      if (err) {
+        rej(err);
+        return;
+      }
+      console.log("result elem:", result);
+      res.json({ success: true, humanProfile: result });
+    });
+  return;
 });
 app.get("/humanProfile", async (req, res) => {
   console.log("request to get the humanProfile");
   let sessionId = req.cookies.sid;
   let human = await dbFindOne("humanProfile", { sessionId: sessionId });
   if (human === null) {
-    res.send({ success: false });
+    res.json({ success: false });
   }
   if (human !== null) {
-    res.send({ success: true, humanProfile: await human });
+    res.json({ success: true, humanProfile: await human });
   }
 });
 app.get("/dogProfiles", async (req, res) => {

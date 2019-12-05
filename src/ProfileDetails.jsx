@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class UnconnectedProfileDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dogProfile: [],
-      humanProfile: []
+      humanProfile: {
+        neighborhoodsClicked: [],
+        humanAvailabilities: []
+      }
     };
   }
 
@@ -33,12 +37,15 @@ class UnconnectedProfileDetails extends Component {
     let parseHuman = JSON.parse(responseHumanBody);
     if (parseHuman.success) {
       this.setState({ humanProfile: parseHuman.humanProfile });
+      console.log("humanProfile:", humanProfile);
     }
     if (!parseHuman.success) {
+      window.alert("The human wasn't found");
     }
   };
 
   render = () => {
+    console.log("before return");
     return (
       <div>
         <div>
@@ -46,7 +53,7 @@ class UnconnectedProfileDetails extends Component {
             <img src={this.state.dogProfile.profileImage} />
           </div>
           <div>Name:{this.state.dogProfile.dogName}</div>
-          <div> Age:{this.state.dogProfile.dogAge}</div>
+          <div>Age:{this.state.dogProfile.dogAge}</div>
           <div>Breed:{this.state.dogProfile.dogBreed}</div>
           <div>Sex:{this.state.dogProfile.dogSex}</div>
           <div>Weight:{this.state.dogProfile.dogWeight}</div>
@@ -56,26 +63,32 @@ class UnconnectedProfileDetails extends Component {
           <div>Likes: {this.state.dogProfile.likes}</div>
           <div>Looking for: {this.state.dogProfile.lookingFor}</div>
           <div>
-            My usual neighborhoods are:{" "}
-            {this.state.humanProfile.neighborhoodsClicked}
+            My usual neighborhoods are:
+            {Object.keys(this.state.humanProfile.neighborhoodsClicked).map(
+              key => {
+                return <div>{key}</div>;
+              }
+            )}
           </div>
           <div>
-            My human is usually available to take me for play dates:{" "}
-            {this.state.humanProfile.humanAvailabilities}{" "}
+            My human is usually available to escort me on:
+            {Object.keys(this.state.humanProfile.humanAvailabilities).map(
+              key => {
+                return <div>{key}</div>;
+              }
+            )}
           </div>
         </div>
-        <button onClick={this.handleMessageMyHuman}>Message my Human</button>
+        <Link to={"/messageMyHuman" + dogId}>Message my Human</Link>
       </div>
     );
   };
 }
-
 let mapStateToProps = state => {
   console.log("state", state);
   return {
-    dogDetailsId: state.dogDetailsId
+    loggedIn: state.loggedIn
   };
 };
-
 let ProfileDetails = connect(mapStateToProps)(UnconnectedProfileDetails);
 export default ProfileDetails;

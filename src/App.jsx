@@ -12,6 +12,7 @@ import ProfileDetails from "./ProfileDetails.jsx";
 import HumanEdit from "./HumanEdit.jsx";
 import SelectDogToBeEdited from "./SelectDogToBeEdited.jsx";
 import DogEdit from "./DogEdit.jsx";
+import messageMyHuman from "/MessageMyHuman.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -155,6 +156,17 @@ let renderProfileDetails = routerData => {
     </div>
   );
 };
+let renderMessageMyHuman = routerData => {
+  let dogId = routerData.match.params.rid;
+  return (
+    <div>
+      <MessageMyHuman dogId={dogId} />
+      <div>
+        <Link to="/allProfiles">Back to Browse Dogs</Link>
+      </div>
+    </div>
+  );
+};
 class UnconnectedApp extends Component {
   render() {
     return (
@@ -178,6 +190,11 @@ class UnconnectedApp extends Component {
           exact={true}
           path="/profileDetails/:sid"
           render={renderProfileDetails}
+        />
+        <Route
+          exact={true}
+          path="/messageMyHuman/:rid"
+          render={renderMessageMyHuman}
         />
       </BrowserRouter>
     );

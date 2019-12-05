@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, BrowserRouter, Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./main.css";
 class UnconnectedAllProfiles extends Component {
   constructor(props) {
