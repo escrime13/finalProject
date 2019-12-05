@@ -251,11 +251,11 @@ app.post("/logout", upload.none(), (req, res) => {
   res.json({ success: true });
 });
 app.post("/getADogProfile", upload.none(), async (req, res) => {
-  console.log("request to '/getADogProfile'", req.body);
-  let dogName = req.body.dogToBeEdited;
-  let dog = await dbFindOne("dogProfile", { dogName: dogName });
+  console.log("request to /getADogProfile", req.body);
+  let dog_id = req.body.dog_id;
+  console.log("dog_id:", dog_id);
+  let dog = await dbFindOne("dogProfile", { _id: ObjectID(dog_id) });
   if (dog !== null) {
-    console.log("username already taken");
     res.json({ success: true, dog: dog });
   }
   if (dog === null) {
@@ -279,7 +279,8 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
     dislikes,
     interests,
     lookingFor,
-    energyLevel
+    energyLevel,
+    messages
   } = req.body;
 
   let dog = await dbFindOne("dogProfile", { dogName: dogName });
@@ -304,7 +305,8 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
       interests,
       energyLevel,
       frontendPath,
-      creationDate
+      creationDate,
+      messages
     });
     if (result !== null) {
       console.log("dog_id: ", result.insertedId);
@@ -326,6 +328,20 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
         res.json({ success: true });
       }
     }
+  }
+});
+app.post("/humanProfileByDogId", upload.none(), async (req, res) => {
+  console.log("request to get the humanProfile by dog id", req.body);
+  let dog_id = req.body.dog_id;
+  let human = await dbFindOne("humanProfile", {
+    dogProfilesId: { _id: ObjectID(dog_id) }
+  });
+  console.log("human:", human);
+  if (human === null) {
+    res.json({ success: false });
+  }
+  if (human !== null) {
+    res.json({ success: true, humanProfile: await human });
   }
 });
 app.get("/humanProfile", async (req, res) => {

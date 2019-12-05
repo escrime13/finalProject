@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Route, BrowserRouter, Link, Redirect } from "react-router-dom";
 import "./main.css";
 class UnconnectedAllProfiles extends Component {
   constructor(props) {
@@ -20,7 +21,6 @@ class UnconnectedAllProfiles extends Component {
       console.log("dogProfilesArrayLength:", this.state.dogProfiles.length);
     }
   };
-
   render = () => {
     if (this.props.loggedIn === false) {
       return <div>Please login</div>;
@@ -41,6 +41,7 @@ class UnconnectedAllProfiles extends Component {
               let interests = profile.interests;
               let likes = profile.likes;
               let lookingFor = profile.lookingFor;
+              let dogId = profile._id;
               return (
                 <div>
                   <div>
@@ -56,6 +57,11 @@ class UnconnectedAllProfiles extends Component {
                   <div>Interests: {interests}</div>
                   <div>Likes: {likes}</div>
                   <div>Looking for: {lookingFor}</div>
+                  <div>
+                    <Link to={"/profileDetails/" + dogId}>
+                      See Profile Details
+                    </Link>
+                  </div>
                 </div>
               );
             })}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, BrowserRouter, Link } from "react-router-dom";
+import { Route, BrowserRouter, Link, useParams } from "react-router-dom";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import CreateDog from "./CreateDog.jsx";
@@ -144,12 +144,13 @@ let renderSearchResults = () => {
     </div>
   );
 };
-let renderProfileDetails = () => {
+let renderProfileDetails = routerData => {
+  let dogId = routerData.match.params.sid;
   return (
     <div>
-      <ProfileDetails />
+      <ProfileDetails dogId={dogId} />
       <div>
-        <Link to="/profileDetails/:dog_id">Back to Search Results</Link>
+        <Link to="/allProfiles">Back to Browse Dogs</Link>
       </div>
     </div>
   );
@@ -172,15 +173,19 @@ class UnconnectedApp extends Component {
             path="/selectDog"
             render={renderSelectDogToBeEdited}
           />
-          <Route
-            exact={true}
-            path="/profileDetails/:dog_id"
-            render={renderProfileDetails}
-          />
         </div>
+        <Route
+          exact={true}
+          path="/profileDetails/:sid"
+          render={renderProfileDetails}
+        />
       </BrowserRouter>
     );
   }
 }
-let App = connect()(UnconnectedApp);
+let mapStateToProps = state => {
+  console.log("state", state);
+  return {};
+};
+let App = connect(mapStateToProps)(UnconnectedApp);
 export default App;

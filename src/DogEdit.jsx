@@ -20,9 +20,14 @@ class UnconnectedDogEdit extends Component {
     };
   }
   componentDidMount = async () => {
-    let response = await fetch("/getADogProfile");
+    let data = new FormData();
+    data.append("dog_id", this.props.dogToEdit);
+    console.log("this.props.dogToEdit:", this.props.dogToEdit);
+    let response = await fetch("/getADogProfile", {
+      method: "POST",
+      body: data
+    });
     let responseBody = await response.text();
-    console.log("componentDidMount-responseBody:", responseBody);
     let parse = JSON.parse(responseBody);
     if (parse.success) {
       this.setState({
@@ -345,7 +350,7 @@ class UnconnectedDogEdit extends Component {
         </div>
         <div>Dog Height at Shoulder </div>
         <select value={this.state.value} onChange={this.handleDogHeightChange}>
-          <option value="empty"> Pick a range...</option>
+          <option value="empty"> {this.state.dogHeight}</option>
           <option value="0 < 15 cm"> 0 - 15cm</option>
           <option value="15 - 25 cm"> 15 - 25cm</option>
           <option value="25 - 35 cm"> 25 - 35cm</option>

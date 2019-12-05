@@ -16,7 +16,8 @@ class UnconnectedCreateDog extends Component {
       interests: "",
       lookingFor: "",
       energyLevel: "",
-      img: ""
+      img: "",
+      messages: []
     };
   }
   handleDogNameChange = event => {
@@ -97,6 +98,7 @@ class UnconnectedCreateDog extends Component {
     data.append("lookingFor", this.state.lookingFor);
     data.append("energyLevel", this.state.energyLevel);
     data.append("img", this.state.img);
+    data.append("messages", this.state.messages);
     let response = await fetch("/createDogProfiles", {
       method: "POST",
       body: data
