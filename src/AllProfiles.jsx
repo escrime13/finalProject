@@ -28,7 +28,10 @@ class UnconnectedAllProfiles extends Component {
         profile.lookingFor.includes(this.props.queryLookingFor) &&
         profile.dogAge.includes(this.props.queryAge) &&
         profile.dogSex.includes(this.props.queryDogSex) &&
-        profile.dogBreed.includes(this.props.queryBreed)
+        profile.dogBreed.includes(this.props.queryBreed) &&
+        profile.dogHeight.includes(this.props.queryHeight) &&
+        profile.dogWeight.includes(this.props.queryWeight) &&
+        profile.energyLevel.includes(this.props.queryEnergyLevel)
       );
     });
     if (this.props.loggedIn === false) {
@@ -82,7 +85,10 @@ let mapStateToProps = state => {
     queryLookingFor: state.queryLookingFor,
     queryAge: state.queryAge,
     queryDogSex: state.queryDogSex,
-    queryBreed: state.queryBreed
+    queryBreed: state.queryBreed,
+    queryHeight: state.queryHeight,
+    queryWeight: state.queryWeight,
+    queryEnergyLevel: state.queryEnergyLevel
   };
 };
 

@@ -22,6 +22,30 @@ class UnconnectedSearchBar extends Component {
       queryDogSex: event.target.value
     });
   };
+  handleQueryBreed = event => {
+    this.props.dispatch({
+      type: "queryBreed",
+      queryBreed: event.target.value
+    });
+  };
+  handleQueryHeight = event => {
+    this.props.dispatch({
+      type: "queryHeight",
+      queryHeight: event.target.value
+    });
+  };
+  handleQueryWeight = event => {
+    this.props.dispatch({
+      type: "queryWeight",
+      queryWeight: event.target.value
+    });
+  };
+  handleQueryEnergyLevel = event => {
+    this.props.dispatch({
+      type: "queryEnergyLevel",
+      queryEnergyLevel: event.target.value
+    });
+  };
   render = () => {
     return (
       <div>
@@ -209,7 +233,62 @@ class UnconnectedSearchBar extends Component {
           <option value="Whippet">Whippet</option>
           <option value="Yorkshire terrier"></option>
         </select>
-        <div></div>
+        <div>
+          <div> Weight </div>
+          <select
+            value={this.props.queryWeight}
+            onChange={this.handleQueryWeight}
+          >
+            <option value="empty"> Pick a range...</option>
+            <option value="0 < 5 lbs"> 0 - 5 lbs</option>
+            <option value="5 - 10 lbs"> 5 - 10 lbs</option>
+            <option value="10 - 15 lbs"> 10 - 15 lbs</option>
+            <option value="15 - 20 lbs"> 15 - 20 lbs</option>
+            <option value="20 - 25 lbs"> 20 - 25 lbs</option>
+            <option value="25 - 30 lbs"> 25 - 30 lbs</option>
+            <option value="30 - 35 lbs"> 30 - 35 lbs</option>
+            <option value="35 - 40 lbs"> 35 - 40 lbs</option>
+            <option value="40 - 45 lbs"> 40 - 45 lbs</option>
+            <option value="45 - 50 lbs"> 45 - 50 lbs</option>
+            <option value="50 - 60 lbs"> 50 - 60 lbs</option>
+            <option value="60 - 70 lbs"> 60 - 70 lbs</option>
+            <option value="70 - 80 lbs"> 70 - 80 lbs</option>
+            <option value="80 - 90 lbs"> 80 - 90 lbs</option>
+            <option value="90 - 100 lbs"> 90 - 100 lbs</option>
+            <option value=" +100 "> +100 lbs</option>
+          </select>
+          <div>Height </div>
+          <select
+            value={this.props.queryHeight}
+            onChange={this.handleQueryHeight}
+          >
+            <option value="empty"> Pick a range...</option>
+            <option value="0 < 15 cm"> 0 - 15cm</option>
+            <option value="15 - 25 cm"> 15 - 25cm</option>
+            <option value="25 - 35 cm"> 25 - 35cm</option>
+            <option value="35 - 45 cm"> 35 - 45cm</option>
+            <option value="45 - 55 cm"> 45 - 55cm</option>
+            <option value="55 - 65 cm"> 55 - 65cm</option>
+            <option value="65 - 75 cm"> 65 - 75cm</option>
+            <option value="75 - 85 cm"> 75 - 85cm</option>
+            <option value="85 - 95 cm"> 85 - 95cm</option>
+            <option value="95 - 105 cm"> 95 - 105cm</option>
+            <option value=" +105cm "> >105cm and up</option>
+          </select>
+          <div>Dog Energy Level</div>
+          <select
+            value={this.props.queryEnergyLevel}
+            onChange={this.handleQueryEnergyLevel}
+          >
+            <option value="empty"> Pick one...</option>
+            <option value="Puppy"> I'm a crazy puppy!</option>
+            <option value="Very High"> Very High</option>
+            <option value="High"> High</option>
+            <option value="Medium"> Medium</option>
+            <option value="Low"> Low</option>
+            <option value="Very Low"> Very Low</option>
+          </select>
+        </div>
       </div>
     );
   };
@@ -220,7 +299,10 @@ let mapStateToProps = state => {
     queryLookingFor: state.queryLookingFor,
     queryAge: state.queryAge,
     queryDogSex: state.queryDogSex,
-    queryBreed: state.queryBreed
+    queryBreed: state.queryBreed,
+    queryHeight: state.queryHeight,
+    queryWeight: state.queryWeight,
+    queryEnergyLevel: state.queryEnergyLevel
   };
 };
 let SearchBar = connect(mapStateToProps)(UnconnectedSearchBar);

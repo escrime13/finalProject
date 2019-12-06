@@ -28,10 +28,28 @@ let reducer = (state, action) => {
     return { ...state, queryDogSex: action.queryDogSex };
   }
   if (action.type === "queryBreed") {
-    if (action.queryDBreed === "empty") {
+    if (action.queryBreed === "empty") {
       return { ...state, queryBreed: "" };
     }
     return { ...state, queryBreed: action.queryBreed };
+  }
+  if (action.type === "queryHeight") {
+    if (action.queryHeight === "empty") {
+      return { ...state, queryHeight: "" };
+    }
+    return { ...state, queryHeight: action.queryHeight };
+  }
+  if (action.type === "queryWeight") {
+    if (action.queryWeight === "empty") {
+      return { ...state, queryWeight: "" };
+    }
+    return { ...state, queryWeight: action.queryWeight };
+  }
+  if (action.type === "queryEnergyLevel") {
+    if (action.queryEnergyLevel === "empty") {
+      return { ...state, queryEnergyLevel: "" };
+    }
+    return { ...state, queryEnergyLevel: action.queryEnergyLevel };
   }
   return state;
 };
@@ -42,7 +60,11 @@ let initialState = {
   searchQuery: "",
   queryLookingFor: "",
   queryAge: "",
-  queryDogSex: ""
+  queryDogSex: "",
+  queryBreed: "",
+  queryHeight: "",
+  queryWeight: "",
+  queryEnergyLevel: ""
 };
 const store = createStore(
   reducer,

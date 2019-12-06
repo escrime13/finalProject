@@ -64,18 +64,6 @@ class UnconnectedDogEdit extends Component {
     console.log("dog breed", event.target.value);
     this.setState({ dogBreed: event.target.value });
   };
-  handlePurebred = () => {
-    console.log("change in purBred radio button");
-    let newClick = { ...this.state.pureBred };
-    newClick = !pureBred;
-    this.setState({ pureBred: newClick });
-  };
-  handleMixBreed = () => {
-    console.log("change in purBred radio button");
-    let newClick = { ...this.state.mixBreed };
-    newClick = !mixBreed;
-    this.setState({ mixBreed: newClick });
-  };
   handleDogHeightChange = event => {
     console.log("dog height change", event.target.value);
     this.setState({ dogHeight: event.target.value });
@@ -116,8 +104,6 @@ class UnconnectedDogEdit extends Component {
     data.append("dogAge", this.state.dogAge);
     data.append("dogSex", this.state.dogSex);
     data.append("dogBreed", this.state.dogBreed);
-    data.append("pureBred", this.state.pureBred);
-    data.append("mixBreed", this.state.mixBreed);
     data.append("dogHeight", this.state.dogHeight);
     data.append("dogWeight", this.state.dogWeight);
     data.append("likes", this.state.likes);
@@ -184,27 +170,6 @@ class UnconnectedDogEdit extends Component {
           </select>
         </div>
         <div>Dog Breed</div>
-        <div>Is your dog a: </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="Purebred"
-              checked={this.handlePurebred}
-            />
-            Purebred
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="Mix-Breed"
-              checked={this.handleMixBreed}
-            />
-            Mix-Breed
-          </label>
-        </div>
         <div>Please select below the breed or dominant breed of your dog.</div>
         <select value={this.state.value} onChange={this.handleDogBreedChange}>
           <option value="empty"> {this.state.dogBreed}</option>
