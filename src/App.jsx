@@ -6,14 +6,14 @@ import Login from "./Login.jsx";
 import CreateDog from "./CreateDog.jsx";
 import MyDogs from "./MyDogs.jsx";
 import AllProfiles from "./AllProfiles.jsx";
-import SearchCriteria from "./SearchCriteria.jsx";
-import SearchResults from "./SearchResults.jsx";
 import ProfileDetails from "./ProfileDetails.jsx";
 import HumanEdit from "./HumanEdit.jsx";
 import SelectDogToBeEdited from "./SelectDogToBeEdited.jsx";
 import DogEdit from "./DogEdit.jsx";
 import MessageMyHuman from "./MessageMyHuman.jsx";
 import MyMessages from "./MyMessages.jsx";
+import SearchBar from "./SearchBar.jsx";
+import SearchResults from "./SearchResults.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -118,44 +118,26 @@ let renderMyDogs = () => {
 let renderAllProfiles = () => {
   return (
     <div>
-      <AllProfiles />
+      <SearchBar />
       <div>
-        <Link to="/searchCriteria">Search</Link>
-      </div>
-      <div>
-        <Link to="/menu">Back to Menu</Link>
+        <AllProfiles />
+        <div>
+          <Link to="/menu">Back to Menu</Link>
+        </div>
       </div>
     </div>
   );
 };
 
-let renderSearchCriteria = () => {
-  return (
-    <div>
-      <SearchCriteria />
-      <div>
-        <Link to="/menu">Back to Menu</Link>
-      </div>
-    </div>
-  );
-};
-let renderSearchResults = () => {
-  return (
-    <div>
-      <SearchResults />
-      <div>
-        <Link to="/searchCriteria">Back to Search</Link>
-      </div>
-    </div>
-  );
-};
 let renderProfileDetails = routerData => {
   let dogId = routerData.match.params.sid;
   return (
     <div>
-      <ProfileDetails dogId={dogId} />
       <div>
-        <Link to="/allProfiles">Back to Browse Dogs</Link>
+        <ProfileDetails dogId={dogId} />
+        <div>
+          <Link to="/allProfiles">Back to Browse Dogs</Link>
+        </div>
       </div>
     </div>
   );

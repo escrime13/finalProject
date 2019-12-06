@@ -9,12 +9,40 @@ let reducer = (state, action) => {
   if (action.type === "edit-dog") {
     return { ...state, dogToEdit: action.eDog };
   }
+  if (action.type === "query") {
+    return { ...state, searchQuery: action.query };
+  }
+  if (action.type === "queryLookingFor") {
+    return { ...state, queryLookingFor: action.queryLookingFor };
+  }
+  if (action.type === "queryAge") {
+    if (action.queryAge === "empty") {
+      return { ...state, queryAge: "" };
+    }
+    return { ...state, queryAge: action.queryAge };
+  }
+  if (action.type === "queryDogSex") {
+    if (action.queryDogSex === "empty") {
+      return { ...state, queryDogSex: "" };
+    }
+    return { ...state, queryDogSex: action.queryDogSex };
+  }
+  if (action.type === "queryBreed") {
+    if (action.queryDBreed === "empty") {
+      return { ...state, queryBreed: "" };
+    }
+    return { ...state, queryBreed: action.queryBreed };
+  }
   return state;
 };
 let initialState = {
   loggedIn: false,
   signUp: false,
-  dogToEdit: ""
+  dogToEdit: "",
+  searchQuery: "",
+  queryLookingFor: "",
+  queryAge: "",
+  queryDogSex: ""
 };
 const store = createStore(
   reducer,

@@ -22,6 +22,15 @@ class UnconnectedAllProfiles extends Component {
     }
   };
   render = () => {
+    let filteredProfiles = this.state.dogProfiles.filter(profile => {
+      return (
+        profile.dogName.includes(this.props.query) &&
+        profile.lookingFor.includes(this.props.queryLookingFor) &&
+        profile.dogAge.includes(this.props.queryAge) &&
+        profile.dogSex.includes(this.props.queryDogSex) &&
+        profile.dogBreed.includes(this.props.queryBreed)
+      );
+    });
     if (this.props.loggedIn === false) {
       return <div>Please login</div>;
     }
@@ -29,7 +38,7 @@ class UnconnectedAllProfiles extends Component {
       return (
         <div>
           <div>
-            {this.state.dogProfiles.map(profile => {
+            {filteredProfiles.map(profile => {
               let profileImage = profile.frontendPath;
               let name = profile.dogName;
               let age = profile.dogAge;
@@ -68,7 +77,12 @@ class UnconnectedAllProfiles extends Component {
 let mapStateToProps = state => {
   console.log("state", state);
   return {
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
+    query: state.searchQuery,
+    queryLookingFor: state.queryLookingFor,
+    queryAge: state.queryAge,
+    queryDogSex: state.queryDogSex,
+    queryBreed: state.queryBreed
   };
 };
 
