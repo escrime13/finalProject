@@ -13,7 +13,7 @@ import DogEdit from "./DogEdit.jsx";
 import MessageMyHuman from "./MessageMyHuman.jsx";
 import MyMessages from "./MyMessages.jsx";
 import SearchBar from "./SearchBar.jsx";
-import SearchResults from "./SearchResults.jsx";
+import LogOut from "./LogOut.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -45,6 +45,9 @@ let renderMenu = () => {
       </div>
       <div>
         <Link to="/humanEdit">Edit Human Profile</Link>
+      </div>
+      <div>
+        <Link to="/logOut">LogOut</Link>
       </div>
     </div>
   );
@@ -157,8 +160,15 @@ let renderMyMessages = () => {
   return (
     <div>
       <MyMessages />
+    </div>
+  );
+};
+let renderLogOut = () => {
+  return (
+    <div>
+      <LogOut />
       <div>
-        <Link to="/menu">Back to Menu</Link>
+        <Link to="/">Back to Login</Link>
       </div>
     </div>
   );
@@ -177,6 +187,7 @@ class UnconnectedApp extends Component {
           <Route exact={true} path="/allProfiles" render={renderAllProfiles} />
           <Route exact={true} path="/dogEdit" render={renderDogEdit} />
           <Route exact={true} path="/humanEdit" render={renderHumanEdit} />
+          <Route exact={true} path="/logOut" render={renderLogOut} />
           <Route
             exact={true}
             path="/selectDog"

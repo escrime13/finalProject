@@ -33,10 +33,7 @@ class UnconnectedMessageMyHuman extends Component {
     console.log("message to be sent:", event.target.value);
     this.setState({
       message: {
-        from:
-          this.state.humanProfile.humanFirstName +
-          " " +
-          this.state.humanProfile.humanLastName,
+        from: this.state.humanProfile.humanFirstName,
         message: event.target.value
       }
     });
@@ -67,22 +64,15 @@ class UnconnectedMessageMyHuman extends Component {
       Object.keys(this.state.humanProfile).length > 0 &&
       Object.keys(this.state.dogProfile).length > 0
     ) {
-      console.log(
-        "what is not printed:",
-        this.state.humanProfile.firstName,
-        this.state.humanProfile.lastName
-      );
       return (
         <form onSubmit={this.handleSubmit}>
           <div>
             From:
-            {this.state.humanProfile.humanFirstName +
-              " " +
-              this.state.humanProfile.humanLastName}{" "}
+            {this.state.humanProfile.humanFirstName}{" "}
           </div>
           <div>To: {this.state.dogProfile.dogName}</div>
           <div>
-            <div>Message: </div>
+            <div>Message: Please specify to name of your dog</div>
             <input type="text" onChange={this.handleMessageToBeSent}></input>
           </div>
           <input type="submit"></input>

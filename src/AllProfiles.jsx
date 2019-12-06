@@ -78,7 +78,6 @@ class UnconnectedAllProfiles extends Component {
   };
 }
 let mapStateToProps = state => {
-  console.log("state", state);
   return {
     loggedIn: state.loggedIn,
     query: state.searchQuery,
