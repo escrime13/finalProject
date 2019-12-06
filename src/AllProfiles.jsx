@@ -49,13 +49,8 @@ class UnconnectedAllProfiles extends Component {
                   </div>
                   <div>Name: {name}</div>
                   <div> Age: {age}</div>
-                  <div>Breed: {breed}</div>
                   <div>Sex: {sex}</div>
-                  <div>Weight: {weight}</div>
-                  <div>Height: {height}</div>
                   <div>Energy Level: {energyLevel} </div>
-                  <div>Interests: {interests}</div>
-                  <div>Likes: {likes}</div>
                   <div>Looking for: {lookingFor}</div>
                   <div>
                     <Link to={"/profileDetails/" + dogId}>

@@ -268,6 +268,7 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
   let frontendPath = "/uploads/" + file.filename;
   console.log("After map frontEndPath", frontendPath);
   let creationDate = new Date();
+  let messages = [];
   let {
     dogName,
     dogAge,
@@ -279,8 +280,7 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
     dislikes,
     interests,
     lookingFor,
-    energyLevel,
-    messages
+    energyLevel
   } = req.body;
 
   let dog = await dbFindOne("dogProfile", { dogName: dogName });
@@ -318,7 +318,7 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
       );
       if (updateUserDogProfiles === null) {
         console.log("there was an issue with the update");
-        res.json({ success: false, message: " " });
+        res.json({ success: false });
       }
       if (updateUserDogProfiles !== null) {
         console.log(
@@ -334,7 +334,7 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
 app.post("/updateDogProfileWithMessage", upload.none(), async (req, res) => {
   console.log("Appending message to dog profile:", req.body);
   let dogId = req.body.dog_id;
-  let message = req.body.message;
+  let message = JSON.parse(req.body.message);
   let updateDogProfileWithMessage = await dbUpdate(
     "dogProfile",
     { _id: ObjectID(dogId) },

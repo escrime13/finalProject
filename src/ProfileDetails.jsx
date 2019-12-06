@@ -48,7 +48,7 @@ class UnconnectedProfileDetails extends Component {
       <div>
         <div>
           <div>
-            <img src={this.state.dogProfile.profileImage} />
+            <img src={this.state.dogProfile.frontendPath} />
           </div>
           <div>Name:{this.state.dogProfile.dogName}</div>
           <div>Age:{this.state.dogProfile.dogAge}</div>

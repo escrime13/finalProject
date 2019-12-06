@@ -21,26 +21,37 @@ class UnconnectedMyMessages extends Component {
   };
 
   render = () => {
-    return (
-      <div>
-        <div>My Messages</div>
+    if (Object.keys(this.state.dogProfiles).length > 0) {
+      return (
         <div>
-          {this.state.dogProfiles.map(profile => {
-            let name = profile.dogName;
-            let messages = profile.messages.map(message => {
-              return <div>{message}</div>;
-            });
-
-            return (
-              <div>
-                <div>Name: {name} </div>
-                <div>Messages: {messages}</div>
-              </div>
-            );
-          })}
+          <div>My Messages</div>
+          <div>
+            {this.state.dogProfiles.map(profile => {
+              let name = profile.dogName;
+              console.log("profile.dogName:", profile.dogName);
+              console.log("profile:", profile);
+              let messages = profile.messages;
+              console.log("messages:", messages);
+              return messages.map(message => {
+                let from = message.from;
+                console.log("from:", from);
+                let receivedMessage = message.message;
+                console.log("recievedMessage:", receivedMessage);
+                return (
+                  <div>
+                    <div>For: {name}</div>
+                    <div>Form: {from}</div>
+                    <div>Message: {receivedMessage}</div>
+                  </div>
+                );
+              });
+            })}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+
+    return <div> Loading...</div>;
   };
 }
 
