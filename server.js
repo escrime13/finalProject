@@ -46,11 +46,6 @@ let dbFind = async (collectionName, criteria) => {
       });
   });
 };
-let dbCreateIndex = async (collectionName, index) => {
-  return new Promise(() => {
-    dbo.collection(collectionName).createIndex(index);
-  });
-};
 
 let dbFindOne = async (collectionName, criteria) => {
   return new Promise((res, rej) => {
@@ -335,6 +330,23 @@ app.post("/createDogProfiles", upload.single("img"), async (req, res) => {
     }
   }
 });
+
+app.post("/updateDogProfileWithMessage", upload.none(), async (req, res) => {
+  console.log("Appending message to dog profile:", req.body);
+  let dogId = req.body.dog_id;
+  let message = req.body.message;
+  let updateDogProfileWithMessage = await dbUpdate(
+    "dogProfile",
+    { _id: ObjectID(dogId) },
+    { $push: { messages: message } }
+  );
+  if (updateDogProfileWithMessage === null) {
+    res.json({ success: false });
+  }
+  if (updateDogProfileWithMessage === null) {
+    res.json({ success: true });
+  }
+});
 app.post("/humanProfileByDogId", upload.none(), async (req, res) => {
   console.log("request to get the humanProfile by dog id", req.body);
   let dog_id = req.body.dog_id;
@@ -353,14 +365,18 @@ app.post("/humanProfileByDogId", upload.none(), async (req, res) => {
 app.get("/humanProfile", async (req, res) => {
   console.log("request to get the humanProfile");
   let sessionId = req.cookies.sid;
+  console.log("sessionId", sessionId);
   let human = await dbFindOne("humanProfile", { sessionId: sessionId });
+  console.log("human:", human);
   if (human === null) {
     res.json({ success: false });
   }
+  console.log("human in if", human);
   if (human !== null) {
-    res.json({ success: true, humanProfile: await human });
+    res.json({ success: true, humanProfile: human });
   }
 });
+
 app.get("/dogProfiles", async (req, res) => {
   console.log("request to get the dog Profiles");
   let sessionId = req.cookies.sid;
@@ -374,12 +390,12 @@ app.get("/dogProfiles", async (req, res) => {
     );
     console.log("dogProfiles", dogProfiles);
     if (dogProfiles === null) {
-      res.send({
+      res.json({
         success: false
       });
     }
     if (dogProfiles !== null) {
-      res.send({ success: true, dogProfiles: dogProfiles });
+      res.json({ success: true, dogProfiles: dogProfiles });
     }
   }
 });

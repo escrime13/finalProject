@@ -42,7 +42,7 @@ class UnconnectedLogin extends Component {
       return (
         <div>
           <h1>Fluffy Buddies</h1>
-          <h3>Where Dogs Fiend Friends in the Greater Montreal Area</h3>
+          <h3>Where Dogs Find Dogs Greater Montreal Area</h3>
 
           <form onSubmit={this.handleSubmit}>
             <div>Account Username</div>
