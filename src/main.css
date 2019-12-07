@@ -1,8 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+/*
+colors
+#A8DADC = BleuPale
+#457B9D = Bleu
+#1D3557 = BleuFoncé
+#F1FAEE = Blanc
+#E63946 = Rouge
+*/
 body {
-  background-color: #bbb;
+  background-color: #f1faee;
   margin: 0;
 }
 
+img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+/*======================================className */
+.link {
+  text-decoration: none;
+  font-size: 4vw;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 30px;
+}
 .overlay {
   z-index: 50;
   position: fixed;
@@ -21,7 +46,49 @@ body {
   right: 200px;
   background-color: white;
 }
-img {
-  max-width: 100px;
-  max-height: 100px;
+
+/*====================================TopPageBar */
+.TopPageBarContainer {
+  background-color: #457b9d;
+  padding: 10px;
+  text-align: center;
+  border-bottom-style: solid;
+  border-bottom-color: #e63946;
+  border-bottom-width: 5px;
+}
+.TopPageBarTitle {
+  font-weight: bold;
+  font-size: 4vw;
+}
+.linkToLoginTopPageBar {
+  color: #e63946;
+  text-decoration: none;
+  font-size: 2vw;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+}
+/*===================================Footer */
+.FooterContainer {
+  color: #f1faee;
+  background-color: #1d3557;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.textFooterContainer {
+  font-size: 3vw;
+}
+
+/*=================================HomePage */
+.HomePageContainer {
+  background-color: #f1faee;
+  background-size: cover;
+  height: 100%;
+  padding: 20px;
+}
+.titleHomePage {
+  font-size: 5vw;
 }

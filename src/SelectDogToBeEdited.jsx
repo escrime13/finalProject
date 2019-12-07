@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 class UnconnectedSelectDogToBeEdited extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +57,16 @@ class UnconnectedSelectDogToBeEdited extends Component {
               </div>
             );
           })}
+          <div>
+            <Link className="link" to="/dogEdit">
+              Edit Dog Profile
+            </Link>
+          </div>
+          <div>
+            <Link className="link" to="/menu">
+              Back to Menu
+            </Link>
+          </div>
         </div>
       );
     }

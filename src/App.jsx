@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, BrowserRouter, Link, useParams } from "react-router-dom";
+import { Route, BrowserRouter, Link } from "react-router-dom";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import CreateDog from "./CreateDog.jsx";
@@ -14,6 +14,9 @@ import MessageMyHuman from "./MessageMyHuman.jsx";
 import MyMessages from "./MyMessages.jsx";
 import SearchBar from "./SearchBar.jsx";
 import LogOut from "./LogOut.jsx";
+import TopPageBar from "./TopPageBar.jsx";
+import Footer from "./Footer.jsx";
+import HomePage from "./HomePage.jsx";
 let renderLogin = () => {
   return (
     <div>
@@ -27,27 +30,12 @@ let renderLogin = () => {
 let renderMenu = () => {
   return (
     <div>
-      <div>Menu</div>
       <div>
-        <Link to="/myMessages">See My Messages</Link>
+        <TopPageBar />
       </div>
+      <HomePage />
       <div>
-        <Link to="/createdog">Create New Dog Profile</Link>
-      </div>
-      <div>
-        <Link to="/mydogs"> My Dog(s) Profile(s)</Link>
-      </div>
-      <div>
-        <Link to="/allProfiles">Browse Dogs</Link>
-      </div>
-      <div>
-        <Link to="/selectDog">Edit Dogs Profiles</Link>
-      </div>
-      <div>
-        <Link to="/humanEdit">Edit Human Profile</Link>
-      </div>
-      <div>
-        <Link to="/logOut">LogOut</Link>
+        <Footer />
       </div>
     </div>
   );
@@ -55,12 +43,14 @@ let renderMenu = () => {
 let renderSelectDogToBeEdited = () => {
   return (
     <div>
-      <SelectDogToBeEdited />
       <div>
-        <Link to="/dogEdit">Edit Dog Profile</Link>
+        <TopPageBar />
       </div>
       <div>
-        <Link to="/menu">Back to Menu</Link>
+        <SelectDogToBeEdited />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -68,9 +58,17 @@ let renderSelectDogToBeEdited = () => {
 let renderDogEdit = () => {
   return (
     <div>
-      <DogEdit />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <DogEdit />
+      </div>
       <div>
         <Link to="/menu">Back to Menu</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -78,9 +76,17 @@ let renderDogEdit = () => {
 let renderHumanEdit = () => {
   return (
     <div>
-      <HumanEdit />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <HumanEdit />
+      </div>
       <div>
         <Link to="/menu">Back to Menu</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -88,9 +94,17 @@ let renderHumanEdit = () => {
 let renderSignUp = () => {
   return (
     <div>
-      <Signup />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <Signup />
+      </div>
       <div>
         <Link to="/menu">Back to Menu</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -99,9 +113,17 @@ let renderSignUp = () => {
 let renderCreateDog = () => {
   return (
     <div>
-      <CreateDog />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <CreateDog />
+      </div>
       <div>
         <Link to="/menu">Back to Menu</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -110,9 +132,17 @@ let renderCreateDog = () => {
 let renderMyDogs = () => {
   return (
     <div>
-      <MyDogs />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <MyDogs />
+      </div>
       <div>
         <Link to="/menu">Back to Menu</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -121,11 +151,19 @@ let renderMyDogs = () => {
 let renderAllProfiles = () => {
   return (
     <div>
-      <SearchBar />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <SearchBar />
+      </div>
       <div>
         <AllProfiles />
         <div>
           <Link to="/menu">Back to Menu</Link>
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     </div>
@@ -137,9 +175,15 @@ let renderProfileDetails = routerData => {
   return (
     <div>
       <div>
+        <TopPageBar />
+      </div>
+      <div>
         <ProfileDetails dogId={dogId} />
         <div>
           <Link to="/allProfiles">Back to Browse Dogs</Link>
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     </div>
@@ -149,9 +193,17 @@ let renderMessageMyHuman = routerData => {
   let dogID = routerData.match.params.rid;
   return (
     <div>
-      <MessageMyHuman dogID={dogID} />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <MessageMyHuman dogID={dogID} />
+      </div>
       <div>
         <Link to="/allProfiles">Back to Browse Dogs</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
@@ -159,16 +211,32 @@ let renderMessageMyHuman = routerData => {
 let renderMyMessages = () => {
   return (
     <div>
-      <MyMessages />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <MyMessages />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
 let renderLogOut = () => {
   return (
     <div>
-      <LogOut />
+      <div>
+        <TopPageBar />
+      </div>
+      <div>
+        <LogOut />
+      </div>
       <div>
         <Link to="/">Back to Login</Link>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
