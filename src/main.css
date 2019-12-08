@@ -9,24 +9,41 @@ colors
 #F1FAEE = Blanc
 #E63946 = Rouge
 */
-body {
-  background-color: #f1faee;
-  margin: 0;
-}
 
-img {
-  max-width: 100px;
-  max-height: 100px;
+/*========================================font*/
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-display: swap;
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf)
+      format("truetype");
+}
+/*=========================================================Element*/
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+  font-family: "Open Sans", sans serif;
+}
+input {
+  min-width: 30vw;
+  padding: 1vh;
+  border-bottom-style: solid;
 }
 
 /*======================================className */
+.imgProfilePicture {
+  max-width: 100px;
+  max-height: 100px;
+}
 .link {
   text-decoration: none;
-  font-size: 4vw;
+  font-size: 3vh;
   font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 30px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  padding-top: 3vh;
 }
 .overlay {
   z-index: 50;
@@ -91,4 +108,38 @@ img {
 }
 .titleHomePage {
   font-size: 5vw;
+}
+/*=====================================LoginPage */
+.containerLogin {
+  height: 100vh;
+  width: 100vw;
+  border-style: outset;
+  border-width: 5vh 10vw;
+  border-color: #202f8a;
+}
+
+.imgLogoLogin {
+  width: 75vw;
+  height: 40vh;
+  margin: 0vh 4vw -2vh 4vw;
+}
+.formLogin {
+  min-width: 40vw;
+  font-size: 2.5vh;
+  margin: 5vh 10vw;
+}
+.formLoginSubmit {
+  font-size: 2vh;
+  margin-left: 0%;
+  margin-top: 2vh;
+}
+.formLoginSignup {
+  font-size: 3vh;
+  text-align: center;
+  padding-bottom: 2vh;
+}
+.subTitleLogin {
+  text-align: center;
+  margin-left: 0vw;
+  font-size: 2vh;
 }

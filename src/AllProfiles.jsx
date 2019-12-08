@@ -57,7 +57,7 @@ class UnconnectedAllProfiles extends Component {
               return (
                 <div>
                   <div>
-                    <img src={profileImage} />
+                    <img className="imgProfilePicture" src={profileImage} />
                   </div>
                   <div>Name: {name}</div>
                   <div> Age: {age}</div>

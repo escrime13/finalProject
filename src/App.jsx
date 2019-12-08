@@ -21,9 +21,6 @@ let renderLogin = () => {
   return (
     <div>
       <Login />
-      <div>
-        <Link to="/signup">Signup</Link>
-      </div>
     </div>
   );
 };

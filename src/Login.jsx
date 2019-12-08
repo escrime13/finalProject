@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./main.css";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class UnconnectedLogin extends Component {
   constructor(props) {
@@ -40,23 +40,35 @@ class UnconnectedLogin extends Component {
   render = () => {
     if (this.props.loggedIn === false)
       return (
-        <div>
-          <h1>Fluffy Buddies</h1>
-          <h3>Where Dogs Find Dogs Greater Montreal Area</h3>
-
-          <form onSubmit={this.handleSubmit}>
-            <div>Account Username</div>
-            <div>
-              <input type="text" onChange={this.handleUserNameChange} />
+        <div className="containerLogin">
+          <div>
+            {" "}
+            <img className="imgLogoLogin" src="/Logo.JPG" />
+          </div>
+          <div>
+            <form className="formLogin" onSubmit={this.handleSubmit}>
+              <div>Username</div>
+              <div>
+                <input type="text" onChange={this.handleUserNameChange} />
+              </div>
+              <div> Password</div>
+              <div>
+                <input type="text" onChange={this.handlePasswordChange} />
+              </div>
+              <div>
+                <input className="formLoginSubmit" type="submit" />
+              </div>
+            </form>
+          </div>
+          <div className="formLoginSignup">
+            Not a member yet!
+            <div className>
+              <Link to="/signup">Signup</Link>
             </div>
-            <div> Account Password</div>
-            <div>
-              <input type="text" onChange={this.handlePasswordChange} />
-            </div>
-            <div>
-              <input type="submit" />
-            </div>
-          </form>
+          </div>
+          <div className="subTitleLogin">Where Dogs Find Dogs</div>
+          <div className="subTitleLogin">In the </div>
+          <div className="subTitleLogin">Greater Montreal Area</div>
         </div>
       );
     if (this.props.loggedIn === true) {
