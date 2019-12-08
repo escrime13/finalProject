@@ -26,10 +26,8 @@ body {
   margin: 0;
   font-family: "Open Sans", sans serif;
 }
-input {
-  min-width: 30vw;
-  padding: 1vh;
-  border-bottom-style: solid;
+input[type="checkbox"] {
+  zoom: 2;
 }
 
 /*======================================className */
@@ -65,6 +63,7 @@ input {
 }
 
 /*====================================TopPageBar */
+
 .TopPageBarContainer {
   background-color: #457b9d;
   padding: 10px;
@@ -109,6 +108,59 @@ input {
 .titleHomePage {
   font-size: 5vw;
 }
+/*======================================SignupPage */
+
+.containerSignup {
+  height: 100vh;
+  width: 100vw;
+  border-style: outset;
+  border-width: 5vh 5vw;
+  border-color: #202f8a;
+  overflow: auto;
+}
+.formSignup {
+  font-size: 1.5vh;
+  font-weight: bold;
+}
+.containerFormSignup {
+  margin: -7vh 5vw;
+  font-size: 2vh;
+}
+.imgLogoSignupLeft {
+  display: inline-block;
+  width: 40vw;
+  height: 40vw;
+  position: relative;
+  left: -35vw;
+  top: -6vw;
+}
+
+.titleSignup {
+  display: inline-block;
+  font-size: 2.5vh;
+  font-weight: bold;
+  max-width: 60vw;
+  position: relative;
+  text-align: top;
+  left: 5vw;
+  top: -15vh;
+}
+.headerContainerSignup {
+  max-width: 90vw;
+  text-align: center;
+}
+.checkboxSignup {
+  font-size: 2vh;
+}
+.submitSignup {
+  text-align: center;
+  margin: 3vh 0vw;
+  font-size: 2vh;
+}
+.playDateSignup {
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+}
 /*=====================================LoginPage */
 .containerLogin {
   height: 100vh;
@@ -142,4 +194,13 @@ input {
   text-align: center;
   margin-left: 0vw;
   font-size: 2vh;
+}
+.inputLogin {
+  min-width: 30vw;
+  padding: 1vh;
+  border-bottom-style: solid;
+}
+.textInputSignup {
+  margin-left: 3vw;
+  margin-bottom: 4vh;
 }

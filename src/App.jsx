@@ -91,18 +91,7 @@ let renderHumanEdit = () => {
 let renderSignUp = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <Signup />
-      </div>
-      <div>
-        <Link to="/menu">Back to Menu</Link>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <Signup />
     </div>
   );
 };
