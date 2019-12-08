@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Footer from "./Footer.jsx";
 class UnconnectedMyMessages extends Component {
   constructor(props) {
     super(props);
@@ -23,8 +24,8 @@ class UnconnectedMyMessages extends Component {
   render = () => {
     if (Object.keys(this.state.dogProfiles).length > 0) {
       return (
-        <div>
-          <div>My Messages</div>
+        <div className="myMessagesContainer">
+          <img className="myMessagesImg" src="/Mail.jpg" />
           <div>
             {this.state.dogProfiles.map(profile => {
               let name = profile.dogName;
@@ -38,14 +39,20 @@ class UnconnectedMyMessages extends Component {
                 let receivedMessage = message.message;
                 console.log("recievedMessage:", receivedMessage);
                 return (
-                  <div>
+                  <div className="individualMessageContainer">
                     <div>For: {name}</div>
-                    <div>Form: {from}</div>
-                    <div>Message: {receivedMessage}</div>
+                    <div>From: {from}</div>
+                    <div className="myMessageInputMessage">
+                      Message: {receivedMessage}
+                    </div>
+                    <button className="myMessageDelete">X</button>
                   </div>
                 );
               });
             })}
+          </div>
+          <div>
+            <Footer />
           </div>
         </div>
       );

@@ -191,15 +191,7 @@ let renderMessageMyHuman = routerData => {
 let renderMyMessages = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <MyMessages />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <MyMessages />
     </div>
   );
 };
