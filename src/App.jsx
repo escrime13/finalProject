@@ -27,13 +27,7 @@ let renderLogin = () => {
 let renderMenu = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
       <HomePage />
-      <div>
-        <Footer />
-      </div>
     </div>
   );
 };

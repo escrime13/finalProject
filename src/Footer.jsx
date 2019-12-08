@@ -6,7 +6,7 @@ class UnconnectedFooter extends Component {
       <div className="FooterContainer">
         <div className="textFooterContainer">Fluffy Buddies - Montreal</div>
         <div className="textFooterContainer">
-          Reach us: memberservices@fluffybuddies.ca
+          Contact: memberservices@fluffybuddies.ca
         </div>
       </div>
     );
