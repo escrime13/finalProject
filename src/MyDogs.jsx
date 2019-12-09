@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Footer from "./Footer.jsx";
 import "./main.css";
 class UnconnectedMyDogs extends Component {
   constructor(props) {
@@ -59,6 +60,9 @@ class UnconnectedMyDogs extends Component {
                 </div>
               );
             })}
+          </div>
+          <div>
+            <Footer />
           </div>
         </div>
       );

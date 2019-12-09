@@ -237,7 +237,7 @@ input[type="checkbox"] {
 }
 /*======================================SignupPage */
 
-.containerSignup {
+.singupContainer {
   height: 100vh;
   width: 100vw;
   border-style: outset;
@@ -250,7 +250,7 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 .containerFormSignup {
-  margin: -7vh 5vw;
+  margin: -7vh 5vw 15vh 5vw;
   font-size: 2vh;
 }
 .imgLogoSignupLeft {
@@ -323,7 +323,7 @@ input[type="checkbox"] {
   font-size: 2vh;
 }
 .inputLogin {
-  min-width: 30vw;
+  min-width: 50vw;
   padding: 1vh;
   border-bottom-style: solid;
   font-size: 1.5vh;
@@ -332,6 +332,28 @@ input[type="checkbox"] {
   margin-left: 3vw;
   margin-bottom: 4vh;
 }
+/*=========================================EditHuman*/
+.humanEditContainer {
+  height: 100vh;
+  width: 100vw;
+  border-style: outset;
+  border-width: 5vh 5vw;
+  border-color: #202f8a;
+  background-size: cover;
+  overflow: auto;
+}
+.humanEditImage {
+  height: 50vh;
+  height: 50vh;
+  margin: -13vh auto 10vh auto;
+}
+.humanEditFormContainer {
+  margin: 0 0 15vh 2vh;
+}
+.humanEditCategories {
+  font-size: 2vh;
+}
+
 /*=========================================CreateDog*/
 .createDogImage {
   width: 50vh;
@@ -385,4 +407,28 @@ input[type="checkbox"] {
   padding: 0.05vh;
   margin: 2vh 0 2vh 0;
   font-size: 2vh;
+}
+/*==========================================EditDog*/
+.editDogImage {
+  width: 50vh;
+  height: 50vh;
+  text-align: center;
+  margin: -8vh auto 5vh auto;
+}
+.editDogText {
+  font-size: 3.5vh;
+  font-weight: bold;
+}
+/*===========================================logOut*/
+
+.logOutText {
+  font-size: 6vh;
+  margin: 3vh auto 4vh auto;
+  text-align: center;
+  justify-content: center;
+}
+.logoLogOutImage {
+  width: 45vh;
+  height: 40vh;
+  margin: 0vh -5vh -2vh 4vh;
 }

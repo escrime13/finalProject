@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Footer from "./Footer.jsx";
+import PleaseLogin from "./PleaseLogin.jsx";
 let neighborhoodsArray = [
   { id: "Ahuntsic-Cartierville" },
   { id: "Côte-des-Neiges-Notre-Dame-de-Grâce" },
@@ -110,114 +112,134 @@ class UnconnectedHumanEdit extends Component {
   };
   render = () => {
     if (this.props.loggedIn === false) {
-      return <div>Please Loggin</div>;
+      return (
+        <div>
+          <PleaseLogin />
+        </div>
+      );
     }
     if (this.props.loggedIn === true) {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <div>Account Username</div>
-          <div>
-            <input
-              type="text"
-              placeholder={this.state.userName}
-              onChange={this.handleUserNameChange}
-            />
+        <div className="humanEditContainer">
+          <img className="humanEditImage" src="/EditHuman.jpg" />
+          <div className="containerFormSignup">
+            <form onSubmit={this.handleSubmit}>
+              <div className="textInputSignup">
+                <div className="formSignup">Username</div>
+                <div>
+                  <input
+                    className="inputLogin"
+                    type="text"
+                    placeholder={this.state.userName}
+                    onChange={this.handleUserNameChange}
+                  />
+                </div>
+                <div className="formSignup">Password</div>
+                <div>
+                  <input
+                    className="inputLogin"
+                    type="text"
+                    placeholder={this.state.password}
+                    onChange={this.handlePasswordChange}
+                  />
+                </div>
+                <div className="formSignup">First Name:</div>
+                <div>
+                  <input
+                    className="inputLogin"
+                    type="text"
+                    placeholder={this.state.firstName}
+                    onChange={this.handleFirstNameChange}
+                  />
+                </div>
+                <div className="formSignup">Last Name: </div>
+                <div>
+                  <input
+                    className="inputLogin"
+                    type="text"
+                    placeholder={this.state.lastName}
+                    onChange={this.handleLastNameChange}
+                  />
+                </div>
+                <div className="formSignup playDateSignup">
+                  In which neighborhoods would you bring your dog(s) for play
+                  dates?{" "}
+                </div>
+                <div>
+                  {neighborhoodsArray.map(area => {
+                    if (this.state.neighborhoodsClicked[area.id]) {
+                      return (
+                        <div>
+                          <input
+                            className="checkboxSignup"
+                            type="checkbox"
+                            checked="checked"
+                            onChange={() => {
+                              this.handleChangeNeighborhoods(area.id);
+                            }}
+                          />
+                          {area.id}
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div>
+                          <input
+                            type="checkbox"
+                            onChange={() => {
+                              this.handleChangeNeighborhoods(area.id);
+                            }}
+                          />
+                          {area.id}
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+                <div className="formSignup playDateSignup">
+                  When are you usually available to accompany you dog(s) on play
+                  dates?
+                </div>
+                <div>
+                  {humanAvailabilitiesArray.map(time => {
+                    if (this.state.humanAvailabilities[time.time]) {
+                      return (
+                        <div>
+                          <input
+                            type="checkbox"
+                            checked="checked"
+                            onChange={() => {
+                              this.handleChangeAvailabilities(time.time);
+                            }}
+                          />
+                          {time.time}
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div>
+                          <input
+                            type="checkbox"
+                            onChange={() => {
+                              this.handleChangeAvailabilities(time.time);
+                            }}
+                          />
+                          {time.time}
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+                <div>
+                  <input className="formSignup submitSignup" type="submit" />
+                </div>
+              </div>
+            </form>
           </div>
-          <div>Account Password</div>
           <div>
-            <input
-              type="text"
-              placeholder={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
+            <Footer />
           </div>
-          <div>First Name:</div>
-          <div>
-            <input
-              type="text"
-              placeholder={this.state.firstName}
-              onChange={this.handleFirstNameChange}
-            />
-          </div>
-          <div>Last Name: </div>
-          <div>
-            <input
-              type="text"
-              placeholder={this.state.lastName}
-              onChange={this.handleLastNameChange}
-            />
-          </div>
-          <div>
-            In which neighborhoods would you bring your dog(s) for play dates?{" "}
-          </div>
-          <div>
-            {neighborhoodsArray.map(area => {
-              if (this.state.neighborhoodsClicked[area.id]) {
-                return (
-                  <div>
-                    <input
-                      type="checkbox"
-                      checked="checked"
-                      onChange={() => {
-                        this.handleChangeNeighborhoods(area.id);
-                      }}
-                    />
-                    {area.id}
-                  </div>
-                );
-              } else {
-                return (
-                  <div>
-                    <input
-                      type="checkbox"
-                      onChange={() => {
-                        this.handleChangeNeighborhoods(area.id);
-                      }}
-                    />
-                    {area.id}
-                  </div>
-                );
-              }
-            })}
-          </div>
-          <div>
-            When are you usually available to accompany you dog(s) on play
-            dates?
-          </div>
-          <div>
-            {humanAvailabilitiesArray.map(time => {
-              if (this.state.humanAvailabilities[time.time]) {
-                return (
-                  <div>
-                    <input
-                      type="checkbox"
-                      checked="checked"
-                      onChange={() => {
-                        this.handleChangeAvailabilities(time.time);
-                      }}
-                    />
-                    {time.time}
-                  </div>
-                );
-              } else {
-                return (
-                  <div>
-                    <input
-                      type="checkbox"
-                      onChange={() => {
-                        this.handleChangeAvailabilities(time.time);
-                      }}
-                    />
-                    {time.time}
-                  </div>
-                );
-              }
-            })}
-          </div>
-          <div>
-            <input type="submit" />
-          </div>
-        </form>
+        </div>
       );
     }
   };

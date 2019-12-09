@@ -33,51 +33,21 @@ let renderMenu = () => {
 let renderSelectDogToBeEdited = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <SelectDogToBeEdited />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <SelectDogToBeEdited />
     </div>
   );
 };
 let renderDogEdit = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <DogEdit />
-      </div>
-      <div>
-        <Link to="/menu">Back to Menu</Link>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <DogEdit />
     </div>
   );
 };
 let renderHumanEdit = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <HumanEdit />
-      </div>
-      <div>
-        <Link to="/menu">Back to Menu</Link>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <HumanEdit />
     </div>
   );
 };
@@ -102,18 +72,7 @@ let renderCreateDog = () => {
 let renderMyDogs = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <MyDogs />
-      </div>
-      <div>
-        <Link to="/menu">Back to Menu</Link>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <MyDogs />
     </div>
   );
 };
@@ -121,9 +80,7 @@ let renderMyDogs = () => {
 let renderAllProfiles = () => {
   return (
     <div>
-      <div>
-        <AllProfiles />
-      </div>
+      <AllProfiles />
     </div>
   );
 };
@@ -133,15 +90,9 @@ let renderProfileDetails = routerData => {
   return (
     <div>
       <div>
-        <TopPageBar />
-      </div>
-      <div>
         <ProfileDetails dogId={dogId} />
         <div>
-          <Link to="/allProfiles">Back to Browse Dogs</Link>
-        </div>
-        <div>
-          <Footer />
+          <Link to="/allProfiles">Back to Find Buddies</Link>
         </div>
       </div>
     </div>
@@ -152,13 +103,10 @@ let renderMessageMyHuman = routerData => {
   return (
     <div>
       <div>
-        <TopPageBar />
-      </div>
-      <div>
         <MessageMyHuman dogID={dogID} />
       </div>
       <div>
-        <Link to="/allProfiles">Back to Browse Dogs</Link>
+        <Link to="/allProfiles">Back to Find Buddies</Link>
       </div>
       <div>
         <Footer />
@@ -176,18 +124,7 @@ let renderMyMessages = () => {
 let renderLogOut = () => {
   return (
     <div>
-      <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <LogOut />
-      </div>
-      <div>
-        <Link to="/">Back to Login</Link>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <LogOut />
     </div>
   );
 };

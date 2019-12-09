@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Footer from "./Footer.jsx";
 class UnconnectedSelectDogToBeEdited extends Component {
   constructor(props) {
     super(props);
@@ -40,32 +41,33 @@ class UnconnectedSelectDogToBeEdited extends Component {
     if (this.props.loggedIn === true) {
       console.log("dogProfiles:", this.state.dogProfiles);
       return (
-        <div>
-          <div>Please Select the Profile to be Edited</div>
-          {this.state.dogProfiles.map(dog => {
-            let dogName = dog.dogName;
-            let dogId = dog._id;
-            return (
-              <div>
-                <input
-                  type="checkbox"
-                  onChange={() => {
-                    this.handleChangeInDogProfile(dogId);
-                  }}
-                />
-                {dogName}
-              </div>
-            );
-          })}
-          <div>
-            <Link className="link" to="/dogEdit">
-              Edit Dog Profile
-            </Link>
-          </div>
-          <div>
-            <Link className="link" to="/menu">
-              Back to Menu
-            </Link>
+        <div className="singupContainer">
+          <div className="containerFormSignup">
+            <img className="editDogImage" src="/EditDog.jpg" />
+            <div className="editDogText">Select the Profile to be Edited</div>
+            {this.state.dogProfiles.map(dog => {
+              let dogName = dog.dogName;
+              let dogId = dog._id;
+              return (
+                <div className="formSignup playDateSignup">
+                  <input
+                    className="checkboxSignup"
+                    type="checkbox"
+                    onChange={() => {
+                      this.handleChangeInDogProfile(dogId);
+                    }}
+                  />
+                  {dogName}
+                </div>
+              );
+            })}
+            <div>
+              <Link className="link" to="/dogEdit">
+                Edit Dog Profile
+              </Link>
+            </div>
+            <div></div>
+            <Footer />
           </div>
         </div>
       );

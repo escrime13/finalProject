@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./main.css";
 import { Redirect, Link } from "react-router-dom";
 
 class UnconnectedLogin extends Component {

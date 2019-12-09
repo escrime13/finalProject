@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Footer from "./Footer.jsx";
 
 class UnconnectedProfileDetails extends Component {
   constructor(props) {
@@ -81,6 +82,9 @@ class UnconnectedProfileDetails extends Component {
           <Link to={"/messageMyHuman/" + this.state.dogProfile._id}>
             Message my Human
           </Link>
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     );

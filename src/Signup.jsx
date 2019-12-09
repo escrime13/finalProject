@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import TopPageBar from "./TopPageBar.jsx";
 import Footer from "./Footer.jsx";
 let neighborhoodsArray = [
   { id: "Ahuntsic-Cartierville" },
@@ -104,7 +103,7 @@ class UnconnectedSignup extends Component {
   render = () => {
     if (this.props.loggedIn === false) {
       return (
-        <div className="containerSignup">
+        <div className="signupContainer">
           <div className="headerContainerSignup">
             <img className="imgLogoSignupLeft" src="/SingleDog.PNG" />
             <div className="titleSignup">First, tell us a bit about you!</div>
@@ -187,6 +186,7 @@ class UnconnectedSignup extends Component {
               </div>
             </form>
           </div>
+          <Footer />
         </div>
       );
     }
