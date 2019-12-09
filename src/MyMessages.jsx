@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer.jsx";
+import { Link } from "react-router-dom";
 class UnconnectedMyMessages extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ class UnconnectedMyMessages extends Component {
       return (
         <div className="myMessagesContainer">
           <img className="myMessagesImg" src="/Mail.jpg" />
-          <div>
+          <div className="myMessagesOverflowContainer">
             {this.state.dogProfiles.map(profile => {
               let name = profile.dogName;
               console.log("profile.dogName:", profile.dogName);

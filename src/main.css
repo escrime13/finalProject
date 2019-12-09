@@ -50,7 +50,63 @@ input[type="checkbox"] {
   right: 200px;
   background-color: white;
 }
+/*====================================SearchBar*/
+.searchBar {
+  font-size: 1.75vh;
+  margin: 2vh 0 2vh 2vh;
+}
+.searchBarInput {
+  font-size: 1.5vh;
+}
+/*====================================AllProfiles */
+.allProfilesContainer {
+  height: 100vh;
+  width: 100vw;
+  border-style: outset;
+  border-width: 5vh 5vw;
+  border-color: #202f8a;
+  background-size: cover;
+  overflow: auto;
+}
 
+.allProfilesPleaseLogin {
+  font-size: 8vh;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+.allProfilesPleaseLoginImage {
+  width: 50vh;
+  height: 50vh;
+}
+.allProfilesImage {
+  width: 50vw;
+  height: 50vw;
+  float: right;
+}
+.allProfilesCardContainer {
+  border-style: solid;
+  border-radius: 25px;
+  border-color: black;
+  text-align: center;
+  margin: 2vh auto;
+  width: 50vw;
+  font-size: 1.75vh;
+  box-shadow: 5px 10px;
+  border-width: medium;
+}
+.allProfilesProfilePicture {
+  width: 30vw;
+  height: 30vw;
+  margin: 1vh;
+  border-style: solid;
+  border-radius: 25px;
+  border-width: medium;
+}
+.allProfilesName {
+  font-weight: bold;
+  margin-top: 2vh;
+}
 /*====================================TopPageBar */
 
 .TopPageBarContainer {
@@ -84,6 +140,12 @@ input[type="checkbox"] {
 .textFooterContainer {
   font-size: 4vw;
 }
+.footerLink {
+  font-size: 2vh;
+  text-decoration: none;
+  color: black;
+}
+
 /*=================================My Messages */
 .myMessagesContainer {
   height: 100vh;
@@ -94,6 +156,7 @@ input[type="checkbox"] {
   background-size: cover;
   overflow: auto;
 }
+
 .myMessagesImg {
   width: 30vh;
   height: 30vh;
@@ -268,4 +331,58 @@ input[type="checkbox"] {
 .textInputSignup {
   margin-left: 3vw;
   margin-bottom: 4vh;
+}
+/*=========================================CreateDog*/
+.createDogImage {
+  width: 50vh;
+  height: 50vh;
+  text-align: center;
+  margin: -8vh auto -5vh auto;
+}
+.createDogContainer {
+  height: 100vh;
+  width: 100vw;
+  border-style: outset;
+  border-width: 5vh 5vw;
+  border-color: #202f8a;
+  background-size: cover;
+  overflow: auto;
+}
+.createDogForm {
+  margin: 0 3vw 15vh 3vw;
+}
+.createDogCategories {
+  font-size: 2vh;
+}
+.createDogInput {
+  width: 50vw;
+  padding: 0.05vh;
+  margin: 2vh 2vw 2vh 0;
+  font-size: 1.5vh;
+}
+.createDogInputText {
+  width: 75vw;
+  padding: 1vh;
+  margin: 2vh 2vw 2vh 0;
+  font-size: 2vh;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: RGB(36, 60, 146, 0.5);
+  font-size: 2vh;
+}
+.createDogSubmit {
+  text-align: center;
+  margin: auto;
+  width: 25vw;
+  padding: 0.05vh;
+  margin: 2vh 0 0 0;
+  font-size: 2vh;
+}
+.createDogChooseFile {
+  text-align: center;
+  margin: auto;
+  width: 75vw;
+  padding: 0.05vh;
+  margin: 2vh 0 2vh 0;
+  font-size: 2vh;
 }

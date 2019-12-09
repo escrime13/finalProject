@@ -48,10 +48,10 @@ class UnconnectedSearchBar extends Component {
   };
   render = () => {
     return (
-      <div>
-        <div>Filter by: </div>
-        <div>Name: </div>{" "}
+      <div className="searchBar">
+        <div>Name </div>{" "}
         <input
+          className="searchBarInput"
           type="text"
           placeholder="Dog Name"
           onChange={this.handleQuery}
@@ -59,6 +59,7 @@ class UnconnectedSearchBar extends Component {
         />
         <div>Looking for: </div>
         <input
+          className="searchBarInput"
           type="text"
           placeholder="Looking For"
           onChange={this.handleQueryLookingFor}
@@ -66,7 +67,11 @@ class UnconnectedSearchBar extends Component {
         />
         <div>Age</div>
         <div>
-          <select value={this.props.queryAge} onChange={this.handleQueryAge}>
+          <select
+            className="searchBarInput"
+            svalue={this.props.queryAge}
+            onChange={this.handleQueryAge}
+          >
             <option value="empty">Pick one...</option>
             <option value="2 to 4 Months">2 to 4 Months</option>
             <option value="5 to 8 Months">5 to 8 Months</option>
@@ -89,7 +94,11 @@ class UnconnectedSearchBar extends Component {
         </div>
         <div>Gender</div>
         <div>
-          <select value={this.props.queryDogSex} onChange={this.handleQuerySex}>
+          <select
+            className="searchBarInput"
+            value={this.props.queryDogSex}
+            onChange={this.handleQuerySex}
+          >
             <option value="empty">Pick one...</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -98,7 +107,11 @@ class UnconnectedSearchBar extends Component {
           </select>
         </div>
         <div>Breed</div>
-        <select value={this.props.queryBreed} onChange={this.handleQueryBreed}>
+        <select
+          className="searchBarInput"
+          value={this.props.queryBreed}
+          onChange={this.handleQueryBreed}
+        >
           <option value="empty"> Pick one...</option>
           <option value="Affenpinscher">Affenpinscher</option>
           <option value="Afghan hound">Afghan hound</option>
@@ -236,6 +249,7 @@ class UnconnectedSearchBar extends Component {
         <div>
           <div> Weight </div>
           <select
+            className="searchBarInput"
             value={this.props.queryWeight}
             onChange={this.handleQueryWeight}
           >
@@ -259,6 +273,7 @@ class UnconnectedSearchBar extends Component {
           </select>
           <div>Height </div>
           <select
+            className="searchBarInput"
             value={this.props.queryHeight}
             onChange={this.handleQueryHeight}
           >
@@ -277,6 +292,7 @@ class UnconnectedSearchBar extends Component {
           </select>
           <div>Dog Energy Level</div>
           <select
+            className="searchBarInput"
             value={this.props.queryEnergyLevel}
             onChange={this.handleQueryEnergyLevel}
           >

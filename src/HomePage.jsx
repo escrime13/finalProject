@@ -30,7 +30,7 @@ class UnconnectedHomePage extends Component {
         <div>
           <img className="homePageFireHydrant" src="/fireHydrant.jpg" />
           <Link className="linkHome" to="/allProfiles">
-            Browse Dogs
+            Find Buddies
           </Link>
         </div>
         <div>

@@ -12,7 +12,6 @@ import SelectDogToBeEdited from "./SelectDogToBeEdited.jsx";
 import DogEdit from "./DogEdit.jsx";
 import MessageMyHuman from "./MessageMyHuman.jsx";
 import MyMessages from "./MyMessages.jsx";
-import SearchBar from "./SearchBar.jsx";
 import LogOut from "./LogOut.jsx";
 import TopPageBar from "./TopPageBar.jsx";
 import Footer from "./Footer.jsx";
@@ -94,16 +93,7 @@ let renderCreateDog = () => {
   return (
     <div>
       <div>
-        <TopPageBar />
-      </div>
-      <div>
         <CreateDog />
-      </div>
-      <div>
-        <Link to="/menu">Back to Menu</Link>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );
@@ -132,19 +122,7 @@ let renderAllProfiles = () => {
   return (
     <div>
       <div>
-        <TopPageBar />
-      </div>
-      <div>
-        <SearchBar />
-      </div>
-      <div>
         <AllProfiles />
-        <div>
-          <Link to="/menu">Back to Menu</Link>
-        </div>
-        <div>
-          <Footer />
-        </div>
       </div>
     </div>
   );
