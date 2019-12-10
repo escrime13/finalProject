@@ -32,10 +32,8 @@ class UnconnectedMyDogs extends Component {
     }
     if (this.props.loggedIn === true)
       return (
-        <div className="humanEditContainer">
-          <div>
-            <img className="myDogsLogo" src="/Logo.JPG" />
-          </div>
+        <div className="createDogContainer">
+          <img className="myDogsLogo" src="/Logo.JPG" />
           <div>
             {this.state.dogProfiles.map(profile => {
               let profileImage = profile.frontendPath;
@@ -50,20 +48,53 @@ class UnconnectedMyDogs extends Component {
               let likes = profile.likes;
               let lookingFor = profile.lookingFor;
               return (
-                <div>
-                  <div>
-                    <img src={profileImage} />
+                <div className="profileDetailsCard">
+                  <div className="profileDetailsCenter">
+                    <div className="profileDetailsName"> {name}</div>
+                    <div>
+                      <img
+                        className="profileDetailsPicture"
+                        src={profileImage}
+                      />
+                    </div>
                   </div>
-                  <div>Name: {name}</div>
-                  <div> Age: {age}</div>
-                  <div>Breed: {breed}</div>
-                  <div>Gender: {sex}</div>
-                  <div>Weight: {weight}</div>
-                  <div>Height: {height}</div>
-                  <div>Energy Level: {energyLevel} </div>
-                  <div>Interests: {interests}</div>
-                  <div>Likes: {likes}</div>
-                  <div>Looking for: {lookingFor}</div>
+                  <div className="profileDetailsText">
+                    <div className="profileDetailsText">
+                      {" "}
+                      <span className="bold">Age: </span>
+                      {age}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Breed: </span>
+                      {breed}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Gender: </span>
+                      {sex}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Weight: </span>
+                      {weight}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Height: </span>
+                      {height}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Energy Level:</span> {energyLevel}{" "}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Interests: </span>
+                      {interests}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Likes:</span> {likes}
+                    </div>
+                    <div className="profileDetailsText">
+                      <span className="bold">Looking for: </span>
+                      {lookingFor}
+                    </div>
+                  </div>
                 </div>
               );
             })}

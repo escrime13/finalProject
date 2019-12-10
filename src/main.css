@@ -1,14 +1,6 @@
 * {
   box-sizing: border-box;
 }
-/*
-colors
-#A8DADC = BleuPale
-#457B9D = Bleu
-#1D3557 = BleuFoncé
-#F1FAEE = Blanc
-#E63946 = Rouge
-*/
 
 body {
   background-color: #ffffff;
@@ -540,6 +532,8 @@ input[type="checkbox"] {
   height: 20vh;
   width: 30vh;
   align-content: center;
+  display: block;
+  margin: auto;
 }
 /*========================================MessageMyHuman */
 .messageMyHumanImage {
