@@ -219,6 +219,7 @@ input[type="checkbox"] {
 .homePageContent {
   width: 100vw;
   height: 100vh;
+  margin-bottom: 30vh;
 }
 
 .homePageImage {
@@ -362,7 +363,7 @@ input[type="checkbox"] {
   margin: -13vh auto 10vh auto;
 }
 .humanEditFormContainer {
-  margin: 0 0 15vh 2vh;
+  margin: 0 0 40vh 2vh;
 }
 .humanEditCategories {
   font-size: 2vh;
@@ -428,6 +429,14 @@ input[type="checkbox"] {
   height: 45vh;
   text-align: center;
   margin: 0, 5vh, 5vh, 5vh;
+}
+
+.editEditDogImage {
+  width: 45vh;
+  height: 45vh;
+  display: block;
+  text-align: center;
+  margin: -5vh auto 3vh;
 }
 .editDogText {
   font-size: 3.5vh;

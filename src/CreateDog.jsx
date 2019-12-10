@@ -9,7 +9,6 @@ class UnconnectedCreateDog extends Component {
       dogAge: "",
       dogSex: "",
       dogBreed: false,
-      pureBred: true,
       dogHeight: "",
       dogWeight: "",
       likes: "",
