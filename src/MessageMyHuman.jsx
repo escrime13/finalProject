@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Footer from "./Footer.jsx";
 class UnconnectedMessageMyHuman extends Component {
   constructor(props) {
     super(props);
@@ -65,18 +67,40 @@ class UnconnectedMessageMyHuman extends Component {
       Object.keys(this.state.dogProfile).length > 0
     ) {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            From:
-            {this.state.humanProfile.humanFirstName}{" "}
+        <div className="createDogContainer">
+          <img className="messageMyHumanImage" src="/FluffyLogoWHeart.JPG" />
+          <div className="messageMyHumanContentContainer">
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <span className="bold">From: </span>
+                {this.state.humanProfile.humanFirstName}{" "}
+              </div>
+              <div>
+                <span className="bold">To: </span>{" "}
+                {this.state.dogProfile.dogName}
+              </div>
+              <div>
+                <div className="bold">Message*: </div>
+
+                <input
+                  className="messageMyHumanTextBox"
+                  type="text"
+                  cols="40"
+                  rows="6"
+                  onChange={this.handleMessageToBeSent}
+                ></input>
+              </div>
+              <div>*Please specify the name of your dog</div>
+              <input type="submit"></input>
+            </form>
+            <div>
+              <Link to="/allProfiles">Back to Find Buddies</Link>
+            </div>
+            <div>
+              <Footer />
+            </div>
           </div>
-          <div>To: {this.state.dogProfile.dogName}</div>
-          <div>
-            <div>Message: Please specify to name of your dog</div>
-            <input type="text" onChange={this.handleMessageToBeSent}></input>
-          </div>
-          <input type="submit"></input>
-        </form>
+        </div>
       );
     }
     return "Loading...";

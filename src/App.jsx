@@ -93,12 +93,7 @@ let renderMessageMyHuman = routerData => {
   let dogID = routerData.match.params.rid;
   return (
     <div>
-      <div>
-        <MessageMyHuman dogID={dogID} />
-      </div>
-      <div>
-        <Link to="/allProfiles">Back to Find Buddies</Link>
-      </div>
+      <MessageMyHuman dogID={dogID} />
     </div>
   );
 };

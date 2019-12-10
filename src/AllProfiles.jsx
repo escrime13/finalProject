@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar.jsx";
 import Footer from "./Footer.jsx";
 import PleaseLogin from "./PleaseLogin.jsx";
-import "./main.css";
+
 class UnconnectedAllProfiles extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +48,7 @@ class UnconnectedAllProfiles extends Component {
       return (
         <div className="allProfilesContainer">
           <div>
-            <img className="allProfilesImage" src="/WhereDogsFindDogs.jpg" />
+            <img className="allProfilesImage" src="/Logo.JPG" />
             <SearchBar />
           </div>
           <div>
@@ -66,7 +66,7 @@ class UnconnectedAllProfiles extends Component {
               let lookingFor = profile.lookingFor;
               let dogId = profile._id;
               return (
-                <div>
+                <div className="allProfilesContentContainer">
                   <div className="allProfilesCardContainer">
                     <div className="allProfilesName">{name}</div>{" "}
                     <div>
@@ -75,11 +75,13 @@ class UnconnectedAllProfiles extends Component {
                         src={profileImage}
                       />
                     </div>
-                    <div> Age: {age}</div>
-                    <div>Sex: {sex}</div>
-                    <div>Energy Level: {energyLevel} </div>
-                    <div>Looking for: {lookingFor}</div>
-                    <div>
+                    <div className="allProfilesLeftContent">
+                      <div> Age: {age}</div>
+                      <div>Gender: {sex}</div>
+                      <div>Energy Level: {energyLevel} </div>
+                      <div>Looking for: {lookingFor}</div>
+                    </div>
+                    <div className="allProfilesLink">
                       <Link to={"/profileDetails/" + dogId}>
                         See Profile Details
                       </Link>

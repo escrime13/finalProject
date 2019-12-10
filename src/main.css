@@ -51,13 +51,28 @@ input[type="checkbox"] {
   background-color: white;
 }
 /*====================================SearchBar*/
-.searchBar {
-  font-size: 1.75vh;
-  margin: 2vh 0 2vh 2vh;
+.container {
+  font-size: 2vh;
+  height: 15vh;
+  margin: 2vh;
+  margin-bottom: 10vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 .searchBarInput {
-  font-size: 1.5vh;
+  width: 20vw;
 }
+.searchBarInputName {
+  width: 30vw;
+}
+.cell-3 {
+  margin: 0 0 0 -10vw;
+}
+.searchBarInputLookingFor {
+  width: 30vw;
+}
+
 /*====================================AllProfiles */
 .allProfilesContainer {
   height: 100vh;
@@ -69,6 +84,10 @@ input[type="checkbox"] {
   overflow: auto;
 }
 
+.allProfilesContentContainer {
+  margin-top: -5vh;
+  margin-bottom: 15vh;
+}
 .allProfilesPleaseLogin {
   font-size: 8vh;
   margin: auto;
@@ -80,24 +99,27 @@ input[type="checkbox"] {
   height: 50vh;
 }
 .allProfilesImage {
-  width: 50vw;
-  height: 50vw;
-  float: right;
+  width: 20vh;
+  height: 20vh;
+  display: block;
+  text-align: center;
+  margin: auto;
 }
+
 .allProfilesCardContainer {
   border-style: solid;
-  border-radius: 25px;
+  border-radius: 15px;
   border-color: black;
   text-align: center;
   margin: 2vh auto;
-  width: 50vw;
+  width: 30vh;
   font-size: 1.75vh;
   box-shadow: 5px 10px;
   border-width: medium;
 }
 .allProfilesProfilePicture {
-  width: 30vw;
-  height: 30vw;
+  width: 20vh;
+  height: 20vh;
   margin: 1vh;
   border-style: solid;
   border-radius: 25px;
@@ -107,27 +129,15 @@ input[type="checkbox"] {
   font-weight: bold;
   margin-top: 2vh;
 }
-/*====================================TopPageBar */
+.allProfilesLink {
+  margin: 1vh 0;
+}
+.allProfilesLeftContent {
+  text-align: left;
+  margin: 3vh;
+  overflow: auto;
+}
 
-.TopPageBarContainer {
-  text-align: center;
-  border-bottom-style: solid;
-  font-weight: bold;
-  color: #0e0d0d;
-  font-size: 5vh;
-}
-.TopPageBarTitle {
-  font-weight: bold;
-  font-size: 4vw;
-}
-.linkToLoginTopPageBar {
-  color: #e63946;
-  text-decoration: none;
-  font-size: 2vw;
-  font-weight: bold;
-  position: absolute;
-  right: 20px;
-}
 /*===================================Footer */
 .FooterContainer {
   background-color: #ffffff;
@@ -196,21 +206,6 @@ input[type="checkbox"] {
   margin-top: 1vh;
 }
 /*=================================HomePage */
-/*.homePageEnvelope {
-  width: 20vh;
-  height: 20vh;
-}*/
-.homePageFireHydrant {
-  width: 5vh;
-  height: 5vh;
-  margin-left: 3vw;
-  border-radius: 25%;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
-  margin-top: 1vh;
-  margin-bottom: -1vh;
-}
 .homePageContainer {
   height: 100vh;
   width: 100vw;
@@ -218,7 +213,14 @@ input[type="checkbox"] {
   border-width: 5vh 5vw;
   border-color: #202f8a;
   background-size: cover;
+  overflow: auto;
 }
+
+.homePageContent {
+  width: 100vw;
+  height: 100vh;
+}
+
 .homePageImage {
   height: 40vh;
   width: 40vh;
@@ -235,9 +237,18 @@ input[type="checkbox"] {
   text-align: center;
   color: #181d85;
 }
-/*.linkHome:hover {
-  pointer-events: grab;
+.homePageFireHydrant {
+  width: 5vh;
+  height: 5vh;
+  margin-left: 3vw;
+  border-radius: 25%;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  margin-top: 1vh;
+  margin-bottom: -1vh;
 }
+
 /*======================================SignupPage */
 
 .singupContainer {
@@ -461,26 +472,85 @@ input[type="checkbox"] {
   border-radius: 15px;
   text-align: center;
   justify-content: center;
+  margin: 1vh;
+}
+.profileDetailsImage {
+  text-align: center;
+  justify-content: center;
+  display: block;
+  width: 50vh;
+  height: 25vh;
+  margin-top: -5vh;
+  margin-bottom: -10vh;
+  margin-right: auto;
+  margin-left: auto;
 }
 .profileDetailsCard {
   justify-content: center;
   margin: 2vh 2vh 2vh 4vh;
   font-size: 1.5vh;
-  overflow: auto;
+  margin-bottom: 20vh;
 }
 .profileDetailsName {
   font-weight: bold;
+  font-size: 3vh;
   margin-bottom: 0.5vh;
 }
 .profileDetailsCenter {
   text-align: center;
   justify-content: center;
 }
-
+.profileDetailsText {
+  font-size: 3vh;
+  margin-top: 1vh;
+}
+.profileDetailsList {
+  margin: 1vh 1vh 0 2vh;
+}
+.bold {
+  font-weight: bold;
+}
+.profileDetailsLink {
+  text-align: center;
+  display: block;
+  margin: 6vh 2vh;
+  font-size: 3vh;
+  text-decoration: none;
+}
+.profileDetailsMessageMyHuman {
+  margin-bottom: 4vh;
+  border-style: solid;
+  border-radius: 25px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  background: rgba(23, 69, 186, 0.4);
+}
 /*=========================================MyDogs*/
 
 .myDogsLogo {
   height: 20vh;
   width: 30vh;
   align-content: center;
+}
+/*========================================MessageMyHuman */
+.messageMyHumanImage {
+  height: 30vh;
+  width: 30vh;
+  display: block;
+  text-align: center;
+  margin: -7vh auto 5vh auto;
+}
+.messageMyHumanContentContainer {
+  font-size: 3vh;
+  margin: 2vh;
+}
+.messageMyHumanTextBox {
+  border: solid;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  padding: 2vh;
+  width: 40vh;
+  font-size: 2vh;
+  margin-top: 2vh;
+  overflow-wrap: normal;
 }
