@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer.jsx";
-import "./main.css";
+import PleaseLogin from "./PleaseLogin.jsx";
 class UnconnectedMyDogs extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +24,18 @@ class UnconnectedMyDogs extends Component {
 
   render = () => {
     if (this.props.loggedIn === false) {
-      return <div>Please login to view your dog(s) profile(s)</div>;
+      return (
+        <div>
+          <PleaseLogin />
+        </div>
+      );
     }
     if (this.props.loggedIn === true)
       return (
-        <div>
+        <div className="humanEditContainer">
+          <div>
+            <img className="myDogsLogo" src="/Logo.JPG" />
+          </div>
           <div>
             {this.state.dogProfiles.map(profile => {
               let profileImage = profile.frontendPath;
@@ -47,12 +54,12 @@ class UnconnectedMyDogs extends Component {
                   <div>
                     <img src={profileImage} />
                   </div>
-                  <div>Name:{name}</div>
-                  <div> Age:{age}</div>
-                  <div>Breed:{breed}</div>
-                  <div>Sex:{sex}</div>
-                  <div>Weight:{weight}</div>
-                  <div>Height:{height}</div>
+                  <div>Name: {name}</div>
+                  <div> Age: {age}</div>
+                  <div>Breed: {breed}</div>
+                  <div>Gender: {sex}</div>
+                  <div>Weight: {weight}</div>
+                  <div>Height: {height}</div>
                   <div>Energy Level: {energyLevel} </div>
                   <div>Interests: {interests}</div>
                   <div>Likes: {likes}</div>

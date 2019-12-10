@@ -49,37 +49,43 @@ class UnconnectedProfileDetails extends Component {
       <div className="createDogContainer">
         <div className="profileDetailsCard">
           <div>
-            <div>Name:{this.state.dogProfile.dogName}</div>
-            <div>
-              <img
-                className="profileDetailsPicture"
-                src={this.state.dogProfile.frontendPath}
-              />
-            </div>
-            <div>Age:{this.state.dogProfile.dogAge}</div>
-            <div>Breed:{this.state.dogProfile.dogBreed}</div>
-            <div>Gender:{this.state.dogProfile.dogSex}</div>
-            <div>Weight:{this.state.dogProfile.dogWeight}</div>
-            <div>Height:{this.state.dogProfile.dogHeight}</div>
-            <div>Energy Level: {this.state.dogProfile.energyLevel} </div>
-            <div>Interests: {this.state.dogProfile.interests}</div>
-            <div>Likes: {this.state.dogProfile.likes}</div>
-            <div>Looking for: {this.state.dogProfile.lookingFor}</div>
-            <div>
-              My usual neighborhoods are:
-              {Object.keys(this.state.humanProfile.neighborhoodsClicked).map(
-                key => {
-                  return <div>{key}</div>;
-                }
-              )}
+            <div className="profileDetailsCenter">
+              <div className="profileDetailsName">
+                {this.state.dogProfile.dogName}
+              </div>
+              <div>
+                <img
+                  className="profileDetailsPicture"
+                  src={this.state.dogProfile.frontendPath}
+                />
+              </div>
             </div>
             <div>
-              My human is usually available to escort me on:
-              {Object.keys(this.state.humanProfile.humanAvailabilities).map(
-                key => {
-                  return <div>{key}</div>;
-                }
-              )}
+              <div>Age: {this.state.dogProfile.dogAge}</div>
+              <div>Breed: {this.state.dogProfile.dogBreed}</div>
+              <div>Gender: {this.state.dogProfile.dogSex}</div>
+              <div>Weight: {this.state.dogProfile.dogWeight}</div>
+              <div>Height: {this.state.dogProfile.dogHeight}</div>
+              <div>Energy Level: {this.state.dogProfile.energyLevel} </div>
+              <div>Interests: {this.state.dogProfile.interests}</div>
+              <div>Likes: {this.state.dogProfile.likes}</div>
+              <div>Looking for: {this.state.dogProfile.lookingFor}</div>
+              <div>
+                My usual neighborhoods are:
+                {Object.keys(this.state.humanProfile.neighborhoodsClicked).map(
+                  key => {
+                    return <div>{key}</div>;
+                  }
+                )}
+              </div>
+              <div>
+                My human is usually available to escort me on:
+                {Object.keys(this.state.humanProfile.humanAvailabilities).map(
+                  key => {
+                    return <div>{key}</div>;
+                  }
+                )}
+              </div>
             </div>
           </div>
           <div>
