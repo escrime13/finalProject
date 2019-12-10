@@ -13,8 +13,6 @@ import DogEdit from "./DogEdit.jsx";
 import MessageMyHuman from "./MessageMyHuman.jsx";
 import MyMessages from "./MyMessages.jsx";
 import LogOut from "./LogOut.jsx";
-import TopPageBar from "./TopPageBar.jsx";
-import Footer from "./Footer.jsx";
 import HomePage from "./HomePage.jsx";
 let renderLogin = () => {
   return (
@@ -62,9 +60,7 @@ let renderSignUp = () => {
 let renderCreateDog = () => {
   return (
     <div>
-      <div>
-        <CreateDog />
-      </div>
+      <CreateDog />
     </div>
   );
 };
@@ -89,12 +85,7 @@ let renderProfileDetails = routerData => {
   let dogId = routerData.match.params.sid;
   return (
     <div>
-      <div>
-        <ProfileDetails dogId={dogId} />
-        <div>
-          <Link to="/allProfiles">Back to Find Buddies</Link>
-        </div>
-      </div>
+      <ProfileDetails dogId={dogId} />
     </div>
   );
 };
@@ -107,9 +98,6 @@ let renderMessageMyHuman = routerData => {
       </div>
       <div>
         <Link to="/allProfiles">Back to Find Buddies</Link>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );

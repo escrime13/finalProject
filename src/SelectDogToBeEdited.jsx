@@ -41,7 +41,7 @@ class UnconnectedSelectDogToBeEdited extends Component {
     if (this.props.loggedIn === true) {
       console.log("dogProfiles:", this.state.dogProfiles);
       return (
-        <div className="singupContainer">
+        <div className="createDogContainer">
           <div className="containerFormSignup">
             <img className="editDogImage" src="/EditDog.jpg" />
             <div className="editDogText">Select the Profile to be Edited</div>
@@ -49,26 +49,25 @@ class UnconnectedSelectDogToBeEdited extends Component {
               let dogName = dog.dogName;
               let dogId = dog._id;
               return (
-                <div className="formSignup playDateSignup">
+                <div className="dogEditCheckBox">
                   <input
-                    className="checkboxSignup"
                     type="checkbox"
+                    className="dogEditFontSize"
                     onChange={() => {
                       this.handleChangeInDogProfile(dogId);
                     }}
                   />
-                  {dogName}
+                  {"  " + dogName}
                 </div>
               );
             })}
             <div>
-              <Link className="link" to="/dogEdit">
+              <Link className="dogEditLink" to="/dogEdit">
                 Edit Dog Profile
               </Link>
             </div>
-            <div></div>
-            <Footer />
           </div>
+          <Footer />
         </div>
       );
     }
