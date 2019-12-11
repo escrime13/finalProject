@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Footer from "./Footer.jsx";
+import PleaseLogin from "./PleaseLogin.jsx";
 class UnconnectedSelectDogToBeEdited extends Component {
   constructor(props) {
     super(props);
@@ -15,12 +16,6 @@ class UnconnectedSelectDogToBeEdited extends Component {
     console.log("responseBody:", responseBody);
     let parse = JSON.parse(responseBody);
     if (parse.success) {
-      console.log(
-        "parse.succes:",
-        parse.success,
-        "parse.dogProfiles:",
-        parse.dogProfiles
-      );
       this.setState({
         dogProfiles: parse.dogProfiles
       });
@@ -36,10 +31,13 @@ class UnconnectedSelectDogToBeEdited extends Component {
 
   render = () => {
     if (this.props.loggedIn === false) {
-      return <div>Please Loggin</div>;
+      return (
+        <div>
+          <PleaseLogin />
+        </div>
+      );
     }
     if (this.props.loggedIn === true) {
-      console.log("dogProfiles:", this.state.dogProfiles);
       return (
         <div className="createDogContainer">
           <div className="containerFormSignup">

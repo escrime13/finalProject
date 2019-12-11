@@ -103,10 +103,12 @@ class UnconnectedSignup extends Component {
   render = () => {
     if (this.props.loggedIn === false) {
       return (
-        <div className="signupContainer">
+        <div className="createDogContainer">
           <div className="headerContainerSignup">
             <img className="imgLogoSignupLeft" src="/SingleDog.PNG" />
-            <div className="titleSignup">First, tell us a bit about you!</div>
+            <div className="titleSignup">
+              <div>Dear Human,</div> First, tell us a bit about you!
+            </div>
           </div>
           <div className="containerFormSignup">
             <form onSubmit={this.handleSubmit}>
@@ -115,7 +117,7 @@ class UnconnectedSignup extends Component {
                 <div>
                   <input
                     type="text"
-                    className="inputLogin"
+                    className="createDogInputText "
                     onChange={this.handleUserNameChange}
                   />
                 </div>
@@ -123,7 +125,7 @@ class UnconnectedSignup extends Component {
                 <div>
                   <input
                     type="text"
-                    className="inputLogin"
+                    className="createDogInputText"
                     onChange={this.handlePasswordChange}
                   />
                 </div>
@@ -131,7 +133,7 @@ class UnconnectedSignup extends Component {
                 <div>
                   <input
                     type="text"
-                    className="inputLogin"
+                    className="createDogInputText"
                     onChange={this.handleFirstNameChange}
                   />
                 </div>
@@ -139,7 +141,7 @@ class UnconnectedSignup extends Component {
                 <div>
                   <input
                     type="text"
-                    className="inputLogin"
+                    className="createDogInputText"
                     onChange={this.handleLastNameChange}
                   />
                 </div>
@@ -182,7 +184,7 @@ class UnconnectedSignup extends Component {
                 })}
               </div>
               <div>
-                <input className="formSignup submitSignup" type="submit" />
+                <input className="formSignup createDogSubmit" type="submit" />
               </div>
             </form>
           </div>

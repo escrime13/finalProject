@@ -120,7 +120,7 @@ class UnconnectedHumanEdit extends Component {
     }
     if (this.props.loggedIn === true) {
       return (
-        <div className="humanEditContainer">
+        <div className="createDogContainer">
           <img className="humanEditImage" src="/EditHuman.jpg" />
           <div className="containerFormSignup">
             <form onSubmit={this.handleSubmit}>
@@ -128,7 +128,7 @@ class UnconnectedHumanEdit extends Component {
                 <div className="formSignup">Username</div>
                 <div>
                   <input
-                    className="inputLogin"
+                    className="createDogInputText "
                     type="text"
                     placeholder={this.state.userName}
                     onChange={this.handleUserNameChange}
@@ -137,7 +137,7 @@ class UnconnectedHumanEdit extends Component {
                 <div className="formSignup">Password</div>
                 <div>
                   <input
-                    className="inputLogin"
+                    className="createDogInputText "
                     type="text"
                     placeholder={this.state.password}
                     onChange={this.handlePasswordChange}
@@ -146,7 +146,7 @@ class UnconnectedHumanEdit extends Component {
                 <div className="formSignup">First Name:</div>
                 <div>
                   <input
-                    className="inputLogin"
+                    className="createDogInputText "
                     type="text"
                     placeholder={this.state.firstName}
                     onChange={this.handleFirstNameChange}
@@ -155,7 +155,7 @@ class UnconnectedHumanEdit extends Component {
                 <div className="formSignup">Last Name: </div>
                 <div>
                   <input
-                    className="inputLogin"
+                    className="createDogInputText "
                     type="text"
                     placeholder={this.state.lastName}
                     onChange={this.handleLastNameChange}
@@ -231,7 +231,7 @@ class UnconnectedHumanEdit extends Component {
                   })}
                 </div>
                 <div>
-                  <input className="formSignup submitSignup" type="submit" />
+                  <input className="formSignup createDogSubmit" type="submit" />
                 </div>
               </div>
             </form>

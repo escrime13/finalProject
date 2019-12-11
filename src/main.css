@@ -250,14 +250,6 @@ input[type="checkbox"] {
 
 /*======================================SignupPage */
 
-.singupContainer {
-  height: 100vh;
-  width: 100vw;
-  border-style: outset;
-  border-width: 5vh 5vw;
-  border-color: #202f8a;
-  overflow: auto;
-}
 .formSignup {
   font-size: 1.5vh;
   font-weight: bold;
@@ -281,9 +273,9 @@ input[type="checkbox"] {
   font-weight: bold;
   max-width: 60vw;
   position: relative;
-  text-align: top;
-  left: 5vw;
-  top: -15vh;
+  text-align: left;
+  left: 5vh;
+  top: -17vh;
 }
 .headerContainerSignup {
   max-width: 90vw;

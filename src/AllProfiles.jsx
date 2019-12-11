@@ -25,77 +25,80 @@ class UnconnectedAllProfiles extends Component {
     }
   };
   render = () => {
-    let filteredProfiles = this.state.dogProfiles.filter(profile => {
-      return (
-        profile.dogName.includes(this.props.query) &&
-        profile.lookingFor.includes(this.props.queryLookingFor) &&
-        profile.dogAge.includes(this.props.queryAge) &&
-        profile.dogSex.includes(this.props.queryDogSex) &&
-        profile.dogBreed.includes(this.props.queryBreed) &&
-        profile.dogHeight.includes(this.props.queryHeight) &&
-        profile.dogWeight.includes(this.props.queryWeight) &&
-        profile.energyLevel.includes(this.props.queryEnergyLevel)
-      );
-    });
-    if (this.props.loggedIn === false) {
-      return (
-        <div>
-          <PleaseLogin />
-        </div>
-      );
-    }
-    if (this.props.loggedIn === true)
-      return (
-        <div className="allProfilesContainer">
+    if (this.state.dogProfiles.length > 1) {
+      let filteredProfiles = this.state.dogProfiles.filter(profile => {
+        return (
+          profile.dogName.includes(this.props.query) &&
+          profile.lookingFor.includes(this.props.queryLookingFor) &&
+          profile.dogAge.includes(this.props.queryAge) &&
+          profile.dogSex.includes(this.props.queryDogSex) &&
+          profile.dogBreed.includes(this.props.queryBreed) &&
+          profile.dogHeight.includes(this.props.queryHeight) &&
+          profile.dogWeight.includes(this.props.queryWeight) &&
+          profile.energyLevel.includes(this.props.queryEnergyLevel)
+        );
+      });
+      if (this.props.loggedIn === false) {
+        return (
           <div>
-            <img className="allProfilesImage" src="/Logo.JPG" />
-            <SearchBar />
+            <PleaseLogin />
           </div>
-          <div>
-            {filteredProfiles.map(profile => {
-              let profileImage = profile.frontendPath;
-              let name = profile.dogName;
-              let age = profile.dogAge;
-              let breed = profile.dogBreed;
-              let sex = profile.dogSex;
-              let weight = profile.dogWeight;
-              let height = profile.dogHeight;
-              let energyLevel = profile.energyLevel;
-              let interests = profile.interests;
-              let likes = profile.likes;
-              let lookingFor = profile.lookingFor;
-              let dogId = profile._id;
-              return (
-                <div className="allProfilesContentContainer">
-                  <div className="allProfilesCardContainer">
-                    <div className="allProfilesName">{name}</div>{" "}
-                    <div>
-                      <img
-                        className="allProfilesProfilePicture"
-                        src={profileImage}
-                      />
-                    </div>
-                    <div className="allProfilesLeftContent">
-                      <div> Age: {age}</div>
-                      <div>Gender: {sex}</div>
-                      <div>Energy Level: {energyLevel} </div>
-                      <div>Looking for: {lookingFor}</div>
-                    </div>
-                    <div className="allProfilesLink">
-                      <Link to={"/profileDetails/" + dogId}>
-                        See Profile Details
-                      </Link>
+        );
+      }
+      if (this.props.loggedIn === true)
+        return (
+          <div className="allProfilesContainer">
+            <div>
+              <img className="allProfilesImage" src="/Logo.JPG" />
+              <SearchBar />
+            </div>
+            <div>
+              {filteredProfiles.map(profile => {
+                let profileImage = profile.frontendPath;
+                let name = profile.dogName;
+                let age = profile.dogAge;
+                let breed = profile.dogBreed;
+                let sex = profile.dogSex;
+                let weight = profile.dogWeight;
+                let height = profile.dogHeight;
+                let energyLevel = profile.energyLevel;
+                let interests = profile.interests;
+                let likes = profile.likes;
+                let lookingFor = profile.lookingFor;
+                let dogId = profile._id;
+                return (
+                  <div className="allProfilesContentContainer">
+                    <div className="allProfilesCardContainer">
+                      <div className="allProfilesName">{name}</div>{" "}
+                      <div>
+                        <img
+                          className="allProfilesProfilePicture"
+                          src={profileImage}
+                        />
+                      </div>
+                      <div className="allProfilesLeftContent">
+                        <div> Age: {age}</div>
+                        <div>Gender: {sex}</div>
+                        <div>Energy Level: {energyLevel} </div>
+                        <div>Looking for: {lookingFor}</div>
+                      </div>
+                      <div className="allProfilesLink">
+                        <Link to={"/profileDetails/" + dogId}>
+                          See Profile Details
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <div>
+              <Footer />
+            </div>
           </div>
-          <div>
-            <Footer />
-          </div>
-        </div>
-      );
+        );
+    }
+    return "Loading...";
   };
 }
 let mapStateToProps = state => {

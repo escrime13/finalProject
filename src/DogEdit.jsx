@@ -479,7 +479,8 @@ class UnconnectedDogEdit extends Component {
 let mapStateToProps = state => {
   console.log("state", state);
   return {
-    dogToEdit: state.dogToEdit
+    dogToEdit: state.dogToEdit,
+    loggedIn: state.loggedIn
   };
 };
 let DogEdit = connect(mapStateToProps)(UnconnectedDogEdit);

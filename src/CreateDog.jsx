@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Footer from "./Footer.jsx";
 class UnconnectedCreateDog extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class UnconnectedCreateDog extends Component {
       dogName: "",
       dogAge: "",
       dogSex: "",
-      dogBreed: false,
+      dogBreed: "",
       dogHeight: "",
       dogWeight: "",
       likes: "",
@@ -74,7 +75,7 @@ class UnconnectedCreateDog extends Component {
     data.append("dogName", this.state.dogName);
     data.append("dogAge", this.state.dogAge);
     data.append("dogSex", this.state.dogSex);
-    data.append("mixBreed", this.state.mixBreed);
+    data.append("dogBreed", this.state.dogBreed);
     data.append("dogHeight", this.state.dogHeight);
     data.append("dogWeight", this.state.dogWeight);
     data.append("likes", this.state.likes);
@@ -424,11 +425,6 @@ class UnconnectedCreateDog extends Component {
     );
   };
 }
-let mapStateToProps = state => {
-  console.log("state", state);
-  return {
-    createDog: state.createDog
-  };
-};
-let CreateDog = connect(mapStateToProps)(UnconnectedCreateDog);
+
+let CreateDog = connect()(UnconnectedCreateDog);
 export default CreateDog;

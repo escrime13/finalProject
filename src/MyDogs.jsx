@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Footer from "./Footer.jsx";
 import PleaseLogin from "./PleaseLogin.jsx";
 class UnconnectedMyDogs extends Component {
@@ -95,11 +96,14 @@ class UnconnectedMyDogs extends Component {
                       {lookingFor}
                     </div>
                   </div>
+                  <Link className="linkHome" to="/selectDog">
+                    Edit Dog Profile
+                  </Link>
                 </div>
               );
             })}
-          </div>
-          <div>
+            <div></div>
+
             <Footer />
           </div>
         </div>
