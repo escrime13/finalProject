@@ -43,7 +43,7 @@ class UnconnectedDogEdit extends Component {
         interests: parse.dog.interests,
         lookingFor: parse.dog.lookingFor,
         energyLevel: parse.dog.energyLevel,
-        img: parse.dog.img
+        img: parse.dog.frontendPath
       });
     }
   };
@@ -98,6 +98,23 @@ class UnconnectedDogEdit extends Component {
   };
   handleSubmit = async event => {
     event.preventDefault();
+    if (
+      this.state.dogName === "" ||
+      this.state.dogAge === "" ||
+      this.state.dogSex === "" ||
+      this.state.dogBreed === "" ||
+      this.state.dogHeight === "" ||
+      this.state.dogWeight === "" ||
+      this.state.likes === "" ||
+      this.state.dislikes === "" ||
+      this.state.interests === "" ||
+      this.state.lookingFor === "" ||
+      this.state.energyLevel === "" ||
+      this.state.img === ""
+    ) {
+      window.alert("Please complete all the fields before submitting.");
+      return;
+    }
     console.log("createDog form submitted");
     let data = new FormData();
     data.append("dogName", this.state.dogName);
@@ -462,6 +479,7 @@ class UnconnectedDogEdit extends Component {
                   className="createDogChooseFile"
                   type="file"
                   onChange={this.handleProfilePicture}
+                  placeholder={this.state.img}
                 ></input>
               </div>
               <div>

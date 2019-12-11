@@ -49,7 +49,10 @@ class UnconnectedAllProfiles extends Component {
         return (
           <div className="allProfilesContainer">
             <div>
-              <img className="allProfilesImage" src="/Logo.JPG" />
+              <img
+                className="allProfilesImage"
+                src="/FluffyBuddiesBanner.jpg"
+              />
               <SearchBar />
             </div>
             <div>
