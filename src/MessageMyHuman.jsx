@@ -56,9 +56,11 @@ class UnconnectedMessageMyHuman extends Component {
     let parse = JSON.parse(responseBody);
     if (parse.success) {
       window.alert("Message sent");
+      return;
     }
     if (!parse.success) {
       console.log("ERROR");
+      return;
     }
   };
   render = () => {
@@ -91,10 +93,12 @@ class UnconnectedMessageMyHuman extends Component {
                 ></input>
               </div>
               <div>*Please specify the name of your dog</div>
-              <input type="submit"></input>
+              <input className="createDogSubmit" type="submit"></input>
             </form>
             <div>
-              <Link to="/allProfiles">Back to Find Buddies</Link>
+              <Link className="profileDetailsLink" to="/allProfiles">
+                Back to Find Buddies
+              </Link>
             </div>
             <div>
               <Footer />

@@ -50,7 +50,7 @@ class UnconnectedLogin extends Component {
               <div>
                 <input
                   type="text"
-                  className="inputLogin"
+                  className="createDogInputText"
                   onChange={this.handleUserNameChange}
                 />
               </div>
@@ -58,12 +58,12 @@ class UnconnectedLogin extends Component {
               <div>
                 <input
                   type="text"
-                  className="inputLogin"
+                  className="createDogInputText"
                   onChange={this.handlePasswordChange}
                 />
               </div>
               <div>
-                <input className="formLoginSubmit" type="submit" />
+                <input className="createDogSubmit" type="submit" />
               </div>
             </form>
           </div>

@@ -343,7 +343,7 @@ app.post("/updateDogProfileWithMessage", upload.none(), async (req, res) => {
   if (updateDogProfileWithMessage === null) {
     res.json({ success: false });
   }
-  if (updateDogProfileWithMessage === null) {
+  if (updateDogProfileWithMessage !== null) {
     res.json({ success: true });
   }
 });
@@ -361,6 +361,28 @@ app.post("/humanProfileByDogId", upload.none(), async (req, res) => {
       res.json({ success: true, humanProfile: result });
     });
   return;
+});
+app.post("/deleteMessage", upload.none(), async (req, res) => {
+  console.log("request to delete a message", req.body);
+  let messageToBeDeleted = req.body.messageToBeDeleted;
+  dbo
+    .collection("dogProfile")
+    .updateOne(
+      { dogName: req.body.dogName },
+      { $pull: { messages: { message: messageToBeDeleted } } },
+      (err, message) => {
+        if (err) {
+          console.log("error", message);
+          res.json({ success: false });
+          return;
+        }
+        if (message) {
+          console.log("message to be deleted", message);
+          res.json({ success: true });
+          return;
+        }
+      }
+    );
 });
 app.get("/humanProfile", async (req, res) => {
   console.log("request to get the humanProfile");

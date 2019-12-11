@@ -54,7 +54,7 @@ let reducer = (state, action) => {
   return state;
 };
 let initialState = {
-  loggedIn: true,
+  loggedIn: false,
   signUp: false,
   dogToEdit: "",
   searchQuery: "",

@@ -191,7 +191,7 @@ class UnconnectedSignup extends Component {
       );
     }
     if (this.props.loggedIn === true) {
-      return <Redirect to="/menu" />;
+      return <Redirect to="/createdog" />;
     }
   };
 }
