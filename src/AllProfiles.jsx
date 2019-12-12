@@ -47,7 +47,7 @@ class UnconnectedAllProfiles extends Component {
       }
       if (this.props.loggedIn === true)
         return (
-          <div className="allProfilesContainer">
+          <div className="createDogContainer">
             <div>
               <img
                 className="allProfilesImage"
@@ -80,10 +80,24 @@ class UnconnectedAllProfiles extends Component {
                         />
                       </div>
                       <div className="allProfilesLeftContent">
-                        <div> Age: {age}</div>
-                        <div>Gender: {sex}</div>
-                        <div>Energy Level: {energyLevel} </div>
-                        <div>Looking for: {lookingFor}</div>
+                        <div>
+                          {" "}
+                          <span className="bold">Age: </span>
+                          {age}
+                        </div>
+                        <div>
+                          {" "}
+                          <span className="bold">Gender: </span>
+                          {sex}
+                        </div>
+                        <div>
+                          <span className="bold">Energy Level: </span>
+                          {energyLevel}{" "}
+                        </div>
+                        <div>
+                          <span className="bold">Looking for: </span>
+                          {lookingFor}
+                        </div>
                       </div>
                       <div className="allProfilesLink">
                         <Link to={"/profileDetails/" + dogId}>

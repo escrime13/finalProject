@@ -249,6 +249,7 @@ app.post("/logout", upload.none(), (req, res) => {
   );
   res.cookie("sid", { expires: Date.now() });
   res.json({ success: true });
+  return;
 });
 app.post("/getADogProfile", upload.none(), async (req, res) => {
   console.log("request to /getADogProfile", req.body);

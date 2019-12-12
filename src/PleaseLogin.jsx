@@ -5,7 +5,7 @@ class UnconnectedPleaseLogin extends Component {
   render = () => {
     return (
       <div>
-        <div className="allProfilesContainer">
+        <div className="createDogContainer">
           <div className="allProfilesPleaseLogin">
             <div>
               <img

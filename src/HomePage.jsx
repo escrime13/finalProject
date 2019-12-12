@@ -14,7 +14,7 @@ class UnconnectedHomePage extends Component {
     }
     if (this.props.loggedIn === true) {
       return (
-        <div className="homePageContainer">
+        <div className="createDogContainer">
           <div className="homePageContent">
             <div>
               <img className="homePageImage" src="/PlayTime.JPG" />

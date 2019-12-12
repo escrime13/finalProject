@@ -3,6 +3,9 @@ let reducer = (state, action) => {
   if (action.type === "login-success") {
     return { ...state, loggedIn: true };
   }
+  if (action.type === "logout-success") {
+    return { ...state, loggedIn: false };
+  }
   if (action.type === "sign-up") {
     return { ...state, signUp: true };
   }
@@ -54,7 +57,7 @@ let reducer = (state, action) => {
   return state;
 };
 let initialState = {
-  loggedIn: true,
+  loggedIn: false,
   dogToEdit: "",
   searchQuery: "",
   queryLookingFor: "",

@@ -2,7 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer.jsx";
 class UnconnectedLogOut extends Component {
-  handleLogOut = async () => {};
+  componentDidMount = async () => {
+    console.log("Request to Logout");
+    let response = JSON.parse(
+      await (await fetch("/logout", { method: "post" })).text()
+    );
+    if (response.success) {
+      console.log("=========================================LogOut Response");
+      console.log(JSON.stringify(response));
+      this.props.dispatch({
+        type: "logout-success"
+      });
+    } else {
+      window.alert("Logout Failed");
+    }
+  };
+
   render = () => {
     return (
       <div className="createDogContainer">

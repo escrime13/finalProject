@@ -45,7 +45,7 @@ class UnconnectedMyMessages extends Component {
       Object.keys(this.state.dogProfiles.messages === 0)
     ) {
       return (
-        <div className="myMessagesContainer">
+        <div className="createDogContainer">
           <img className="myMessagesImg" src="/Mail.jpg" />
           <div className="myMessagesNoMessages">
             {" "}
@@ -60,7 +60,7 @@ class UnconnectedMyMessages extends Component {
     }
     if (Object.keys(this.state.dogProfiles).length > 0) {
       return (
-        <div className="myMessagesContainer">
+        <div className="createDogContainer">
           <img className="myMessagesImg" src="/Mail.jpg" />
           <div className="myMessagesOverflowContainer">
             {this.state.dogProfiles.map(profile => {
@@ -105,7 +105,7 @@ class UnconnectedMyMessages extends Component {
     }
 
     return (
-      <div className="myMessagesContainer">
+      <div className="createDogContainer">
         <img className="myMessagesImg" src="/Mail.jpg" />
         <div className="myMessagesNoMessages">
           {" "}
