@@ -369,9 +369,13 @@ input[type="checkbox"] {
   text-align: center;
   margin: auto;
   width: 25vw;
-  padding: 0.05vh;
+  padding: 0.5vh;
   margin: 2vh 0 0 0;
   font-size: 2vh;
+  font-weight: bold;
+  color: black;
+  background-color: rgba(23, 69, 186, 0.8);
+  border-radius: 25px;
 }
 .createDogChooseFile {
   text-align: center;
@@ -429,9 +433,24 @@ input[type="checkbox"] {
   justify-content: center;
 }
 .logoLogOutImage {
+  display: block;
+  text-align: center;
+  margin: auto;
   width: 45vh;
   height: 40vh;
-  margin: 0vh -5vh -2vh 4vh;
+}
+.logOutReturnToLogin {
+  display: block;
+  text-align: center;
+  width: 35vh;
+  font-size: 2vh;
+  margin: 5vh auto;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 1vh;
+  text-decoration: none;
+  color: black;
+  background-color: rgba(23, 69, 186, 0.8);
 }
 /*================================ProfileDetails*/
 .profileDetailsPicture {
@@ -628,17 +647,17 @@ input[type="checkbox"] {
     font-size: 2vh;
   }
 
-  /*===================================Footer */
+  /*===================================WideScreenFooter */
   .FooterContainer {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 1vw;
     text-align: center;
     position: absolute;
     width: 90vw;
     bottom: 5vh;
   }
   .textFooterContainer {
-    font-size: 2vw;
+    font-size: 1vw;
   }
   .footerLink {
     font-size: 2vh;
@@ -658,5 +677,236 @@ input[type="checkbox"] {
     font-size: 2vh;
     margin-top: 2vh;
     overflow-wrap: normal;
+  }
+  /*===================================================WideScreenLogin*/
+  .containerLogin {
+    height: 100vh;
+    width: 100vw;
+    border-style: outset;
+    border-width: 5vh 5vh;
+    border-color: #202f8a;
+    background-color: RGB(149, 207, 253);
+  }
+  .imgLogoLogin {
+    width: 40vh;
+    height: 40vh;
+    text-align: center;
+    display: block;
+    margin: auto auto -2vh auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+
+  /*=================================WideScreenHomePage */
+
+  .homePageContent {
+    width: 90vw;
+    height: 60vh;
+    margin-bottom: 30vh;
+    text-align: center;
+    display: block;
+  }
+
+  .homePageImage {
+    height: 20vw;
+    width: 20vw;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3vw;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  .linkHome {
+    font-size: 2vw;
+    margin: 1vw;
+    margin-bottom: 7vh;
+    color: #181d85;
+  }
+  .homePageFireHydrant {
+    width: 2.6vw;
+    height: 2.6vw;
+    margin-left: 3vw;
+    border-radius: 25%;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 3vw;
+    margin-bottom: -1vh;
+  }
+  .homePageWideScreenDisplayFlex {
+    display: inline-flex;
+  }
+  .homePageWideScreenFloatContainer {
+    display: inline-flex;
+  }
+
+  /*=========================================WideScreenCreateDog*/
+  .createDogImage {
+    height: 20vw;
+    text-align: center;
+    display: block;
+    padding: -10vh;
+    margin: -8vh auto -5vh auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  .createDogContainer {
+    height: 100vh;
+    width: 100vw;
+    border-style: outset;
+    border-width: 5vh 5vw;
+    border-color: #202f8a;
+    background-size: cover;
+    background-color: RGB(149, 207, 253);
+    overflow: auto;
+  }
+  .createDogForm {
+    margin: 0 3vw 15vh 3vw;
+  }
+  .createDogCategories {
+    font-size: 1.5vw;
+  }
+  .createDogInput {
+    width: 50vw;
+    padding: 0.05vh;
+    margin: 2vh 2vw 2vh 0;
+    font-size: 1.5vw;
+  }
+  .createDogInputText {
+    width: 30vh;
+    padding: 1vh;
+    margin: 2vh 2vw 2vh 0;
+    font-size: 1.5vw;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: RGB(36, 60, 146, 0.5);
+    font-size: 2vh;
+  }
+  .createDogSubmit {
+    text-align: center;
+    margin: auto;
+    width: 25vw;
+    padding: 0.5vh;
+    margin: 2vh 0 0 0;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: black;
+    background-color: rgba(23, 69, 186, 0.8);
+    border-radius: 25px;
+  }
+  .createDogChooseFile {
+    text-align: center;
+    margin: auto;
+    width: 75vw;
+    padding: 0.05vh;
+    margin: 2vh 0 2vh 0;
+    font-size: 1.25vw;
+  }
+  /*==========================================================wideScreenLogOut*/
+  .logoLogOutImage {
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 45vh;
+    height: 40vh;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  /*=================================WideScreenMyMessages */
+
+  .myMessagesImg {
+    width: 30vh;
+    height: 30vh;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5vw;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  .myMessagesOverflowContainer {
+    margin-bottom: 15vh;
+  }
+  .individualMessageContainer {
+    border-style: solid;
+    border-color: #192484;
+    border-radius: 25px;
+    width: 60vw;
+    box-shadow: 5px 10px;
+    margin: 5vw;
+    padding: 1vh;
+    font-size: 1.25vw;
+    background-color: white;
+    background-image: none;
+  }
+  .myMessageDelete {
+    position: relative;
+    left: 55vw;
+    font-size: 2vh;
+    font-weight: bold;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.25vh;
+  }
+  .myMessageInputMessage {
+    margin-top: 1vw;
+  }
+  .myMessagesNoMessages {
+    text-align: center;
+    display: block;
+    margin: auto;
+    font-size: 4vh;
+  }
+  /*==========================================WideScreenEditDog*/
+  .editDogImage {
+    width: 45vh;
+    height: 45vh;
+    display: block;
+    text-align: center;
+    margin: auto;
+  }
+
+  .editEditDogImage {
+    width: 45vh;
+    height: 45vh;
+    display: block;
+    text-align: center;
+    margin: -5vh auto 3vh;
+  }
+  .editDogText {
+    font-size: 3.5vh;
+    font-weight: bold;
+    text-align: center;
+  }
+  .dogEditLink {
+    text-align: center;
+    display: block;
+    margin: 10vh 0;
+    border-style: solid;
+    border-radius: 25px;
+    padding: 1vh;
+    text-decoration: none;
+    color: rgba(23, 69, 186);
+    background-color: rgba(23, 69, 186, 0.4);
+  }
+  .dogEditCheckBox {
+    margin: 5vh 0;
+    font-size: 3vh;
+  }
+  .dogEditFontSize {
+    font-size: 3vh;
   }
 }

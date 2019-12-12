@@ -40,24 +40,6 @@ class UnconnectedMyMessages extends Component {
     }
   };
   render = () => {
-    if (
-      Object.keys(this.state.dogProfiles).length > 0 &&
-      Object.keys(this.state.dogProfiles.messages === 0)
-    ) {
-      return (
-        <div className="createDogContainer">
-          <img className="myMessagesImg" src="/Mail.jpg" />
-          <div className="myMessagesNoMessages">
-            {" "}
-            <div>You have no messages. </div>
-            <div>Come back later! </div>
-            <div>
-              <Footer />
-            </div>
-          </div>
-        </div>
-      );
-    }
     if (Object.keys(this.state.dogProfiles).length > 0) {
       return (
         <div className="createDogContainer">
@@ -99,6 +81,9 @@ class UnconnectedMyMessages extends Component {
                 );
               });
             })}
+          </div>{" "}
+          <div>
+            <Footer />
           </div>
         </div>
       );

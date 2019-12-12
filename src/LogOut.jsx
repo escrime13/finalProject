@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Footer from "./Footer.jsx";
 class UnconnectedLogOut extends Component {
   componentDidMount = async () => {
@@ -25,6 +26,10 @@ class UnconnectedLogOut extends Component {
           <img className="logoLogOutImage" src="/Logo.JPG" />
           <div className="logOutText">You Have Successfully Logged Out</div>
           <div className="logOutText">See You Soon!</div>
+          <Link className="logOutReturnToLogin" to="/">
+            {" "}
+            Return to Login{" "}
+          </Link>
         </div>
         <Footer />
       </div>
