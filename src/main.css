@@ -173,7 +173,7 @@ input[type="checkbox"] {
   box-shadow: 5px 10px;
   margin: 1vh;
   padding: 1vh;
-  font-size: 1.25vh;
+  font-size: 2vh;
   background-image: linear-gradient(
     to left,
     rgba(25, 36, 132, 0.5),
@@ -426,7 +426,7 @@ input[type="checkbox"] {
 /*===========================================logOut*/
 
 .logOutText {
-  font-size: 6vh;
+  font-size: 4vh;
   margin: 3vh auto 4vh auto;
   text-align: center;
   justify-content: center;
@@ -555,7 +555,7 @@ input[type="checkbox"] {
     float: left;
   }
   .allProfilesPleaseLogin {
-    font-size: 6vw;
+    font-size: 5vw;
     margin: auto;
     text-align: center;
     justify-content: center;
@@ -703,8 +703,8 @@ input[type="checkbox"] {
     background-repeat: repeat;
   }
   .imgLogoLogin {
-    width: 40vh;
-    height: 40vh;
+    width: 35vh;
+    height: 35vh;
     text-align: center;
     display: block;
     margin: auto auto -2vh auto;
@@ -780,7 +780,7 @@ input[type="checkbox"] {
     border-style: outset;
     border-width: 5vh 5vw;
     border-color: #202f8a;
-    background-size: cover;
+    background-size: 90vh 90vw;
     background-color: RGB(149, 207, 253);
     overflow: auto;
     background-image: url("/bone6.jpg");
@@ -895,11 +895,15 @@ input[type="checkbox"] {
   }
   /*==========================================WideScreenEditDog*/
   .editDogImage {
-    width: 45vh;
-    height: 45vh;
+    width: 30vh;
+    height: 30vh;
     display: block;
     text-align: center;
-    margin: auto;
+    margin-top: 2vh auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
   }
 
   .editEditDogImage {
@@ -907,7 +911,11 @@ input[type="checkbox"] {
     height: 45vh;
     display: block;
     text-align: center;
-    margin: -5vh auto 3vh;
+    margin: auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
   }
   .editDogText {
     font-size: 3.5vh;
@@ -917,21 +925,27 @@ input[type="checkbox"] {
   .dogEditLink {
     text-align: center;
     display: block;
-    margin: 10vh 0;
+    width: 30vw;
+    margin: auto;
     border-style: solid;
     border-radius: 25px;
     padding: 1vh;
     text-decoration: none;
-    color: rgba(23, 69, 186);
-    background-color: rgba(23, 69, 186, 0.4);
+    color: black;
+    background-color: rgba(23, 69, 186, 0.8);
   }
   .dogEditCheckBox {
-    margin: 5vh 0;
+    margin: 3vh 0;
     font-size: 3vh;
   }
   .dogEditFontSize {
-    font-size: 3vh;
+    font-size: 2.5vh;
   }
+  .editDogNameMargin {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
   /*======================================WideScreenSignupPage */
 
   .formSignup {
@@ -992,8 +1006,8 @@ input[type="checkbox"] {
     text-align: center;
     justify-content: center;
     display: block;
-    width: 50vh;
-    height: 25vh;
+    width: 40vh;
+    height: 20vh;
     margin: auto;
     border-style: dotted;
     border-radius: 50%;
@@ -1043,5 +1057,87 @@ input[type="checkbox"] {
     color: black;
     background-color: rgba(23, 69, 186, 0.8);
     border-radius: 25px;
+  }
+
+  /*=============================================wideScreenMyDogs*/
+  .myDogsLogo {
+    height: 20vh;
+    width: 30vh;
+    align-content: center;
+    display: block;
+    margin: auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  .wideScreenMyDogsContainer {
+    height: 50vh;
+    width: 80vw;
+    display: inline-flex;
+    margin: 1vh 6.25vw;
+    padding: 3vw 0 3vw 3vw;
+    border-style: solid;
+    border-radius: 35px;
+    background: white;
+    overflow-y: auto;
+  }
+  .wideScreenMyDogsLeftContainer {
+    display: inline-flex;
+    float: left;
+  }
+  .wideScreenInputWidth {
+    width: 33vw;
+    margin-bottom: 1vh;
+  }
+  .editDogProfileLink {
+    width: 10vh;
+    height: 10vh;
+    justify-content: center;
+    padding: 3vh 2vh 0vh 2vh;
+    margin: 1vh 2vh 0vh 0vh;
+    font-size: 1.5vh;
+    font-weight: bold;
+    color: black;
+    background-color: rgba(23, 69, 186, 0.8);
+    border-radius: 25px;
+    display: inline-flex;
+    text-decoration: none;
+  }
+  .myDogProfileDetailsCard {
+    margin-bottom: 25vh;
+  }
+  /*========================================MessageMyHuman */
+  .messageMyHumanImage {
+    height: 30vh;
+    width: 30vh;
+    display: block;
+    text-align: center;
+    margin: auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  .messageMyHumanContentContainer {
+    font-size: 3vh;
+    margin: 2vh 3vw;
+  }
+  .messageMyHumanTextBox {
+    width: 50vw;
+    height: 10vh;
+    box-sizing: border-box;
+    border: solid;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    padding-top: 2vh;
+    font-size: 2vh;
+    margin-top: 2vh;
+    resize: none;
+  }
+  .messageMyHumanGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 }

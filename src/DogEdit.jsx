@@ -155,15 +155,10 @@ class UnconnectedDogEdit extends Component {
         <div className="createDogContainer">
           <div>
             <img className="editEditDogImage" src="/EditDog.jpg" />
+
             <form className="createDogForm" onSubmit={this.handleSubmit}>
-              <div className="createDogCategories">Name</div>
-              <div>
-                <input
-                  className="createDogInputText"
-                  type="text"
-                  placeholder={this.state.dogName}
-                  onChange={this.handleDogNameChange}
-                />
+              <div className="createDogCategories editDogNameMargin">
+                Name: {this.state.dogName}
               </div>
               <div className="createDogCategories">Age</div>
               <div>

@@ -70,36 +70,40 @@ class UnconnectedMessageMyHuman extends Component {
     ) {
       return (
         <div className="createDogContainer">
-          <img className="messageMyHumanImage" src="/FluffyLogoWHeart.JPG" />
+          <img className="messageMyHumanImage" src="/FluffyLogoWHeart2.png" />
           <div className="messageMyHumanContentContainer">
             <form onSubmit={this.handleSubmit}>
-              <div>
-                <span className="bold">From: </span>
-                {this.state.humanProfile.humanFirstName}{" "}
+              <div className="messageMyHumanGrid">
+                <div>
+                  <span className="bold">From: </span>
+                  {this.state.humanProfile.humanFirstName}{" "}
+                </div>
+                <div>
+                  <span className="bold">To: </span>{" "}
+                  {this.state.dogProfile.dogName}
+                </div>
+                <div>
+                  <div className="bold">Message*: </div>
+                </div>
+                <div>
+                  <div>*Please specify the name of your dog</div>
+                </div>
               </div>
               <div>
-                <span className="bold">To: </span>{" "}
-                {this.state.dogProfile.dogName}
-              </div>
-              <div>
-                <div className="bold">Message*: </div>
-
                 <input
                   className="messageMyHumanTextBox"
                   type="text"
-                  cols="40"
-                  rows="6"
                   onChange={this.handleMessageToBeSent}
                 ></input>
               </div>
-              <div>*Please specify the name of your dog</div>
+
               <input className="createDogSubmit" type="submit"></input>
             </form>
             <div>
               <Link className="profileDetailsLink" to="/allProfiles">
                 Back to Find Buddies
-              </Link>
-            </div>
+              </Link>{" "}
+            </div>{" "}
             <div>
               <Footer />
             </div>

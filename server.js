@@ -86,7 +86,7 @@ let dbUpdate = async (collectionName, criteria, projection) => {
 // Your endpoints go after this line
 
 app.post("/updateDogProfile", upload.single("img"), async (req, res) => {
-  console.log("information to update human profile", req.body);
+  console.log("information to update dog profile", req.body);
   let file = req.file;
   let frontendPath = "/uploads/" + file.filename;
   console.log("After map frontEndPath", frontendPath);
@@ -121,7 +121,8 @@ app.post("/updateDogProfile", upload.single("img"), async (req, res) => {
         dislikes,
         interests,
         lookingFor,
-        energyLevel
+        energyLevel,
+        frontendPath
       }
     }
   );

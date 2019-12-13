@@ -49,7 +49,7 @@ class UnconnectedMyDogs extends Component {
               let likes = profile.likes;
               let lookingFor = profile.lookingFor;
               return (
-                <div className="profileDetailsCard">
+                <div className="profileDetailsCard myDogProfileDetailsCard">
                   <div className="profileDetailsCenter">
                     <div className="profileDetailsName"> {name}</div>
                     <div>
@@ -59,46 +59,54 @@ class UnconnectedMyDogs extends Component {
                       />
                     </div>
                   </div>
-                  <div className="profileDetailsText">
-                    <div className="profileDetailsText">
-                      {" "}
-                      <span className="bold">Age: </span>
-                      {age}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Breed: </span>
-                      {breed}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Gender: </span>
-                      {sex}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Weight: </span>
-                      {weight}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Height: </span>
-                      {height}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Energy Level:</span> {energyLevel}{" "}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Interests: </span>
-                      {interests}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Likes:</span> {likes}
-                    </div>
-                    <div className="profileDetailsText">
-                      <span className="bold">Looking for: </span>
-                      {lookingFor}
-                    </div>
+                  <div className="wideScreenMyDogsContainer">
+                    <div className="wideScreenMyDogsLeftContainer">
+                      <div className="profileDetailsText">
+                        <div className="profileDetailsText">
+                          {" "}
+                          <span className="bold">Age: </span>
+                          {age}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Breed: </span>
+                          {breed}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Gender: </span>
+                          {sex}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Weight: </span>
+                          {weight}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Height: </span>
+                          {height}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Energy Level:</span>{" "}
+                          {energyLevel}{" "}
+                        </div>
+                      </div>
+                      <div className="wideScreenMyDogsRightContainer">
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Interests: </span>
+                          {interests}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Likes:</span> {likes}
+                        </div>
+                        <div className="profileDetailsText wideScreenInputWidth ">
+                          <span className="bold">Looking for: </span>
+                          {lookingFor}
+                        </div>{" "}
+                      </div>
+
+                      <Link className="editDogProfileLink" to="/selectDog">
+                        Edit Dog Profile
+                      </Link>
+                    </div>{" "}
                   </div>
-                  <Link className="linkHome" to="/selectDog">
-                    Edit Dog Profile
-                  </Link>
                 </div>
               );
             })}

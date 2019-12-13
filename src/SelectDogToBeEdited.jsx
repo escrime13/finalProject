@@ -47,7 +47,7 @@ class UnconnectedSelectDogToBeEdited extends Component {
               let dogName = dog.dogName;
               let dogId = dog._id;
               return (
-                <div className="dogEditCheckBox">
+                <div className="dogEditCheckBox editDogCheckBoxWideScreenInline">
                   <input
                     type="checkbox"
                     className="dogEditFontSize"
