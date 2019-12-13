@@ -113,6 +113,7 @@ class UnconnectedCreateDog extends Component {
       this.props.dispatch({
         type: "login-success"
       });
+      <Redirect to="/menu" />;
       return;
     }
     window.alert("This dog name is already taken. Please try something else.");
@@ -129,7 +130,7 @@ class UnconnectedCreateDog extends Component {
       return (
         <div className="createDogContainer">
           <div>
-            <img className="createDogImage" src="createDogLogo.JPG" />
+            <img className="createDogImage" src="createDogLogo2.JPG" />
             <form className="createDogForm" onSubmit={this.handleSubmit}>
               <div className="createDogCategories">Name</div>
               <div>
@@ -180,7 +181,9 @@ class UnconnectedCreateDog extends Component {
                   <option value="Neutered">Neutered</option>
                 </select>
               </div>
-              <div>Select the breed or dominant breed of your dog.</div>
+              <div className="createDogCategories">
+                Select the breed or dominant breed of your dog.
+              </div>
               <select
                 className="createDogInput"
                 value={this.state.value}

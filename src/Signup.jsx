@@ -165,13 +165,13 @@ class UnconnectedSignup extends Component {
                 })}{" "}
               </div>
               <div className="formSignup playDateSignup">
-                When are you usually available to accompany you dog(s) on play
+                When are you usually available to accompany your dog(s) on play
                 dates?
               </div>
               <div>
                 {humanAvailabilitiesArray.map(time => {
                   return (
-                    <div>
+                    <div className="checkboxSignup">
                       <input
                         type="checkbox"
                         onChange={() => {

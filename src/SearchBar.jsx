@@ -50,7 +50,6 @@ class UnconnectedSearchBar extends Component {
     return (
       <div className="container">
         <div className="cell cell-1">
-          <div>Name</div>
           <input
             className="searchBarInputName"
             type="text"
@@ -61,7 +60,6 @@ class UnconnectedSearchBar extends Component {
         </div>
         <div className="cell cell-2"></div>
         <div className="cell cell-3">
-          <div>Looking for</div>
           <input
             className="searchBarInputLookingFor"
             type="text"
@@ -71,14 +69,13 @@ class UnconnectedSearchBar extends Component {
           />
         </div>
         <div className="cell cell-4">
-          Age
           <div>
             <select
               className="searchBarInput"
               value={this.props.queryAge}
               onChange={this.handleQueryAge}
             >
-              <option value="empty">Pick one...</option>
+              <option value="empty">Age</option>
               <option value="2 to 4 Months">2 to 4 Months</option>
               <option value="5 to 8 Months">5 to 8 Months</option>
               <option value="9 to 12 Months">9 to 12 Months</option>
@@ -100,14 +97,13 @@ class UnconnectedSearchBar extends Component {
           </div>
         </div>
         <div className="cell cell-5">
-          Gender
           <div>
             <select
               className="searchBarInput"
               value={this.props.queryDogSex}
               onChange={this.handleQuerySex}
             >
-              <option value="empty">Pick one...</option>
+              <option value="empty"> Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Spayed">Spayed</option>
@@ -116,14 +112,13 @@ class UnconnectedSearchBar extends Component {
           </div>
         </div>
         <div className="cell cell-6">
-          Breed
           <div>
             <select
               className="searchBarInput"
               value={this.props.queryBreed}
               onChange={this.handleQueryBreed}
             >
-              <option value="empty"> Pick one...</option>
+              <option value="empty"> Breed </option>
               <option value="Affenpinscher">Affenpinscher</option>
               <option value="Afghan hound">Afghan hound</option>
               <option value="Airedale terrier">Airedale terrier</option>
@@ -270,15 +265,13 @@ class UnconnectedSearchBar extends Component {
           </div>
         </div>
         <div className="cell cell-7">
-          {" "}
-          Weight
           <div>
             <select
               className="searchBarInput"
               value={this.props.queryWeight}
               onChange={this.handleQueryWeight}
             >
-              <option value="empty"> Pick a range...</option>
+              <option value="empty">Weight</option>
               <option value="0 < 5 lbs"> 0 - 5 lbs</option>
               <option value="5 - 10 lbs"> 5 - 10 lbs</option>
               <option value="10 - 15 lbs"> 10 - 15 lbs</option>
@@ -299,14 +292,13 @@ class UnconnectedSearchBar extends Component {
           </div>
         </div>
         <div className="cell cell-8">
-          Height
           <div>
             <select
               className="searchBarInput"
               value={this.props.queryHeight}
               onChange={this.handleQueryHeight}
             >
-              <option value="empty"> Pick a range...</option>
+              <option value="empty">Height</option>
               <option value="0 < 15 cm"> 0 - 15cm</option>
               <option value="15 - 25 cm"> 15 - 25cm</option>
               <option value="25 - 35 cm"> 25 - 35cm</option>
@@ -322,14 +314,13 @@ class UnconnectedSearchBar extends Component {
           </div>
         </div>
         <div className="cell cell-9">
-          Energy Level
           <div>
             <select
               className="searchBarInput"
               value={this.props.queryEnergyLevel}
               onChange={this.handleQueryEnergyLevel}
             >
-              <option value="empty"> Pick one...</option>
+              <option value="empty"> Energy Level</option>
               <option value="Puppy"> I'm a crazy puppy!</option>
               <option value="Very High"> Very High</option>
               <option value="High"> High</option>

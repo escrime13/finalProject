@@ -49,10 +49,7 @@ class UnconnectedAllProfiles extends Component {
         return (
           <div className="createDogContainer">
             <div>
-              <img
-                className="allProfilesImage"
-                src="/FluffyBuddiesBanner.jpg"
-              />
+              <img className="allProfilesImage" src="/BannerWide2.jpg" />
               <SearchBar />
             </div>
             <div>
@@ -92,7 +89,7 @@ class UnconnectedAllProfiles extends Component {
                         </div>
                         <div>
                           <span className="bold">Energy Level: </span>
-                          {energyLevel}{" "}
+                          {energyLevel}
                         </div>
                         <div>
                           <span className="bold">Looking for: </span>

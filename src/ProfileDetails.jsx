@@ -55,7 +55,7 @@ class UnconnectedProfileDetails extends Component {
     if (this.props.loggedIn === true)
       return (
         <div className="createDogContainer">
-          <img className="profileDetailsImage" src="/FluffyBuddiesBanner.jpg" />
+          <img className="profileDetailsImage" src="/BannerWide2.jpg" />
           <div className="profileDetailsCard">
             <div>
               <div className="profileDetailsCenter">
@@ -132,7 +132,7 @@ class UnconnectedProfileDetails extends Component {
                   Message my Human
                 </Link>
               </div>
-              <div>
+              <div className="profileDetailsMessageMyHuman">
                 <Link to="/allProfiles">Back to Find Buddies</Link>
               </div>
             </div>
