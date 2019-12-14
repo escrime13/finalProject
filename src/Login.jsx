@@ -46,7 +46,7 @@ class UnconnectedLogin extends Component {
           </div>
           <div>
             <form className="formLogin" onSubmit={this.handleSubmit}>
-              <div>Username</div>
+              <div className="wideScreenLoginText">Username</div>
               <div>
                 <input
                   type="text"
@@ -54,7 +54,7 @@ class UnconnectedLogin extends Component {
                   onChange={this.handleUserNameChange}
                 />
               </div>
-              <div> Password</div>
+              <div className="wideScreenLoginText"> Password</div>
               <div>
                 <input
                   type="text"
@@ -67,15 +67,23 @@ class UnconnectedLogin extends Component {
               </div>
             </form>
           </div>
-          <div className="formLoginSignup">
-            Not a member yet!
-            <div className>
-              <Link to="/signup">Signup</Link>
+          <div className="wideScreenLoginFloat">
+            <div className="formLoginSignup wideScreenLoginText">
+              Not a member yet!
+              <div className>
+                <Link to="/signup">Signup</Link>
+              </div>
+            </div>
+            <div className="subTitleLogin wideScreenLoginTextSubtitle">
+              Where Dogs Find Dogs
+            </div>
+            <div className="subTitleLogin wideScreenLoginTextSubtitle">
+              In the{" "}
+            </div>
+            <div className="subTitleLogin wideScreenLoginTextSubtitle">
+              Greater Montreal Area
             </div>
           </div>
-          <div className="subTitleLogin">Where Dogs Find Dogs</div>
-          <div className="subTitleLogin">In the </div>
-          <div className="subTitleLogin">Greater Montreal Area</div>
         </div>
       );
     if (this.props.loggedIn === true) {

@@ -69,71 +69,96 @@ class UnconnectedProfileDetails extends Component {
                   />
                 </div>
               </div>
-              <div className="profileDetailsText">
+              <div className="wideScreenProfileDetailsCard">
                 <div className="profileDetailsText">
-                  <span className="bold">Age: </span>{" "}
-                  {this.state.dogProfile.dogAge}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold"> Breed: </span>{" "}
-                  {this.state.dogProfile.dogBreed}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Gender: </span>{" "}
-                  {this.state.dogProfile.dogSex}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Weight: </span>
-                  {this.state.dogProfile.dogWeight}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Height: </span>{" "}
-                  {this.state.dogProfile.dogHeight}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Energy Level: </span>{" "}
-                  {this.state.dogProfile.energyLevel}{" "}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Interests: </span>{" "}
-                  {this.state.dogProfile.interests}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Likes: </span>{" "}
-                  {this.state.dogProfile.likes}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">Looking for: </span>{" "}
-                  {this.state.dogProfile.lookingFor}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold"> My usual neighborhoods are: </span>
-                  {Object.keys(
-                    this.state.humanProfile.neighborhoodsClicked
-                  ).map(key => {
-                    return <div className="profileDetailsList">{key}</div>;
-                  })}
-                </div>
-                <div className="profileDetailsText">
-                  <span className="bold">
-                    My human is usually available to escort me on:{" "}
-                  </span>
-                  {Object.keys(this.state.humanProfile.humanAvailabilities).map(
-                    key => {
-                      return <div className="profileDetailsList">{key}</div>;
-                    }
-                  )}
+                  <div className="wideScreenProfileDetailsFloatLeft">
+                    <div className="profileDetailsText wideScreenProfileDetailsTextFirstLine">
+                      <span className="bold">Age: </span>{" "}
+                      {this.state.dogProfile.dogAge}
+                    </div>
+                    <div className="profileDetailsText wideScreenProfileDetailsTextFirstLine">
+                      <span className="bold"> Breed: </span>{" "}
+                      {this.state.dogProfile.dogBreed}
+                    </div>
+                    <div className="profileDetailsText wideScreenProfileDetailsTextFirstLine">
+                      <span className="bold">Gender: </span>{" "}
+                      {this.state.dogProfile.dogSex}
+                    </div>
+                  </div>
+                  <div className="wideScreenProfileDetailsFloatLeft">
+                    <div className="profileDetailsText wideScreenProfileDetailsTextSecondLine">
+                      <span className="bold">Weight: </span>
+                      {this.state.dogProfile.dogWeight}
+                    </div>
+                    <div className="profileDetailsText wideScreenProfileDetailsTextSecondLine">
+                      <span className="bold">Height: </span>{" "}
+                      {this.state.dogProfile.dogHeight}
+                    </div>
+                    <div className="profileDetailsText wideScreenProfileDetailsTextSecondLine">
+                      <span className="bold">Energy Level: </span>{" "}
+                      {this.state.dogProfile.energyLevel}{" "}
+                    </div>
+                  </div>
+                  <div className="wideScreenProfileDetailsFloatLeft">
+                    <div className="profileDetailsText wideScreenProfileDetailsText3-4-5Line">
+                      <span className="bold">Interests: </span>{" "}
+                      {this.state.dogProfile.interests}
+                    </div>
+                  </div>
+                  <div className="wideScreenProfileDetailsFloatLeft">
+                    <div className="profileDetailsText wideScreenProfileDetailsText3-4-5Line">
+                      <span className="bold">Likes: </span>{" "}
+                      {this.state.dogProfile.likes}
+                    </div>
+                  </div>
+                  <div className="wideScreenProfileDetailsFloatLeft">
+                    <div className="profileDetailsText wideScreenProfileDetailsText3-4-5Line">
+                      <span className="bold">Looking for: </span>{" "}
+                      {this.state.dogProfile.lookingFor}
+                    </div>
+                  </div>
+                  <div className="wideScreenProfileDetailsFloatLeft wideScreenProfileDetailsText">
+                    <div className="profileDetailsText wideScreenProfileDetailsText">
+                      <span className="bold">
+                        {" "}
+                        My usual neighborhoods are:{" "}
+                      </span>
+                      {Object.keys(
+                        this.state.humanProfile.neighborhoodsClicked
+                      ).map(key => {
+                        return <div className="profileDetailsList">{key}</div>;
+                      })}
+                    </div>
+                    <div className="profileDetailsText wideScreenProfileDetailsText">
+                      <span className="bold">
+                        My human is usually available to escort me on:{" "}
+                      </span>
+                      {Object.keys(
+                        this.state.humanProfile.humanAvailabilities
+                      ).map(key => {
+                        return <div className="profileDetailsList">{key}</div>;
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="profileDetailsLink">
-              <div className="profileDetailsMessageMyHuman">
-                <Link to={"/messageMyHuman/" + this.state.dogProfile._id}>
+              <div>
+                <Link
+                  className="profileDetailsMessageMyHuman"
+                  to={"/messageMyHuman/" + this.state.dogProfile._id}
+                >
                   Message my Human
                 </Link>
               </div>
-              <div className="profileDetailsMessageMyHuman">
-                <Link to="/allProfiles">Back to Find Buddies</Link>
+              <div>
+                <Link
+                  className=" profileDetailsMessageMyHuman profileDetailsBackToFindBuddies"
+                  to="/allProfiles"
+                >
+                  Back to Find Buddies
+                </Link>
               </div>
             </div>
           </div>

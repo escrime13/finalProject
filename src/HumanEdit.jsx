@@ -121,7 +121,7 @@ class UnconnectedHumanEdit extends Component {
     if (this.props.loggedIn === true) {
       return (
         <div className="createDogContainer">
-          <img className="humanEditImage" src="/EditHuman.jpg" />
+          <img className="humanEditImage" src="/EditHuman2.jpg" />
           <div className="containerFormSignup">
             <form onSubmit={this.handleSubmit}>
               <div className="textInputSignup">

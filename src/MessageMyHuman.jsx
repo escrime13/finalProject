@@ -100,13 +100,16 @@ class UnconnectedMessageMyHuman extends Component {
               <input className="createDogSubmit" type="submit"></input>
             </form>
             <div>
-              <Link className="profileDetailsLink" to="/allProfiles">
+              <Link
+                className="profileDetailsLink wideScreenMessageMyHumanLink"
+                to="/allProfiles"
+              >
                 Back to Find Buddies
               </Link>{" "}
             </div>{" "}
-            <div>
-              <Footer />
-            </div>
+          </div>{" "}
+          <div>
+            <Footer />
           </div>
         </div>
       );

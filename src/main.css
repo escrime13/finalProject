@@ -100,6 +100,7 @@ input[type="checkbox"] {
   height: 20vh;
   display: block;
   text-align: center;
+  margin: auto;
 }
 
 .allProfilesCardContainer {
@@ -170,8 +171,8 @@ input[type="checkbox"] {
   border-style: solid;
   border-color: #192484;
   border-radius: 25px;
-  box-shadow: 5px 10px;
-  margin: 1vh;
+  box-shadow: 5px 5px;
+  margin: 2vh;
   padding: 1vh;
   font-size: 2vh;
   background-image: linear-gradient(
@@ -182,11 +183,12 @@ input[type="checkbox"] {
 }
 .myMessageDelete {
   position: relative;
-  left: 75vw;
+  left: 65vw;
   font-size: 2vh;
   font-weight: bold;
   border-style: solid;
   border-color: black;
+  border-radius: 15%;
   border-width: 0.25vh;
 }
 .myMessageInputMessage {
@@ -314,10 +316,10 @@ input[type="checkbox"] {
 
 /*=========================================EditHuman*/
 .humanEditImage {
-  height: 50vh;
+  height: 30vh;
   display: block;
   text-align: center;
-  margin: -15vh auto 5vh auto;
+  margin: auto auto 10vh auto;
 }
 .humanEditFormContainer {
   margin: 0 0 40vh 2vh;
@@ -328,10 +330,10 @@ input[type="checkbox"] {
 
 /*=========================================CreateDog*/
 .createDogImage {
-  height: 50vh;
+  height: 40vh;
   text-align: center;
   display: block;
-  margin: -8vh auto -5vh auto;
+  margin: auto;
 }
 .createDogContainer {
   height: 100vh;
@@ -468,7 +470,7 @@ input[type="checkbox"] {
   width: 50vh;
   height: 25vh;
   margin-top: -5vh;
-  margin-bottom: -10vh;
+  margin-bottom: -5vh;
   margin-right: auto;
   margin-left: auto;
 }
@@ -514,6 +516,14 @@ input[type="checkbox"] {
   text-decoration: none;
   color: rgba(23, 69, 186);
   background-color: rgba(23, 69, 186, 0.4);
+}
+.profileDetailsExtraBottomMargin {
+  margin-bottom: 2vh;
+}
+.editDogProfileLink {
+  margin: 5vh 2vh 0vh 0vh;
+  font-size: 3vh;
+  font-weight: bold;
 }
 /*=========================================MyDogs*/
 
@@ -669,13 +679,15 @@ input[type="checkbox"] {
     background-repeat: repeat;
   }
   .textFooterContainer {
-    font-size: 2.5vh;
+    font-size: calc(14px + 00.8vw);
     color: black;
+    font-weight: bold;
   }
   .footerLink {
-    font-size: 2.5vh;
+    font-size: calc(14px + 00.8vw);
     text-decoration: none;
     color: black;
+    font-weight: bold;
   }
   .messageMyHumanContentContainer {
     font-size: 3vh;
@@ -713,7 +725,20 @@ input[type="checkbox"] {
     border-color: #202f8a;
     border-width: 0.5vw;
   }
-
+  .wideScreenLoginText {
+    font-size: 5vh;
+    font-weight: bold;
+  }
+  .wideScreenLoginFloat {
+    float: right;
+    position: absolute;
+    left: 55vw;
+    top: 40vh;
+    margin: 2vh;
+  }
+  .wideScreenLoginTextSubtitle {
+    font-size: 5vh;
+  }
   /*=================================WideScreenHomePage */
 
   .homePageContent {
@@ -731,7 +756,7 @@ input[type="checkbox"] {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3vw;
+    margin-bottom: 1.5vw;
     border-style: dotted;
     border-radius: 50%;
     border-color: #202f8a;
@@ -742,7 +767,7 @@ input[type="checkbox"] {
     margin: 1vw;
     margin-bottom: 7vh;
     color: #181d85;
-    background-color: rgb(147, 207, 253, 0.2);
+    font-weight: bold;
   }
   .homePageFireHydrant {
     width: 2.6vw;
@@ -958,8 +983,8 @@ input[type="checkbox"] {
   }
   .imgLogoSignupLeft {
     display: inline-block;
-    width: 40vw;
-    height: 40vw;
+    width: 30vw;
+    height: 30vw;
     position: relative;
     left: -5vw;
     top: -6vw;
@@ -994,18 +1019,19 @@ input[type="checkbox"] {
   }
   /*================================WideScreenProfileDetails*/
   .profileDetailsPicture {
-    width: 25vh;
+    width: 20vh;
     height: 20vh;
     border: solid;
     border-radius: 15px;
     text-align: center;
     justify-content: center;
     margin: 1vh;
+    overflow: auto;
   }
   .profileDetailsImage {
     text-align: center;
     justify-content: center;
-    display: block;
+    display: none;
     width: 40vh;
     height: 20vh;
     margin: auto;
@@ -1046,19 +1072,73 @@ input[type="checkbox"] {
     font-size: 3vh;
     text-decoration: none;
   }
+  .wideScreenProfileDetailsCard {
+    height: 45vh;
+    width: 75vw;
+    display: flex;
+    margin: 1vh 6.25vw;
+    padding: 0.5vw 0 3vw 3vw;
+    border-style: solid;
+    border-radius: 35px;
+    background: white;
+    overflow-y: auto;
+  }
+  .wideScreenProfileDetailsFloatLeft {
+    display: flex;
+    float: left;
+    top: 2vh;
+    left: 50vh;
+  }
+  .wideScreenProfileDetailsTextFirstLine {
+    font-size: calc(14px + 0.8vw);
+    width: 22.5vw;
+    margin: 0.5vw;
+  }
+  .wideScreenProfileDetailsTextSecondLine {
+    font-size: calc(14px + 0.8vw);
+    width: 22.5vw;
+    margin: 0.5vw;
+  }
+  .wideScreenProfileDetailsText3-4-5Line {
+    font-size: calc(14px + 0.8vw);
+    width: 50vw;
+    margin: 0.5vh;
+  }
+  .wideScreenProfileDetailsText {
+    font-size: calc(14px + 0.8vw);
+    width: 60vw;
+    margin: 0.5vh;
+  }
+
   .profileDetailsMessageMyHuman {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 2vh;
+    left: 75vw;
+    width: 15vw;
+    font-size: calc(10px + 0.75vw);
+    font-weight: bold;
+    color: black;
+    background-color: rgba(23, 69, 186, 0.8);
+    border-color: rgba(23, 69, 186, 0.8);
+  }
+
+  .profileDetailsBackToFindBuddies {
     text-align: center;
     display: block;
-    margin: 1vh auto;
-    width: 25vw;
-    padding: 0.5vh;
-    font-size: 3vh;
+    position: absolute;
+    top: 10vh;
+    left: 75vw;
+    width: 15vw;
+    font-size: calc(10px + 0.75vw);
     font-weight: bold;
     color: black;
     background-color: rgba(23, 69, 186, 0.8);
     border-radius: 25px;
+    border-color: rgba(23, 69, 186, 0.8);
   }
-
   /*=============================================wideScreenMyDogs*/
   .myDogsLogo {
     height: 20vh;
@@ -1107,7 +1187,7 @@ input[type="checkbox"] {
   .myDogProfileDetailsCard {
     margin-bottom: 25vh;
   }
-  /*========================================MessageMyHuman */
+  /*========================================wideScreenMessageMyHuman */
   .messageMyHumanImage {
     height: 30vh;
     width: 30vh;
@@ -1121,7 +1201,7 @@ input[type="checkbox"] {
   }
   .messageMyHumanContentContainer {
     font-size: 3vh;
-    margin: 2vh 3vw;
+    margin: 3vh 3vw;
   }
   .messageMyHumanTextBox {
     width: 50vw;
@@ -1139,5 +1219,34 @@ input[type="checkbox"] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+  }
+  .wideScreenMessageMyHumanLink {
+    text-align: center;
+    margin: auto;
+    width: 25vw;
+    padding: 1vh;
+    margin: 3vh auto;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: black;
+    background-color: rgba(23, 69, 186, 0.8);
+    border-radius: 25px;
+  }
+  /*========================================================wideScreenEditMyHuman*/
+  .humanEditImage {
+    height: 30vh;
+    display: block;
+    text-align: center;
+    margin: auto auto 10vh auto;
+    border-style: dotted;
+    border-radius: 50%;
+    border-color: #202f8a;
+    border-width: 0.5vw;
+  }
+  .humanEditFormContainer {
+    margin: 0 0 40vh 2vh;
+  }
+  .humanEditCategories {
+    font-size: 2vh;
   }
 }

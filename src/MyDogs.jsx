@@ -96,7 +96,7 @@ class UnconnectedMyDogs extends Component {
                         <div className="profileDetailsText wideScreenInputWidth ">
                           <span className="bold">Likes:</span> {likes}
                         </div>
-                        <div className="profileDetailsText wideScreenInputWidth ">
+                        <div className="profileDetailsText wideScreenInputWidth profileDetailsExtraBottomMargin">
                           <span className="bold">Looking for: </span>
                           {lookingFor}
                         </div>{" "}

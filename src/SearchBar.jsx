@@ -169,6 +169,7 @@ class UnconnectedSearchBar extends Component {
               <option value="Clumber spaniel">Clumber spaniel</option>
               <option value="Cocker spaniel">Cocker spaniel</option>
               <option value="Collie">Collie</option>
+              <option value="Corgi">Corgi</option>
               <option value="Curly-coated retriever">
                 Curly-coated retriever
               </option>
