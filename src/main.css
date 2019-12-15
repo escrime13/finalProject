@@ -445,6 +445,7 @@ input[type="checkbox"] {
   text-align: center;
   width: 35vh;
   font-size: 2vh;
+  font-weight: bold;
   margin: 5vh auto;
   border-style: solid;
   border-radius: 25px;
@@ -571,8 +572,8 @@ input[type="checkbox"] {
     justify-content: center;
   }
   .allProfilesPleaseLoginImage {
-    width: 40vw;
-    height: 40vw;
+    width: 30vw;
+    height: 30vw;
   }
   .allProfilesImage {
     width: 20vh;
@@ -1118,7 +1119,7 @@ input[type="checkbox"] {
     top: 2vh;
     left: 75vw;
     width: 15vw;
-    font-size: calc(10px + 0.75vw);
+    font-size: calc(8px + 0.75vw);
     font-weight: bold;
     color: black;
     background-color: rgba(23, 69, 186, 0.8);
@@ -1132,7 +1133,7 @@ input[type="checkbox"] {
     top: 10vh;
     left: 75vw;
     width: 15vw;
-    font-size: calc(10px + 0.75vw);
+    font-size: calc(8px + 0.75vw);
     font-weight: bold;
     color: black;
     background-color: rgba(23, 69, 186, 0.8);
@@ -1166,22 +1167,20 @@ input[type="checkbox"] {
     display: inline-flex;
     float: left;
   }
+  .wideScreenMyDogsLastContainer {
+    display: block;
+  }
   .wideScreenInputWidth {
     width: 33vw;
     margin-bottom: 1vh;
   }
   .editDogProfileLink {
-    width: 10vh;
-    height: 10vh;
-    justify-content: center;
-    padding: 3vh 2vh 0vh 2vh;
-    margin: 1vh 2vh 0vh 0vh;
     font-size: 1.5vh;
+    border-radius: 25px;
+    padding: 8px;
     font-weight: bold;
     color: black;
     background-color: rgba(23, 69, 186, 0.8);
-    border-radius: 25px;
-    display: inline-flex;
     text-decoration: none;
   }
   .myDogProfileDetailsCard {

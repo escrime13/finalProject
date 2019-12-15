@@ -88,7 +88,7 @@ class UnconnectedMyDogs extends Component {
                           {energyLevel}{" "}
                         </div>
                       </div>
-                      <div className="wideScreenMyDogsRightContainer">
+                      <div>
                         <div className="profileDetailsText wideScreenInputWidth ">
                           <span className="bold">Interests: </span>
                           {interests}
@@ -101,12 +101,13 @@ class UnconnectedMyDogs extends Component {
                           {lookingFor}
                         </div>{" "}
                       </div>
-
+                    </div>{" "}
+                    <div className="wideScreenMyDogsLastContainer">
                       <Link className="editDogProfileLink" to="/selectDog">
                         Edit Dog Profile
                       </Link>
-                    </div>{" "}
-                  </div>
+                    </div>
+                  </div>{" "}
                 </div>
               );
             })}
